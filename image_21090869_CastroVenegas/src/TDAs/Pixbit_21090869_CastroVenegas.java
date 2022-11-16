@@ -10,14 +10,15 @@ import java.util.Scanner;
  *
  * @author arace
  */
-public class Pixbit extends Pixeles{
+public class Pixbit_21090869_CastroVenegas extends Pixeles_21090869_CastroVenegas{
     
     // variables del pixbit
-    private int bit;
-    public ArrayList pixelesBit = new ArrayList();
+    private final int bit;
+    
+    public ArrayList pixelesBit = new ArrayList(); // lista de pixeles pixbit
     
     // constructor de un pixbitd
-    public Pixbit(int vCoordX, int vCoordY, int vBit, int vProfundidad){
+    public Pixbit_21090869_CastroVenegas(int vCoordX, int vCoordY, int vBit, int vProfundidad){
         this.bit = vBit;
         this.coordX = vCoordX;
         this.coordY = vCoordY;
@@ -33,11 +34,7 @@ public class Pixbit extends Pixeles{
     
     // pertenencia de pixbitd
     public boolean esPixbit(int vCoordX, int vCoordY, int vBit, int vProfundidad){
-        if(vCoordX >= 0 && vCoordY >= 0 && (vBit == 1 || vBit == 0) && vProfundidad >= 0){
-            return true;
-        } else{
-            return false;
-        }
+        return vCoordX >= 0 && vCoordY >= 0 && (vBit == 1 || vBit == 0) && vProfundidad >= 0;
     }
    
     // pedir datos de un Pixbit
@@ -57,18 +54,19 @@ public class Pixbit extends Pixeles{
         System.out.print("Ingresar profundidad: ");
         int vProfundidad = entrada.nextInt();
         
-        // crea el pixbit
-        Pixbit pixelBit = new Pixbit(vCoordX, vCoordY, vBit, vProfundidad);
+        // crea el objeto pixbit
+        Pixbit_21090869_CastroVenegas pixelBit = new Pixbit_21090869_CastroVenegas(vCoordX, vCoordY, vBit, vProfundidad);
         
         // si es un pixbit
         if (pixelBit.esPixbit(vCoordX, vCoordY, vBit, vProfundidad)){
-            // se añade a los pixeles
+            
+            // se añade a los pixeles y se añade a la lista de pixeles pixbit
             this.pixel = pixelBit.pixel;           
             pixelesBit.add(pixel);
             return 0;
             
         } else{
-            System.out.println("El pixel pixbit esta mal ingresado");
+            System.out.println("El pixel pixbit esta mal ingresado, intentelo de nuevo");
             return 1;
         }
     }
@@ -78,15 +76,15 @@ public class Pixbit extends Pixeles{
     public ArrayList ImagePixbit(int cantidadPixeles, int ancho, int largo){
         
         // crea un objeto pixbit
-        Pixbit pixelBit = new Pixbit(0,0,0,0);
+        Pixbit_21090869_CastroVenegas pixelBit = new Pixbit_21090869_CastroVenegas(0,0,0,0);
         
         int i = 1;
         while (cantidadPixeles != (i - 1)){
-            int error = pixelBit.PedirPixbit(i); // crea un pixel
+            int error = pixelBit.PedirPixbit(i); // crea el pixel y retorna si es correcto
             if (error != 1){
                 i = i +1;
             } else{
-                error = 0;
+                error--;
             }
         }
         

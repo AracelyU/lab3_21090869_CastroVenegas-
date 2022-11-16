@@ -5,11 +5,12 @@ package TDAs;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Other/File.java to edit this template
  */
 import java.util.ArrayList;
+import java.util.Scanner;
 /**
  *
  * @author arace
  */
-public class Pixeles{
+public class Pixeles_21090869_CastroVenegas{
 
     /**
      * @param args the command line arguments
@@ -45,6 +46,25 @@ public class Pixeles{
     public void ImprimirPixel(){
         System.out.println("El pixel creado es: " + pixel);
     }   
+    
+    // crea los pixeles de la imagen según su tipo
+    public ArrayList CrearPixeles(int eleccion, int ancho, int largo){
+        if (eleccion == 1){ // pixeles bitmap
+            int cantidadPixeles = ancho * largo;
+            Pixbit_21090869_CastroVenegas pixBitLista = new Pixbit_21090869_CastroVenegas(0,0,0,0);
+            this.pixeles = pixBitLista.ImagePixbit(cantidadPixeles, ancho, largo);
+            return pixeles;
+            
+        } if (eleccion == 2){ // pixeles pixmap
+            int cantidadPixeles = ancho * largo;
+            Pixrgb_21090869_CastroVenegas pixRGBLista = new Pixrgb_21090869_CastroVenegas(0,0,0,0,0,0);
+            this.pixeles = pixRGBLista.ImagePixrgb(cantidadPixeles, ancho, largo);
+            return pixeles;
+        
+        } else { // pixeles hexmap
+            return pixeles;
+        }
+    }
     
     
 }

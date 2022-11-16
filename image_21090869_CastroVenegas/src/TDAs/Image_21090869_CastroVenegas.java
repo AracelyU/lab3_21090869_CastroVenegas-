@@ -6,6 +6,7 @@ package TDAs;
  */
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
@@ -13,69 +14,52 @@ import java.util.Scanner;
  *
  * @author aracelyCastro
  */
-public class Image {
+public class Image_21090869_CastroVenegas {
     
     // definiendo las variables de una imagen
     private int ancho, largo;
     private ArrayList pixelesImage = new ArrayList(); // la lista de pixeles de la imagen
     
-    // definiendo el constructor de una imagen, inicializa una imagen vacia
-    public Image(){
-        this.ancho = 0;
-        this.largo = 0;
+    // definiendo otras variables
+    private ArrayList imageLista = new ArrayList();
+    
+    // definiendo el constructor de una imagen
+    public Image_21090869_CastroVenegas(int ancho, int largo, ArrayList pixeles){
+        this.ancho = ancho;
+        this.largo = largo;
+        this.pixelesImage = pixeles;
     }
     
-    // pedir ancho y largo por consola
-    private void PedirDimensiones(){
-        Scanner entrada = new Scanner(System.in);  
-        System.out.print("Ingresar ancho: ");
-        this.ancho = entrada.nextInt();
-        System.out.print("Ingresar largo: ");
-        this.largo = entrada.nextInt();
-    }
     
-    // pedir los pixeles de la imagen por consola
-    private void CrearPixeles(){
-        int cantidadPixeles = ancho * largo;
-        Pixbit pixBitLista = new Pixbit(0,0,0,0);
-        this.pixelesImage = pixBitLista.ImagePixbit(cantidadPixeles, ancho, largo);
-    }
-    
-    // crear una imagen
-    public ArrayList CrearImage(){
-        PedirDimensiones(); // pedir el ancho y largo por consola
-        CrearPixeles(); // pedir la lista de pixeles por consola
-        ArrayList image = new ArrayList(); // crear una lista
-        image.add(ancho);
-        image.add(largo);
-        image.add(pixelesImage);
-        return image; // retornar imagen
-    }
-    
-    // guardar la imagen
-    public void GuardarImage(ArrayList img, ArrayList imageLista){
-        imageLista.add(img);
+    // guardar la imagen en la lista
+    public void GuardarImage(ArrayList img, int ID){
+        ArrayList imagenGuardada = new ArrayList();
+        imagenGuardada.add(ID); // ID para identificar la imagen guardada
+        imagenGuardada.add(img); // la imagen guardada
+        this.imageLista.add(imagenGuardada); 
     }
     
     // método para imprimir información de la imagen
-    public void Imprimir(){  
+    public void InfoImagen(){  
         System.out.println("El ancho de la imagen es: " + ancho);
         System.out.println("El largo de la imagen es: " + largo);
         System.out.println("Los pixeles de la imagen son: " + pixelesImage);
     }
     
+    public void InfoImagenes(){  
+        System.out.println("Imagenes son: " + imageLista);
+    }
+    
     
     // imageIsBitmap método
     public boolean IsBitmap(){
-        Pixbit pixelBit = new Pixbit(0,0,0,0);
-        
+        Pixbit_21090869_CastroVenegas pixelBit = new Pixbit_21090869_CastroVenegas(0,0,0,0);
         for(int i = 0;i < pixelesImage.size();i++){
             ArrayList pixel = (ArrayList) pixelesImage.get(i);
             
             if (pixel.size() != 4){ // si un pixel no tiene largo 4 directamente no es image Bitmap
                 return false;
             }
-            
             // obteniendo los valores del pixel
             int coordX = (int) pixel.get(0);
             int coordY = (int) pixel.get(1);
@@ -107,6 +91,3 @@ public class Image {
     }
      */
 }
-
-
- 
