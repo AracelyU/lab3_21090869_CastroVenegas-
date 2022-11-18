@@ -11,98 +11,59 @@ import java.util.Scanner;
  *
  * @author arace
  */
-public class Pixrgb_21090869_CastroVenegas extends Pixeles_21090869_CastroVenegas{
+public class Pixrgb_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas{
    
     // variables del pixrgb
-    private final int colorR;
-    private final int colorG;
-    private final int colorB;
-    
-    public ArrayList pixelesRGB = new ArrayList(); // lista de pixeles pixrgb
+    private int colorR;
+    private int colorG;
+    private int colorB;
     
     // constructor de un pixrgb
     public Pixrgb_21090869_CastroVenegas(int vCoordX, int vCoordY, int vColorR, int vColorG, int vColorB, int vProfundidad){
-        this.colorR = vColorR;
-        this.colorG = vColorG;
-        this.colorB = vColorB;
-        this.coordX = vCoordX;
-        this.coordY = vCoordY;
-        this.profundidad = vProfundidad;
-        
-        // crea el pixrgb [coordX, coordY, colorR, colorG, colorB, profundidad]
-        pixel.add(coordX);
-        pixel.add(coordY);
-        pixel.add(colorR);
-        pixel.add(colorG);
-        pixel.add(colorB);
-        pixel.add(profundidad);
-    
+        super(vCoordX, vCoordY, vProfundidad);
+        this.getColorR(vColorR);
+        this.getColorG(vColorG);
+        this.getColorB(vColorB);
     }
     
-    // pertenencia de pixrgb
-    public boolean esPixrgb(int vCoordX, int vCoordY, int vColorR, int vColorG, int vColorB, int vProfundidad){
-        return vCoordX >= 0 && vCoordY >= 0 && vProfundidad >= 0 && vColorR >= 0 && vColorR <= 255 && vColorG >= 0 && vColorG <= 255 && vColorB >= 0 && vColorB <= 255;
+    // definir getters
+    
+    // retornar colorR
+    public int getColorR(){
+        return colorR;
     }
-   
-    // pedir datos de un Pixrgb
-    public int PedirPixrgb(int numeroPixel){
-        Scanner entrada = new Scanner(System.in);
-        System.out.println("Pixrgb " + numeroPixel);
+    
+    // retornar colorG
+    public int getColorG(){
+        return colorG;
+    }
         
-        System.out.print("Ingresar x: ");
-        int vCoordX = entrada.nextInt();
-        
-        System.out.print("Ingresar y: ");
-        int vCoordY = entrada.nextInt();
-        
-        System.out.print("Ingresar colorR: ");
-        int vColorR = entrada.nextInt();
-        
-        System.out.print("Ingresar colorG: ");
-        int vColorG = entrada.nextInt(); 
-        
-        System.out.print("Ingresar colorB: ");
-        int vColorB = entrada.nextInt();
-        
-        System.out.print("Ingresar profundidad: ");
-        int vProfundidad = entrada.nextInt();
-        
-        // crea el objeto pixrgb
-        Pixrgb_21090869_CastroVenegas pixelRGB = new Pixrgb_21090869_CastroVenegas(vCoordX, vCoordY, vColorR, vColorG, vColorB, vProfundidad);
-        
-        // si es un pixrgb
-        if (pixelRGB.esPixrgb(vCoordX, vCoordY, vColorR, vColorG, vColorB, vProfundidad)){
-            
-            // se añade a los pixeles y se añade a la lista de pixeles pixrgb
-            this.pixel = pixelRGB.pixel;           
-            pixelesRGB.add(pixel);
-            return 0;
-            
-        } else{
-            System.out.println("El pixel pixrgb esta mal ingresado, intentelo de nuevo");
-            return 1;
+    // retornar colorB
+    public int getColorB(){
+        return colorB;
+    }
+    
+    // definir setters
+    
+    // cambiar colorR
+    public void getColorR(int ColorR){
+        if (ColorR >= 0 && ColorR <= 255){
+            this.colorR = ColorR;
         }
     }
     
-    
-    // crear la lista de pixrgb
-    public ArrayList ImagePixrgb(int cantidadPixeles, int ancho, int largo){
-        
-        // crea un objeto pixrgb
-        Pixrgb_21090869_CastroVenegas pixelRGB = new Pixrgb_21090869_CastroVenegas(0,0,0,0,0,0);
-        
-        int i = 1;
-        while (cantidadPixeles != (i - 1)){
-            int error = pixelRGB.PedirPixrgb(i); // crea el pixel y retorna si es correcto
-            if (error != 1){
-                i = i +1;
-            } else{
-                error--;
-            }
+    // cambiar colorG
+    public void getColorG(int ColorG){
+        if (ColorG >= 0 && ColorG <= 255){
+            this.colorG = ColorG;
         }
-        
-        this.pixeles = pixelRGB.pixelesRGB; // pasa los pixeles pixrgb a pixeles
-        return pixeles;
+    }
+    
+    // cambiar colorB
+    public void getColorB(int ColorB){
+        if (ColorB >= 0 && ColorB <= 255){
+            this.colorB = ColorB;
+        }
     }
     
     

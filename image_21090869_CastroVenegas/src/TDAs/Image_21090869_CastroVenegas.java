@@ -50,44 +50,4 @@ public class Image_21090869_CastroVenegas {
         System.out.println("Imagenes son: " + imageLista);
     }
     
-    
-    // imageIsBitmap método
-    public boolean IsBitmap(){
-        Pixbit_21090869_CastroVenegas pixelBit = new Pixbit_21090869_CastroVenegas(0,0,0,0);
-        for(int i = 0;i < pixelesImage.size();i++){
-            ArrayList pixel = (ArrayList) pixelesImage.get(i);
-            
-            if (pixel.size() != 4){ // si un pixel no tiene largo 4 directamente no es image Bitmap
-                return false;
-            }
-            // obteniendo los valores del pixel
-            int coordX = (int) pixel.get(0);
-            int coordY = (int) pixel.get(1);
-            int bit = (int) pixel.get(2);
-            int profundidad = (int) pixel.get(3);   
-            
-            // si el pixel no es pixbit la imagen ya no es Bitmap
-            if (!pixelBit.esPixbit(coordX, coordY, bit, profundidad)){
-                return false;
-            }      
-        }
-        return true;
-    }
-    
-    
-    
-  
-    /*
-    // método para experimentar con listas
-    public void Lista(){
-    ArrayList lista = new ArrayList();
-    lista.add(ancho);
-    lista.add(largo);
-    System.out.println(lista);
-    ArrayList lista2 = new ArrayList();
-    lista2.add(lista);
-    lista2.add(ancho);
-    System.out.println(lista2);
-    }
-     */
 }
