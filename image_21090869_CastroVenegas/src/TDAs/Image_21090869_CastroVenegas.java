@@ -6,8 +6,6 @@ package TDAs;
  */
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.Scanner;
 
 
 /**
@@ -18,36 +16,81 @@ public class Image_21090869_CastroVenegas {
     
     // definiendo las variables de una imagen
     private int ancho, largo;
-    private ArrayList pixelesImage = new ArrayList(); // la lista de pixeles de la imagen
-    
-    // definiendo otras variables
-    private ArrayList imageLista = new ArrayList();
+    private ArrayList <Pixel_21090869_CastroVenegas> pixeles = new ArrayList<>();
     
     // definiendo el constructor de una imagen
-    public Image_21090869_CastroVenegas(int ancho, int largo, ArrayList pixeles){
-        this.ancho = ancho;
-        this.largo = largo;
-        this.pixelesImage = pixeles;
+    public Image_21090869_CastroVenegas(int vAncho, int vLargo, ArrayList vPixeles){
+        this.setAncho(vAncho);
+        this.setLargo(vLargo);
+        this.setPixeles(vPixeles);
+       
+    }
+    
+    // definiendo getters
+    
+    // retornar ancho
+    public int getAncho(){
+        return ancho;
+    }
+    
+    // retornar largo
+    public int getLargo(){
+        return largo;
+    }
+    
+    // retornar pixeles
+    public ArrayList getPixeles(){
+        return pixeles;
+    }
+    
+    // definir setters
+    
+    // cambiar ancho
+    public void setAncho(int ancho){
+        if (ancho >= 0){
+            this.ancho = ancho;
+        }
+    }
+    
+    // cambiar largo
+    public void setLargo(int largo){
+        if (largo >= 0){
+            this.largo = largo;
+        }
+    }
+    
+    // cambiar pixeles
+    public void setPixeles(ArrayList pixeles){
+        this.pixeles = pixeles;
+    }
+    
+    // añadir pixel a los pixeles
+    public void addPixel(Pixel_21090869_CastroVenegas pixel){
+        pixeles.add(pixel);
     }
     
     
-    // guardar la imagen en la lista
-    public void GuardarImage(ArrayList img, int ID){
-        ArrayList imagenGuardada = new ArrayList();
-        imagenGuardada.add(ID); // ID para identificar la imagen guardada
-        imagenGuardada.add(img); // la imagen guardada
-        this.imageLista.add(imagenGuardada); 
-    }
+    /*
+    public public ImageIsBitmap(){
+        Pixbit_21090869_CastroVenegas pixel = new Pixbit_21090869_CastroVenegas(0,0,0,0);
+        
+        for(int i=0; i < pixeles.size(); i++){
+            Pixel_21090869_CastroVenegas pixelRecogido = pixeles.get(i);
+            ArrayList pixelR = (ArrayList) pixelRecogido.pixeles;
+            int coordX = pixelR.get(0);
+            int coordY = pixelR.get(1);
+            int bit = pixelR.get(2);
+            int profundidad = pixelR.get(3);
+   
+                    
+            pixel.esPixbit();
+      */      
+            
+            
+            
+            
+      
+ 
     
-    // método para imprimir información de la imagen
-    public void InfoImagen(){  
-        System.out.println("El ancho de la imagen es: " + ancho);
-        System.out.println("El largo de la imagen es: " + largo);
-        System.out.println("Los pixeles de la imagen son: " + pixelesImage);
-    }
-    
-    public void InfoImagenes(){  
-        System.out.println("Imagenes son: " + imageLista);
-    }
     
 }

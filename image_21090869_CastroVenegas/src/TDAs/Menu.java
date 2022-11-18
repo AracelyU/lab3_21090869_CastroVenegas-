@@ -6,6 +6,7 @@ package TDAs;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.ArrayList;
         
 /**
  *
@@ -15,8 +16,11 @@ public class Menu {
     
     
     public void ejecutarMenu() {
+        
+        ArrayList <Image_21090869_CastroVenegas> imagenes = new ArrayList(); // lista de imagenes creadas
             
         Scanner input = new Scanner(System.in);
+        
         boolean salirMenu = false;
         int eleccion;        
         while (!salirMenu){
@@ -28,7 +32,7 @@ public class Menu {
             System.out.println("3. Visualizar imagen");
             System.out.println("4. Salir");
                 try {
-                    System.out.println("INTRODUZCA SU OPCIÓN: ");
+                    System.out.println("Introduzca su opción: ");
                     eleccion = input.nextInt();
                     switch (eleccion) {
 
@@ -39,19 +43,58 @@ public class Menu {
                             System.out.println("2. Crear pixmap");
                             System.out.println("3. Crear hexmap");
                             System.out.println("4. Volver");
-                            eleccion = input.nextInt(); 
-                            switch (eleccion) {
+                            
+                            try{
+                            
+                                eleccion = input.nextInt(); 
+                                switch (eleccion) {
+                                    case 1: // crear bitmap
+                                        break;
+                                        
+                                    case 2: // crear pixmap
+                                        break;
+                                        
+                                    case 3: // crear hexmap
+                                        break;
+                                        
+                                    case 4: // volver
+                                        break;
                                 
                                 
                                 
+                                }
+                            
+                            } catch(Exception e){
+                                System.out.println("El menu solo admite como entrada numeros y alguna de las opciones anteriores");
+                                input.next();
+                            
                             }
+                            
 
                             break;
 
                         case 2: // MODIFICAR IMAGEN
-                             
+                            
+                            try{
+                                
+                                System.out.println("Introduzca su opción: ");
+                                eleccion = input.nextInt();
+                                switch (eleccion) {
+                                    
+                                    case 1: // enumerar opciones de modificaciones de imagenes
+                                        break;
+                                
+                                }
+                                
                             
                             
+                            
+                            } catch(Exception e){
+                                System.out.println("El menu solo admite como entrada numeros y alguna de las opciones anteriores");
+                                input.next();
+                            
+                            }
+                          
                             break;
 
                         case 3: // VISUALIZAR IMAGEN
