@@ -18,7 +18,6 @@ public abstract class Pixel_21090869_CastroVenegas{
     
     // Definiendo variables comunes de un pixel
     protected int coordX, coordY, profundidad; 
-    protected ArrayList pixeles = new ArrayList();
     
     // constructor de pixeles
     public Pixel_21090869_CastroVenegas(int CoordX, int CoordY, int Profundidad){

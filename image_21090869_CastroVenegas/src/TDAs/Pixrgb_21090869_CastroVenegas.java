@@ -66,5 +66,16 @@ public class Pixrgb_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas{
         }
     }
     
+    // mostrar información del pixrgb
+    public void mostrarPixrgb(){
+        System.out.println();
+        System.out.print("CoordX: "+ this.coordX + " ");
+        System.out.print("CoordY: "+ this.coordY + " ");
+        System.out.print("ColorR: "+ this.colorR + " ");
+        System.out.print("ColorG: "+ this.colorG + " ");
+        System.out.print("ColorB: "+ this.colorB + " ");
+        System.out.print("Profundidad: "+ this.profundidad + "\n");
+    }
+    
     
 }

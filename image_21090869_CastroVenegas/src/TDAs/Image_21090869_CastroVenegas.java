@@ -16,7 +16,7 @@ public class Image_21090869_CastroVenegas {
     
     // definiendo las variables de una imagen
     private int ancho, largo;
-    private ArrayList pixeles = new ArrayList<>();
+    private ArrayList pixeles = new ArrayList<>(); // los pixeles son direcciones de cada objeto pixel
     
     // definiendo el constructor de una imagen
     public Image_21090869_CastroVenegas(int vAncho, int vLargo, ArrayList vPixeles){
@@ -64,11 +64,41 @@ public class Image_21090869_CastroVenegas {
         this.pixeles = pixeles;
     }
     
+    // mostrar información de la imagen
+    public void mostrarImage(){
+        System.out.println();
+        System.out.print("Ancho: "+ this.ancho + " ");
+        System.out.print("Largo: "+ this.largo + " ");
+        System.out.print("Pixeles: " + this.pixeles);
+        
+        if (isBitmap()){
+            for(int i=0; i < pixeles.size(); i++){
+                Pixbit_21090869_CastroVenegas pixelBit = (Pixbit_21090869_CastroVenegas) pixeles.get(i);
+                pixelBit.mostrarPixbit();
+            }
+        }
+        
+        if (isHexmap()){
+            for(int i=0; i < pixeles.size(); i++){
+                Pixhex_21090869_CastroVenegas pixelHex = (Pixhex_21090869_CastroVenegas) pixeles.get(i);
+                pixelHex.mostrarPixhex();
+            }
+        }
+        
+        if (isPixmap()){
+            for(int i=0; i < pixeles.size(); i++){
+                Pixrgb_21090869_CastroVenegas pixelRGB = (Pixrgb_21090869_CastroVenegas) pixeles.get(i);
+                pixelRGB.mostrarPixrgb();
+            }
+        }
+    }
+    
     // añadir pixel a los pixeles
     public void addPixel(Pixel_21090869_CastroVenegas pixel){
         pixeles.add(pixel);
     }
     
+    // comprobar si es Bitmap
     public boolean isBitmap(){
         Pixbit_21090869_CastroVenegas pixelBit = new Pixbit_21090869_CastroVenegas(0,0,0,0); // crear un objeto Pixbit para comparar
         for(int i=0; i < pixeles.size(); i++){ // mientras queden pixeles en la imagen
@@ -80,6 +110,7 @@ public class Image_21090869_CastroVenegas {
         return true;
     }
     
+    // comprobar si es Pixmap
     public boolean isPixmap(){
         Pixrgb_21090869_CastroVenegas pixelRGB = new Pixrgb_21090869_CastroVenegas(0,0,0,0,0,0); // crear un objeto Pixrgb para comparar
         for(int i=0; i < pixeles.size(); i++){ // mientras queden pixeles en la imagen
@@ -91,6 +122,7 @@ public class Image_21090869_CastroVenegas {
         return true;
     }
 
+    // comprobar si es Hexmap
     public boolean isHexmap(){
         Pixhex_21090869_CastroVenegas pixelHex = new Pixhex_21090869_CastroVenegas(0,0,"#FFFFFF",0); // crear un objeto Pixhex para comparar
         for(int i=0; i < pixeles.size(); i++){ // mientras queden pixeles en la imagen
@@ -101,4 +133,33 @@ public class Image_21090869_CastroVenegas {
         }
         return true;
     }     
+    
+    // cambiar la coordenadas para hacer flipH
+    public void flipH(){
+        int h = 0;
+        for(int i=0; i < this.ancho; i++){
+            for(int j= this.largo-1; j >= 0; j--){
+                
+                if (isBitmap()){
+                    Pixbit_21090869_CastroVenegas pixelRecogido =  (Pixbit_21090869_CastroVenegas) pixeles.get(h);
+                    pixelRecogido.setCoordY(j);  
+                }
+                
+                if (isHexmap()){
+                    Pixhex_21090869_CastroVenegas pixelRecogido =  (Pixhex_21090869_CastroVenegas) pixeles.get(h);
+                    pixelRecogido.setCoordY(j);  
+                }
+                
+                if (isPixmap()){
+                    Pixrgb_21090869_CastroVenegas pixelRecogido =  (Pixrgb_21090869_CastroVenegas) pixeles.get(h);
+                    pixelRecogido.setCoordY(j);  
+                }
+                
+                h++;
+            }
+        }
+    
+    }
+    
+    
 }

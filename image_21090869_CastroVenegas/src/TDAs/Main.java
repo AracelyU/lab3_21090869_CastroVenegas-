@@ -34,15 +34,18 @@ public class Main {
         Image_21090869_CastroVenegas image = new Image_21090869_CastroVenegas(1,3, pixeles);
         
         // mostrar datos de la imagen creada
-        System.out.println("Imagen");
-        System.out.println("Ancho: " +image.getAncho());
-        System.out.println("Largo: "+image.getLargo());
-        System.out.println("Pixeles: "+image.getPixeles());
+        image.mostrarImage();
         
         // comprobar si es isBitmap
         System.out.println("isBitmap: " +image.isBitmap());
         System.out.println("isPixmap: " +image.isPixmap());
         System.out.println("isHexmap: " +image.isHexmap());
+        
+        // hacer flip
+        image.flipH();
+        
+        // mostrar nuevos datos tras flipH
+        image.mostrarImage();
         
         // creando pixeles pixrgb
         Pixrgb_21090869_CastroVenegas p1A = new Pixrgb_21090869_CastroVenegas(0,0,10,10,10,10);
