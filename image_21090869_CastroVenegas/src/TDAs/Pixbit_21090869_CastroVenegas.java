@@ -40,12 +40,18 @@ public class Pixbit_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas{
     }
     
     // definir pertenencia
-    public boolean esPixbit(){
-        int coordX = getCoordX(); // extraigo coordX
+    
+   
+    
+    /*
+    // definir pertenencia
+    public boolean esPixbit(Object pixel){
+        int coordX = getCoordX(); // extraigo coord
         int coordY = getCoordY(); // extraigo coordY
         int bit = getBit(); // extraigo bit
         int profundidad = getProfundidad(); // extraigo profundidad
         ArrayList pixel = (ArrayList) pixeles.get(0); // extrae un pixel de la imagen para poder obtener su largo
         return (coordX >= 0 && coordY >= 0 && (bit == 0 || bit == 1) && profundidad >= 0 && pixel.size() == 4);
     }
+ */
 }

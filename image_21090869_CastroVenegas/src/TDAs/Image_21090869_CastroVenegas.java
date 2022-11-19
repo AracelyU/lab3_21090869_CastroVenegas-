@@ -16,7 +16,7 @@ public class Image_21090869_CastroVenegas {
     
     // definiendo las variables de una imagen
     private int ancho, largo;
-    private ArrayList <Pixel_21090869_CastroVenegas> pixeles = new ArrayList<>();
+    private ArrayList pixeles = new ArrayList<>();
     
     // definiendo el constructor de una imagen
     public Image_21090869_CastroVenegas(int vAncho, int vLargo, ArrayList vPixeles){
@@ -69,28 +69,36 @@ public class Image_21090869_CastroVenegas {
         pixeles.add(pixel);
     }
     
+    public boolean isBitmap(){
+        Pixbit_21090869_CastroVenegas pixelBit = new Pixbit_21090869_CastroVenegas(0,0,0,0); // crear un objeto Pixbit para comparar
+        for(int i=0; i < pixeles.size(); i++){ // mientras queden pixeles en la imagen
+            Object pixelRecogido = pixeles.get(i); // para cada pixel
+            if (pixelRecogido.getClass() != pixelBit.getClass()){ // si no es pixel de clase Pixbit retorna falso
+                return false;
+            }      
+        }
+        return true;
+    }
     
-    /*
-    public public ImageIsBitmap(){
-        Pixbit_21090869_CastroVenegas pixel = new Pixbit_21090869_CastroVenegas(0,0,0,0);
-        
-        for(int i=0; i < pixeles.size(); i++){
-            Pixel_21090869_CastroVenegas pixelRecogido = pixeles.get(i);
-            ArrayList pixelR = (ArrayList) pixelRecogido.pixeles;
-            int coordX = pixelR.get(0);
-            int coordY = pixelR.get(1);
-            int bit = pixelR.get(2);
-            int profundidad = pixelR.get(3);
-   
-                    
-            pixel.esPixbit();
-      */      
-            
-            
-            
-            
-      
- 
-    
-    
+    public boolean isPixmap(){
+        Pixrgb_21090869_CastroVenegas pixelRGB = new Pixrgb_21090869_CastroVenegas(0,0,0,0,0,0); // crear un objeto Pixrgb para comparar
+        for(int i=0; i < pixeles.size(); i++){ // mientras queden pixeles en la imagen
+            Object pixelRecogido = pixeles.get(i); // para cada pixel
+            if (pixelRecogido.getClass() != pixelRGB.getClass()){ // si no es pixel de clase Pixrgb retorna falso
+                return false;
+            }      
+        }
+        return true;
+    }
+
+    public boolean isHexmap(){
+        Pixhex_21090869_CastroVenegas pixelHex = new Pixhex_21090869_CastroVenegas(0,0,"#FFFFFF",0); // crear un objeto Pixhex para comparar
+        for(int i=0; i < pixeles.size(); i++){ // mientras queden pixeles en la imagen
+            Object pixelRecogido = pixeles.get(i); // para cada pixel
+            if (pixelRecogido.getClass() != pixelHex.getClass()){ // si no es pixel de clase Pixhex retorna falso
+                return false;
+            }      
+        }
+        return true;
+    }     
 }

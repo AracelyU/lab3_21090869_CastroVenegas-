@@ -12,7 +12,7 @@ public class Pixhex_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas 
     
     private String stringHex;
 
-    public Pixhex_21090869_CastroVenegas(int vCoordX, int vCoordY, int vHex, int vProfundidad){
+    public Pixhex_21090869_CastroVenegas(int vCoordX, int vCoordY, String vHex, int vProfundidad){
         super(vCoordX, vCoordY, vProfundidad);
        
     }
