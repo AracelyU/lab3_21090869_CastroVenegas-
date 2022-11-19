@@ -74,7 +74,7 @@ public class Pixrgb_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas{
         System.out.print("ColorR: "+ this.colorR + " ");
         System.out.print("ColorG: "+ this.colorG + " ");
         System.out.print("ColorB: "+ this.colorB + " ");
-        System.out.print("Profundidad: "+ this.profundidad + "\n");
+        System.out.print("Profundidad: "+ this.profundidad);
     }
     
     

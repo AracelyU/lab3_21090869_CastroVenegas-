@@ -36,10 +36,12 @@ public class Main {
         // mostrar datos de la imagen creada
         image.mostrarImage();
         
+        /*
         // comprobar si es isBitmap
         System.out.println("isBitmap: " +image.isBitmap());
         System.out.println("isPixmap: " +image.isPixmap());
         System.out.println("isHexmap: " +image.isHexmap());
+        */
         
         // hacer flip
         image.flipH();
@@ -47,6 +49,8 @@ public class Main {
         // mostrar nuevos datos tras flipH
         image.mostrarImage();
         
+        
+        /*
         // creando pixeles pixrgb
         Pixrgb_21090869_CastroVenegas p1A = new Pixrgb_21090869_CastroVenegas(0,0,10,10,10,10);
         Pixrgb_21090869_CastroVenegas p2A = new Pixrgb_21090869_CastroVenegas(0,1,20,20,20,20);
@@ -96,7 +100,7 @@ public class Main {
         System.out.println("isPixmap: " +imageB.isPixmap());
         System.out.println("isHexmap: " +imageB.isHexmap());
         
-        
+        */
         
     }
 

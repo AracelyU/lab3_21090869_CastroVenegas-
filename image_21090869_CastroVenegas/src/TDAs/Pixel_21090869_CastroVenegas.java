@@ -25,7 +25,7 @@ public abstract class Pixel_21090869_CastroVenegas{
         this.setCoordY(CoordY);
         this.setProfundidad(Profundidad);
     }
-    
+      
    
     // definiendo getters
     

@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author aracelyCastro
  */
-public class Image_21090869_CastroVenegas {
+public class Image_21090869_CastroVenegas{
     
     // definiendo las variables de una imagen
     private int ancho, largo;
@@ -91,11 +91,8 @@ public class Image_21090869_CastroVenegas {
                 pixelRGB.mostrarPixrgb();
             }
         }
-    }
-    
-    // añadir pixel a los pixeles
-    public void addPixel(Pixel_21090869_CastroVenegas pixel){
-        pixeles.add(pixel);
+        
+        // listos los cambios de coordenadas, ahora se procede a ordenarlos
     }
     
     // comprobar si es Bitmap
@@ -134,12 +131,52 @@ public class Image_21090869_CastroVenegas {
         return true;
     }     
     
-    // cambiar la coordenadas para hacer flipH
+    // metodo que retorna el objeto que tiene las coordenadas definidas
+    private Object PixelCoordXY(ArrayList pixeles, int CoordX, int CoordY){
+        for(int i = 0; i < pixeles.size(); i++){ 
+            if (isBitmap()){
+                Pixbit_21090869_CastroVenegas pixelRecogido =  (Pixbit_21090869_CastroVenegas) pixeles.get(i);
+                if (pixelRecogido.coordX == CoordX && pixelRecogido.coordY == CoordY){
+                    return pixelRecogido;
+                }
+            }
+
+            if (isHexmap()){
+                Pixhex_21090869_CastroVenegas pixelRecogido =  (Pixhex_21090869_CastroVenegas) pixeles.get(i);
+                if (pixelRecogido.coordX == CoordX && pixelRecogido.coordY == CoordY){
+                    return pixelRecogido;
+                }
+            }
+            
+            if (isPixmap()){
+                Pixrgb_21090869_CastroVenegas pixelRecogido =  (Pixrgb_21090869_CastroVenegas) pixeles.get(i);
+                if (pixelRecogido.coordX == CoordX && pixelRecogido.coordY == CoordY){
+                    return pixelRecogido;
+                }
+            }
+        }
+        return null;
+    }
+    
+    // metodo para ordenar los pixeles de la imagen según coordenadas
+    private void ordenarPixeles(){
+        ArrayList pixelesTemporal = new ArrayList();
+                
+        for(int i = 0; i < this.ancho; i++){
+            for(int j = 0; j < this.largo; j++){
+                pixelesTemporal.add(PixelCoordXY(this.pixeles, i, j));               
+            }
+        }
+        setPixeles(pixelesTemporal);
+
+    }
+    
+    
+    // método flipH
     public void flipH(){
         int h = 0;
         for(int i=0; i < this.ancho; i++){
-            for(int j= this.largo-1; j >= 0; j--){
-                
+            for(int j= this.largo-1; j >= 0; j--){       
                 if (isBitmap()){
                     Pixbit_21090869_CastroVenegas pixelRecogido =  (Pixbit_21090869_CastroVenegas) pixeles.get(h);
                     pixelRecogido.setCoordY(j);  
@@ -158,8 +195,10 @@ public class Image_21090869_CastroVenegas {
                 h++;
             }
         }
-    
+        ordenarPixeles();
     }
     
+    // cambi
+        
     
 }

@@ -39,7 +39,7 @@ public class Pixhex_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas 
         System.out.print("CoordX: "+ this.coordX + " ");
         System.out.print("CoordY: "+ this.coordY + " ");
         System.out.print("Hex: "+ this.stringHex + " ");
-        System.out.print("Profundidad: "+ this.profundidad + "\n");
+        System.out.print("Profundidad: "+ this.profundidad);
     }
     
 }
