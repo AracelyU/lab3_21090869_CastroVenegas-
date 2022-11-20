@@ -30,17 +30,17 @@ public class Pixrgb_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas{
     
     // retornar colorR
     public int getColorR(){
-        return colorR;
+        return this.colorR;
     }
     
     // retornar colorG
     public int getColorG(){
-        return colorG;
+        return this.colorG;
     }
         
     // retornar colorB
     public int getColorB(){
-        return colorB;
+        return this.colorB;
     }
     
     // definir setters
@@ -72,6 +72,24 @@ public class Pixrgb_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas{
         setColorG(255- colorG);
         setColorB(255- colorB);
     }
+   
+    // método que compara si un hex es igual
+    public boolean igualColorRGB(Pixrgb_21090869_CastroVenegas pixel, int colorR, int colorG, int colorB){
+        return ((pixel.getColorR() == colorR) && (pixel.getColorG() == colorG) && (pixel.getColorB() == colorB));
+    }
+    
+    // metódo que suma la cantidad de veces que se repite un color RGB en una lista de objetos
+    public int sumaColorHex(ArrayList pixeles, int colorR, int colorG, int colorB){
+        int suma = 0;
+        for(int i =0; i < pixeles.size(); i++){
+            Pixrgb_21090869_CastroVenegas pixel = (Pixrgb_21090869_CastroVenegas) pixeles.get(i);
+            if(igualColorRGB(pixel, colorR, colorG, colorB)){
+                suma++;
+            }
+        }
+        return suma;
+    }   
+    
     
     // mostrar información del pixrgb
     public void mostrarPixrgb(){

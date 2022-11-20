@@ -43,6 +43,25 @@ public class Pixbit_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas{
         }
     }
     
+    // método que compara si un bit es igual
+    public boolean igualColorBit(Pixbit_21090869_CastroVenegas pixel, int bit){
+        return pixel.getBit() == bit;
+    }
+    
+    // metódo que suma la cantidad de veces que se repite un bit en una lista de objetos
+    public int sumaColorBit(ArrayList pixeles, int bit){
+        int suma = 0;
+        for(int i =0; i < pixeles.size(); i++){
+            Pixbit_21090869_CastroVenegas pixel = (Pixbit_21090869_CastroVenegas) pixeles.get(i);
+            if (igualColorBit(pixel, bit)){
+                suma++;
+            }
+        }
+        return suma;
+    }
+    
+    
+    
     // mostrar información del pixbit
     public void mostrarPixbit(){
         System.out.println();

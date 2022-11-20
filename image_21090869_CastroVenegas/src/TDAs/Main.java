@@ -93,6 +93,8 @@ public class Main {
    
         imageA.mostrarImage();
         
+        System.out.println("\n\n"+ ("#FFF0FF" == "#FFF0FF") + "\n\n");
+        
         /*
         // creando pixeles pixrgb
         Pixrgb_21090869_CastroVenegas p1A = new Pixrgb_21090869_CastroVenegas(0,0,10,10,10,10);

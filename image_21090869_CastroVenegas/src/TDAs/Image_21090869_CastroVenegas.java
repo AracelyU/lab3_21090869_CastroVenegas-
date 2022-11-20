@@ -352,6 +352,11 @@ public class Image_21090869_CastroVenegas{
         }
     }
     
+    
+   
+    
+    // método que retorna la veces que aparece un color en la lista
+    
         
     
 }

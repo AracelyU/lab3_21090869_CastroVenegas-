@@ -4,6 +4,8 @@
  */
 package TDAs;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author arace
@@ -31,6 +33,23 @@ public class Pixhex_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas 
         if (Hex.length() == 7){
             this.stringHex = Hex;
         }
+    }
+    
+    // método que compara si un hex es igual
+    public boolean igualColorHex(Pixhex_21090869_CastroVenegas pixel, String hex){
+        return (pixel.getHex() == hex);
+    }
+    
+    // metódo que suma la cantidad de veces que se repite un hex en una lista de objetos
+    public int sumaColorHex(ArrayList pixeles, String hex){
+        int suma = 0;
+        for(int i =0; i < pixeles.size(); i++){
+            Pixhex_21090869_CastroVenegas pixel = (Pixhex_21090869_CastroVenegas) pixeles.get(i);
+            if(igualColorHex(pixel, hex)){
+                suma++;
+            }
+        }
+        return suma;
     }
     
     // mostrar información del pixhex
