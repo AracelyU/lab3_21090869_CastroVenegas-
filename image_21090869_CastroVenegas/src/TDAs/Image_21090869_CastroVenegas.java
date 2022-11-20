@@ -252,7 +252,7 @@ public class Image_21090869_CastroVenegas{
         }
         
         // cambiar los pixeles de la imagen a los nuevos pixeles
-        this.pixeles = pixeles;
+        setPixeles(pixeles);
     }
     
     // metodo crop
@@ -292,15 +292,51 @@ public class Image_21090869_CastroVenegas{
             }
         }
         
-        // termina de filtrar los pixeles, se reordenan
-        cambiarCoordXY(pixelesTemporal, mayorX-menorX+1, mayorY-menorY+1);
+        // modificar la coordenada ancho
         setAncho(mayorX-menorX+1);
-        setLargo(mayorY-menorY+1);
-        mostrarImage();
-    
+        setLargo(mayorY-menorY+1);        
+        
+        // termina de filtrar los pixeles, se reordenan
+        cambiarCoordXY(pixelesTemporal, this.ancho, this.largo);
     }
     
     
+    // método rotate90
+    public void rotate90(){
+        int h = 0;
+        for(int i=this.ancho-1; i >= 0; i--){
+            for(int j=0; j < this.largo; j++){
+                if (isBitmap()){
+                    Pixbit_21090869_CastroVenegas pixelRecogido =  (Pixbit_21090869_CastroVenegas) pixeles.get(h);
+                    pixelRecogido.setCoordY(i);
+                    pixelRecogido.setCoordX(j);
+                }
+                
+                if (isHexmap()){
+                    Pixhex_21090869_CastroVenegas pixelRecogido =  (Pixhex_21090869_CastroVenegas) pixeles.get(h);
+                    pixelRecogido.setCoordX(i); 
+                    pixelRecogido.setCoordX(j);
+                }
+                
+                if (isPixmap()){
+                    Pixrgb_21090869_CastroVenegas pixelRecogido =  (Pixrgb_21090869_CastroVenegas) pixeles.get(h);
+                    pixelRecogido.setCoordX(i);  
+                    pixelRecogido.setCoordX(j);
+                }
+                
+                h++;    
+            
+            }
+        }
+        
+        // cambiados las coordenadas se procede a modificar el largo y el ancho antes de ordenar
+        int aux = getAncho();
+        setAncho(getLargo());
+        setLargo(aux);
+        
+        ordenarPixeles();
+    
+    }
         
     
 }

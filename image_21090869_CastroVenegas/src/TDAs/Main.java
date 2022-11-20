@@ -20,6 +20,7 @@ public class Main {
      */
     public static void main(String args[]) {
         
+        
         // crear pixeles bit
         Pixbit_21090869_CastroVenegas p1 = new Pixbit_21090869_CastroVenegas(0,0,0,10);
         Pixbit_21090869_CastroVenegas p2 = new Pixbit_21090869_CastroVenegas(0,1,1,20);
@@ -59,10 +60,17 @@ public class Main {
         image.flipV();
         
         // hacer crop
-        image.crop(0,2,1,2);
+        //image.crop(0,2,1,2);
         
-        // mostrar nuevos datos tras flipH
-        //image.mostrarImage();
+        
+        image.rotate90();
+        image.rotate90();
+        image.rotate90();
+        image.rotate90();
+        image.mostrarImage();
+        
+        
+        System.out.println("\n\n"+Integer.toHexString(255));
         
         
         
