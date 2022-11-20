@@ -79,7 +79,7 @@ public class Pixrgb_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas{
     }
     
     // metódo que suma la cantidad de veces que se repite un color RGB en una lista de objetos
-    public int sumaColorHex(ArrayList pixeles, int colorR, int colorG, int colorB){
+    public int sumaColorRGB(ArrayList pixeles, int colorR, int colorG, int colorB){
         int suma = 0;
         for(int i =0; i < pixeles.size(); i++){
             Pixrgb_21090869_CastroVenegas pixel = (Pixrgb_21090869_CastroVenegas) pixeles.get(i);
@@ -89,6 +89,18 @@ public class Pixrgb_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas{
         }
         return suma;
     }   
+    
+    // método que eliminar pixeles que sean iguales a un color
+    public ArrayList eliminarColorRGB(ArrayList pixeles, int colorR, int ColorG, int ColorB){
+        ArrayList pixelesTemporal = new ArrayList();
+        for(int i=0; i < pixeles.size(); i++){
+            Pixrgb_21090869_CastroVenegas pixelRecogido = (Pixrgb_21090869_CastroVenegas) pixeles.get(i);
+            if(!igualColorRGB(pixelRecogido, colorR, colorG, colorB)){
+                pixelesTemporal.add(pixelRecogido);
+            }
+        }
+        return pixelesTemporal;
+    }
     
     
     // mostrar información del pixrgb

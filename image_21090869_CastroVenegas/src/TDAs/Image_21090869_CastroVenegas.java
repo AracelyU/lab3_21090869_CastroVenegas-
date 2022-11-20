@@ -7,7 +7,6 @@ package TDAs;
 
 import java.util.ArrayList;
 
-
 /**
  *
  * @author aracelyCastro
@@ -20,9 +19,9 @@ public class Image_21090869_CastroVenegas{
     
     // definiendo el constructor de una imagen
     public Image_21090869_CastroVenegas(int vAncho, int vLargo, ArrayList vPixeles){
-        this.setAncho(vAncho);
-        this.setLargo(vLargo);
-        this.setPixeles(vPixeles);
+        setAncho(vAncho);
+        setLargo(vLargo);
+        setPixeles(vPixeles);
        
     }
     
@@ -300,6 +299,92 @@ public class Image_21090869_CastroVenegas{
         cambiarCoordXY(pixelesTemporal, this.ancho, this.largo);
     }
     
+    // método imgRGBToHex
+   //public String colorRGBToHex(int colorR, int colorG, int colorB){
+        
+    private String NumToString(int numero){
+        
+        if(numero < 10){
+            return Integer.toString(numero);
+        } else if (numero == 10){
+            return "A";
+        } else if (numero == 11){
+            return "B";
+        } else if (numero == 12){
+            return "C";
+        } else if (numero == 13){
+            return "D";
+        } else if (numero == 14){
+            return "E";
+        } else if (numero == 15){
+            return "F";
+        }
+        return null;
+    
+    }
+    
+    public void imgRGBToHex(){
+        ArrayList pixelesNuevos = new ArrayList();
+        for(int i=0; i < pixeles.size(); i++){
+            Pixrgb_21090869_CastroVenegas p = (Pixrgb_21090869_CastroVenegas) pixeles.get(i);
+            String nuevoHex = (String) "#" + NumToString(p.getColorR()/16) + NumToString(p.getColorR()%16) + 
+                                             NumToString(p.getColorG()/16) + NumToString(p.getColorG()%16) + 
+                                             NumToString(p.getColorB()/16) + NumToString(p.getColorB()%16);
+            
+            Pixhex_21090869_CastroVenegas pH = new Pixhex_21090869_CastroVenegas(p.getCoordX(), p.getCoordY(), nuevoHex, p.getProfundidad());
+            pixelesNuevos.add(pH);
+        }
+        
+        setPixeles(pixelesNuevos);
+    
+    }   
+    
+    
+    // metodo histograma
+    public ArrayList histogram(){
+        ArrayList histograma = new ArrayList();
+        ArrayList pixelesTemporal = getPixeles();  
+        while(!pixelesTemporal.isEmpty()){
+            ArrayList subHistograma = new ArrayList();
+            if(isBitmap()){
+              Pixbit_21090869_CastroVenegas pixelInicial = (Pixbit_21090869_CastroVenegas) pixelesTemporal.get(0); 
+              int colorBit = pixelInicial.getBit();
+              int suma = pixelInicial.sumaColorBit(pixelesTemporal, colorBit);
+              ArrayList pixelesNuevos = pixelInicial.eliminarColorBit(pixelesTemporal, colorBit);
+              // añadir datos a subHistograma
+              subHistograma.add(colorBit);
+              subHistograma.add(suma);
+              pixelesTemporal = pixelesNuevos;
+            } else if(isHexmap()){
+                Pixhex_21090869_CastroVenegas pixelInicial = (Pixhex_21090869_CastroVenegas) pixelesTemporal.get(0); 
+                String colorHex = pixelInicial.getHex();
+                int suma = pixelInicial.sumaColorHex(pixelesTemporal, colorHex);
+                ArrayList pixelesNuevos = pixelInicial.eliminarColorHex(pixelesTemporal, colorHex);
+                // añadir datos a subHistograma
+                subHistograma.add(colorHex);
+                subHistograma.add(suma);
+                pixelesTemporal = pixelesNuevos;           
+            } else if(isPixmap()){  
+                ArrayList colorRGB = new ArrayList();
+                Pixrgb_21090869_CastroVenegas pixelInicial = (Pixrgb_21090869_CastroVenegas) pixelesTemporal.get(0); 
+                int colorR = pixelInicial.getColorR();
+                int colorG = pixelInicial.getColorG();
+                int colorB = pixelInicial.getColorB();
+                int suma = pixelInicial.sumaColorRGB(pixelesTemporal, colorR, colorG, colorB);
+                ArrayList pixelesNuevos = pixelInicial.eliminarColorRGB(pixelesTemporal, colorR, colorG, colorB);
+                // añadir datos a subHistograma
+                colorRGB.add(colorR);
+                colorRGB.add(colorG);
+                colorRGB.add(colorB);
+                subHistograma.add(colorRGB);
+                subHistograma.add(suma);
+                pixelesTemporal = pixelesNuevos;              
+            } 
+            // añadir datos al histograma 
+            histograma.add(subHistograma);     
+        } 
+        return histograma;
+    }
     
     // método rotate90
     public void rotate90(){
@@ -352,11 +437,8 @@ public class Image_21090869_CastroVenegas{
         }
     }
     
-    
    
+ 
     
-    // método que retorna la veces que aparece un color en la lista
-    
-        
-    
+ 
 }

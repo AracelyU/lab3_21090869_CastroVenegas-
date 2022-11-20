@@ -16,6 +16,7 @@ public class Pixhex_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas 
 
     public Pixhex_21090869_CastroVenegas(int vCoordX, int vCoordY, String vHex, int vProfundidad){
         super(vCoordX, vCoordY, vProfundidad);
+        setHex(vHex);
        
     }
     
@@ -50,6 +51,18 @@ public class Pixhex_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas 
             }
         }
         return suma;
+    }
+    
+    // método que eliminar pixeles que sean iguales a un color
+    public ArrayList eliminarColorHex(ArrayList pixeles, String hex){
+        ArrayList pixelesTemporal = new ArrayList();
+        for(int i=0; i < pixeles.size(); i++){
+            Pixhex_21090869_CastroVenegas pixelRecogido = (Pixhex_21090869_CastroVenegas) pixeles.get(i);
+            if(!igualColorHex(pixelRecogido, hex)){
+                pixelesTemporal.add(pixelRecogido);
+            }
+        }
+        return pixelesTemporal;
     }
     
     // mostrar información del pixhex

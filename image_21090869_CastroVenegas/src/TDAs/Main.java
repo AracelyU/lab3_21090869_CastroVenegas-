@@ -92,34 +92,7 @@ public class Main {
         imageA.inverColorRGB();
    
         imageA.mostrarImage();
-        
-        System.out.println("\n\n"+ ("#FFF0FF" == "#FFF0FF") + "\n\n");
-        
-        /*
-        // creando pixeles pixrgb
-        Pixrgb_21090869_CastroVenegas p1A = new Pixrgb_21090869_CastroVenegas(0,0,10,10,10,10);
-        Pixrgb_21090869_CastroVenegas p2A = new Pixrgb_21090869_CastroVenegas(0,1,20,20,20,20);
-        Pixrgb_21090869_CastroVenegas p3A = new Pixrgb_21090869_CastroVenegas(0,2,30,30,30,30);
-    
-        // creando su lista de pixeles
-        ArrayList pixelesA = new ArrayList();
-        pixelesA.add(p1A);
-        pixelesA.add(p2A);
-        pixelesA.add(p3A);
-        
-        // crear otra imagen
-        Image_21090869_CastroVenegas imageA = new Image_21090869_CastroVenegas(1,3,pixelesA);
-        
-        System.out.println("ImagenA");
-        System.out.println("Ancho: " +imageA.getAncho());
-        System.out.println("Largo: "+imageA.getLargo());
-        System.out.println("Pixeles: "+imageA.getPixeles());
-        
-        // comprobar pertenencia
-        System.out.println("isBitmap: " +imageA.isBitmap());
-        System.out.println("isPixmap: " +imageA.isPixmap());
-        System.out.println("isHexmap: " +imageA.isHexmap());
-        
+
         // crear pixeles hexmap
         Pixhex_21090869_CastroVenegas p1B = new Pixhex_21090869_CastroVenegas(0,0,"#FFFFFF",10);
         Pixhex_21090869_CastroVenegas p2B = new Pixhex_21090869_CastroVenegas(0,1,"#00FFFF",20);
@@ -135,17 +108,12 @@ public class Main {
         // creando la imagen 
         Image_21090869_CastroVenegas imageB = new Image_21090869_CastroVenegas(1,3, pixelesB);
         
-        System.out.println("ImagenB");
-        System.out.println("Ancho: "+imageB.getAncho());
-        System.out.println("Largo: "+imageB.getLargo());
-        System.out.println("Pixeles: "+imageB.getPixeles());
+        System.out.println("\n\n"+ imageA.histogram() + "\n\n");
+        // cambiar pixmap a hexmap
+        imageA.imgRGBToHex();
+        imageA.mostrarImage();
         
-        // comprobar is es isBitmap
-        System.out.println("isBitmap: " +imageB.isBitmap());
-        System.out.println("isPixmap: " +imageB.isPixmap());
-        System.out.println("isHexmap: " +imageB.isHexmap());
-        
-        */
+        System.out.println("\n\n"+ imageA.histogram() + "\n\n");
         
     }
 
