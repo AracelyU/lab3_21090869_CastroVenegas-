@@ -61,18 +61,37 @@ public class Main {
         
         // hacer crop
         //image.crop(0,2,1,2);
-        
-        
+
         image.rotate90();
         image.rotate90();
         image.rotate90();
         image.rotate90();
-        image.mostrarImage();
         
+        // probar invertColorBit
+        image.inverColorBit();
+
+        System.out.println("\n\n"+Integer.toHexString(255) + "\n\n");
         
-        System.out.println("\n\n"+Integer.toHexString(255));
+        Pixrgb_21090869_CastroVenegas p1A = new Pixrgb_21090869_CastroVenegas(0,0,10,10,10,10);
+        Pixrgb_21090869_CastroVenegas p2A = new Pixrgb_21090869_CastroVenegas(0,1,20,20,20,20);
+        Pixrgb_21090869_CastroVenegas p3A = new Pixrgb_21090869_CastroVenegas(0,2,30,30,30,30);
+    
+        // creando su lista de pixeles
+        ArrayList pixelesA = new ArrayList();
+        pixelesA.add(p1A);
+        pixelesA.add(p2A);
+        pixelesA.add(p3A);
         
+        Image_21090869_CastroVenegas imageA = new Image_21090869_CastroVenegas(1,3,pixelesA);
         
+        imageA.flipH();
+        imageA.flipH();
+        
+        imageA.mostrarImage();
+        
+        imageA.inverColorRGB();
+   
+        imageA.mostrarImage();
         
         /*
         // creando pixeles pixrgb

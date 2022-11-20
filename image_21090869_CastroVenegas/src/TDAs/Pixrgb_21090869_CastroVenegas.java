@@ -21,9 +21,9 @@ public class Pixrgb_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas{
     // constructor de un pixrgb
     public Pixrgb_21090869_CastroVenegas(int vCoordX, int vCoordY, int vColorR, int vColorG, int vColorB, int vProfundidad){
         super(vCoordX, vCoordY, vProfundidad);
-        this.getColorR(vColorR);
-        this.getColorG(vColorG);
-        this.getColorB(vColorB);
+        setColorR(vColorR);
+        setColorG(vColorG);
+        setColorB(vColorB);
     }
     
     // definir getters
@@ -46,24 +46,31 @@ public class Pixrgb_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas{
     // definir setters
     
     // cambiar colorR
-    public void getColorR(int ColorR){
+    public void setColorR(int ColorR){
         if (ColorR >= 0 && ColorR <= 255){
             this.colorR = ColorR;
         }
     }
     
     // cambiar colorG
-    public void getColorG(int ColorG){
+    public void setColorG(int ColorG){
         if (ColorG >= 0 && ColorG <= 255){
             this.colorG = ColorG;
         }
     }
     
     // cambiar colorB
-    public void getColorB(int ColorB){
+    public void setColorB(int ColorB){
         if (ColorB >= 0 && ColorB <= 255){
             this.colorB = ColorB;
         }
+    }
+    
+    // método que invierte los colores recibidos
+    public void invertRGB(int colorR, int colorG, int colorB){
+        setColorR(255- colorR);
+        setColorG(255- colorG);
+        setColorB(255- colorB);
     }
     
     // mostrar información del pixrgb

@@ -333,10 +333,25 @@ public class Image_21090869_CastroVenegas{
         int aux = getAncho();
         setAncho(getLargo());
         setLargo(aux);
-        
         ordenarPixeles();
-    
     }
+    
+    // método invertColorBit, OBS: verificar que la imagen es Bitmap antes de permitirse usar este método
+    public void inverColorBit(){
+        for(int i=0; i < this.pixeles.size(); i++){
+            Pixbit_21090869_CastroVenegas pixelRecogido = (Pixbit_21090869_CastroVenegas) this.pixeles.get(i);
+            pixelRecogido.invertBit(pixelRecogido.getBit());
+        }
+    }
+    
+    // método invertColorBit, OBS: verificar que la imagen es Pixmap antes de permitirse usar este método
+    public void inverColorRGB(){
+        for(int i=0; i < this.pixeles.size(); i++){
+            Pixrgb_21090869_CastroVenegas pixelRecogido = (Pixrgb_21090869_CastroVenegas) this.pixeles.get(i);
+            pixelRecogido.invertRGB(pixelRecogido.getColorR(), pixelRecogido.getColorG(), pixelRecogido.getColorB());
+        }
+    }
+    
         
     
 }

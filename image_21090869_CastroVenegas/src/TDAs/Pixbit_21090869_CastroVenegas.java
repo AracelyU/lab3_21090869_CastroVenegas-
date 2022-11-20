@@ -34,6 +34,15 @@ public class Pixbit_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas{
         }
     }
     
+    // método que recibe un bit y modifica al bit opuesto
+    public void invertBit(int bit){
+        if(bit == 0){
+            setBit(1);
+        } else{
+            setBit(0);
+        }
+    }
+    
     // mostrar información del pixbit
     public void mostrarPixbit(){
         System.out.println();
