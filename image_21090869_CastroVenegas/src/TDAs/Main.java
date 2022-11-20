@@ -24,14 +24,21 @@ public class Main {
         Pixbit_21090869_CastroVenegas p1 = new Pixbit_21090869_CastroVenegas(0,0,0,10);
         Pixbit_21090869_CastroVenegas p2 = new Pixbit_21090869_CastroVenegas(0,1,1,20);
         Pixbit_21090869_CastroVenegas p3 = new Pixbit_21090869_CastroVenegas(0,2,0,30);
+        Pixbit_21090869_CastroVenegas p4 = new Pixbit_21090869_CastroVenegas(1,0,0,40);
+        Pixbit_21090869_CastroVenegas p5 = new Pixbit_21090869_CastroVenegas(1,1,1,50);
+        Pixbit_21090869_CastroVenegas p6 = new Pixbit_21090869_CastroVenegas(1,2,0,60);
+        
         
         ArrayList pixeles = new ArrayList();
         pixeles.add(p1);
         pixeles.add(p2);
         pixeles.add(p3);
+        pixeles.add(p4);
+        pixeles.add(p5);
+        pixeles.add(p6);
         
         // crear imagen
-        Image_21090869_CastroVenegas image = new Image_21090869_CastroVenegas(1,3, pixeles);
+        Image_21090869_CastroVenegas image = new Image_21090869_CastroVenegas(2,3, pixeles);
         
         // mostrar datos de la imagen creada
         image.mostrarImage();
@@ -45,9 +52,13 @@ public class Main {
         
         // hacer flip
         image.flipH();
+        image.flipH();
+        
+        image.flipV();
         
         // mostrar nuevos datos tras flipH
         image.mostrarImage();
+        
         
         
         /*

@@ -198,7 +198,33 @@ public class Image_21090869_CastroVenegas{
         ordenarPixeles();
     }
     
-    // cambi
+    // método flipV
+    public void flipV(){
+        int h = 0;
+        for(int i=this.ancho-1; i >= 0; i--){
+            for(int j= 0; j < this.largo; j++){       
+                if (isBitmap()){
+                    Pixbit_21090869_CastroVenegas pixelRecogido =  (Pixbit_21090869_CastroVenegas) pixeles.get(h);
+                    pixelRecogido.setCoordX(i);  
+                }
+                
+                if (isHexmap()){
+                    Pixhex_21090869_CastroVenegas pixelRecogido =  (Pixhex_21090869_CastroVenegas) pixeles.get(h);
+                    pixelRecogido.setCoordX(i);  
+                }
+                
+                if (isPixmap()){
+                    Pixrgb_21090869_CastroVenegas pixelRecogido =  (Pixrgb_21090869_CastroVenegas) pixeles.get(h);
+                    pixelRecogido.setCoordX(i);  
+                }
+                
+                h++;
+            }
+        }
+        ordenarPixeles();
+    }
+    
+    
         
     
 }
