@@ -224,6 +224,82 @@ public class Image_21090869_CastroVenegas{
         ordenarPixeles();
     }
     
+    // metodo para cambiar las coordenadas de una lista
+    private void cambiarCoordXY(ArrayList pixeles, int ancho, int largo){
+        int h = 0;
+        for(int i=0; i < ancho; i++){
+            for(int j= 0; j < largo; j++){
+                
+                if (isBitmap()){
+                    Pixbit_21090869_CastroVenegas pixelRecogido =  (Pixbit_21090869_CastroVenegas) pixeles.get(h);
+                    pixelRecogido.setCoordX(i);
+                    pixelRecogido.setCoordY(j);
+                }
+                
+                if (isHexmap()){
+                    Pixhex_21090869_CastroVenegas pixelRecogido =  (Pixhex_21090869_CastroVenegas) pixeles.get(h);
+                    pixelRecogido.setCoordX(i);  
+                    pixelRecogido.setCoordY(j);
+                }
+                
+                if (isPixmap()){
+                    Pixrgb_21090869_CastroVenegas pixelRecogido =  (Pixrgb_21090869_CastroVenegas) pixeles.get(h);
+                    pixelRecogido.setCoordX(i);
+                    pixelRecogido.setCoordY(j);
+                }
+                h++;
+            }
+        }
+        
+        // cambiar los pixeles de la imagen a los nuevos pixeles
+        this.pixeles = pixeles;
+    }
+    
+    // metodo crop
+    public void crop(int X1, int Y1, int X2, int Y2){
+        ArrayList pixelesTemporal = new ArrayList();
+        int menorX = Math.min(X1, X2);
+        int mayorX = Math.max(X1,X2);
+        int menorY = Math.min(Y1, Y2);
+        int mayorY = Math.max(Y1, Y2);
+        int h = 0;
+        for(int i = 0; i < this.ancho; i++){
+            for(int j = 0; j < this.largo; j++){ 
+               if (isBitmap()){
+                    Pixbit_21090869_CastroVenegas pixelRecogido =  (Pixbit_21090869_CastroVenegas) pixeles.get(h);
+                    if(pixelRecogido.getCoordX() >= menorX && pixelRecogido.getCoordX() <= mayorX && 
+                       pixelRecogido.getCoordY() >= menorY && pixelRecogido.getCoordY() <= mayorY){
+                        pixelesTemporal.add(pixelRecogido);
+                    }
+                }
+                
+                if (isHexmap()){
+                    Pixhex_21090869_CastroVenegas pixelRecogido =  (Pixhex_21090869_CastroVenegas) pixeles.get(h);
+                    if(pixelRecogido.getCoordX() >= menorX && pixelRecogido.getCoordX() <= mayorX && 
+                       pixelRecogido.getCoordY() >= menorY && pixelRecogido.getCoordY() <= mayorY){
+                        pixelesTemporal.add(pixelRecogido);
+                    }
+                }
+                
+                if (isPixmap()){
+                    Pixrgb_21090869_CastroVenegas pixelRecogido =  (Pixrgb_21090869_CastroVenegas) pixeles.get(h);
+                    if(pixelRecogido.getCoordX() >= menorX && pixelRecogido.getCoordX() <= mayorX && 
+                       pixelRecogido.getCoordY() >= menorY && pixelRecogido.getCoordY() <= mayorY){
+                        pixelesTemporal.add(pixelRecogido);
+                    }
+                }
+                h++;
+            }
+        }
+        
+        // termina de filtrar los pixeles, se reordenan
+        cambiarCoordXY(pixelesTemporal, mayorX-menorX+1, mayorY-menorY+1);
+        setAncho(mayorX-menorX+1);
+        setLargo(mayorY-menorY+1);
+        mostrarImage();
+    
+    }
+    
     
         
     

@@ -54,10 +54,15 @@ public class Main {
         image.flipH();
         image.flipH();
         
+        // hacer flipV
+        image.flipV();
         image.flipV();
         
+        // hacer crop
+        image.crop(0,2,1,2);
+        
         // mostrar nuevos datos tras flipH
-        image.mostrarImage();
+        //image.mostrarImage();
         
         
         
