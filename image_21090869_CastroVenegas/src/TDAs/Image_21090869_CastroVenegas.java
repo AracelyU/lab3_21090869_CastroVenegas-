@@ -421,6 +421,63 @@ public class Image_21090869_CastroVenegas{
         ordenarPixeles();
     }
     
+    // metodo changePixel
+    public void changePixel(Object pixel){
+        ArrayList pixelesNuevos = new ArrayList();    
+        if (isBitmap()){
+            Pixbit_21090869_CastroVenegas pixelB =  (Pixbit_21090869_CastroVenegas) pixeles.get(0);
+            if (pixel.getClass() == pixelB.getClass()){ // si es pixbit
+                Pixbit_21090869_CastroVenegas pixelBit = (Pixbit_21090869_CastroVenegas) pixel;
+                for(int i = 0; i < pixeles.size(); i++){
+                    Pixbit_21090869_CastroVenegas pixelRecogido =  (Pixbit_21090869_CastroVenegas) pixeles.get(i);
+                    if (pixelRecogido.igualCoordXY(pixelBit.getCoordX(), pixelBit.getCoordY())){
+                        pixelesNuevos.add(pixelBit);
+                    } else{
+                        pixelesNuevos.add(pixelRecogido);
+                    }  
+                }
+                
+                // modificar pixeles
+                setPixeles(pixelesNuevos);
+            }
+        }
+
+        if (isHexmap()){
+            Pixhex_21090869_CastroVenegas pixelH =  (Pixhex_21090869_CastroVenegas) pixeles.get(0);
+            if (pixel.getClass() == pixelH.getClass()){ // si es pixhex
+                Pixhex_21090869_CastroVenegas pixelHex = (Pixhex_21090869_CastroVenegas) pixel;
+                for(int i = 0; i < pixeles.size(); i++){
+                    Pixhex_21090869_CastroVenegas pixelRecogido =  (Pixhex_21090869_CastroVenegas) pixeles.get(i);
+                    if (pixelRecogido.igualCoordXY(pixelHex.getCoordX(), pixelHex.getCoordY())){
+                        pixelesNuevos.add(pixelHex);
+                    } else{
+                        pixelesNuevos.add(pixelRecogido);
+                    }  
+                }
+                
+                // modificar pixeles
+                setPixeles(pixelesNuevos);
+            }
+        }
+            
+        if (isPixmap()){
+            Pixrgb_21090869_CastroVenegas pixelPixmap =  (Pixrgb_21090869_CastroVenegas) pixeles.get(0);
+            if (pixel.getClass() == pixelPixmap.getClass()){ // si es pixrgb
+                Pixrgb_21090869_CastroVenegas pixelRGB = (Pixrgb_21090869_CastroVenegas) pixel;
+                for(int i = 0; i < pixeles.size(); i++){
+                    Pixrgb_21090869_CastroVenegas pixelRecogido =  (Pixrgb_21090869_CastroVenegas) pixeles.get(i);
+                    if (pixelRecogido.igualCoordXY(pixelRGB.getCoordX(), pixelRGB.getCoordY())){
+                        pixelesNuevos.add(pixelRGB);
+                    } else{
+                        pixelesNuevos.add(pixelRecogido);
+                    }  
+                }
+                // modificar pixeles
+                setPixeles(pixelesNuevos);
+            }
+        }
+    }
+    
     // método invertColorBit, OBS: verificar que la imagen es Bitmap antes de permitirse usar este método
     public void inverColorBit(){
         for(int i=0; i < this.pixeles.size(); i++){

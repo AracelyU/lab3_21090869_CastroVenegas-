@@ -68,5 +68,10 @@ public abstract class Pixel_21090869_CastroVenegas{
     }
     
     
+    // metodo que verifica si coordenadas son iguales 
+    public boolean igualCoordXY(int CoordX, int CoordY){
+        return (getCoordX()==CoordX && getCoordY()==CoordY);
+    
+    }
     
 }

@@ -72,7 +72,7 @@ public class Pixbit_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas{
         return pixelesTemporal;
     }
     
-    
+
     
     // mostrar información del pixbit
     public void mostrarPixbit(){

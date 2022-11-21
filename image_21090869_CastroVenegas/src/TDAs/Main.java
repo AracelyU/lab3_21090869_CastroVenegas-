@@ -87,10 +87,8 @@ public class Main {
         imageA.flipH();
         imageA.flipH();
         
-        imageA.mostrarImage();
-        
+        imageA.mostrarImage();  
         imageA.inverColorRGB();
-   
         imageA.mostrarImage();
 
         // crear pixeles hexmap
@@ -104,7 +102,18 @@ public class Main {
         pixelesB.add(p2B);
         pixelesB.add(p3B);
         
+        Image_21090869_CastroVenegas imageB = new Image_21090869_CastroVenegas(1,3, pixelesB);
         
+        // pixeles nuevos
+        Pixrgb_21090869_CastroVenegas pNuevoA = new Pixrgb_21090869_CastroVenegas(0,5,20,20,20,20);
+        Pixhex_21090869_CastroVenegas pNuevoB = new Pixhex_21090869_CastroVenegas(0,0,"#00FFFF",20);
+        Pixbit_21090869_CastroVenegas pNuevo = new Pixbit_21090869_CastroVenegas(0,1,1,50);
+        
+        // hacer changePixel
+        image.changePixel(pNuevo);
+        image.mostrarImage();
+        
+        /*
         // creando la imagen 
         Image_21090869_CastroVenegas imageB = new Image_21090869_CastroVenegas(1,3, pixelesB);
         
@@ -114,7 +123,7 @@ public class Main {
         imageA.mostrarImage();
         
         System.out.println("\n\n"+ imageA.histogram() + "\n\n");
-        
+        */
     }
 
 }
