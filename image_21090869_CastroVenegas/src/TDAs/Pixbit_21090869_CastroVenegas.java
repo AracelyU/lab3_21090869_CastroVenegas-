@@ -60,12 +60,24 @@ public class Pixbit_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas{
         return suma;
     }
     
-        // método que eliminar pixeles que sean iguales a un color
+    // método que eliminar pixeles que sean iguales a un color
     public ArrayList eliminarColorBit(ArrayList pixeles, int bit){
         ArrayList pixelesTemporal = new ArrayList();
         for(int i=0; i < pixeles.size(); i++){
             Pixbit_21090869_CastroVenegas pixelRecogido = (Pixbit_21090869_CastroVenegas) pixeles.get(i);
             if(!igualColorBit(pixelRecogido, bit)){
+                pixelesTemporal.add(pixelRecogido);
+            }
+        }
+        return pixelesTemporal;
+    }
+    
+    // método que elimina los pixeles que tengan una profundidad
+    public ArrayList eliminarProfundidad(ArrayList pixeles, int Profundidad){
+        ArrayList pixelesTemporal = new ArrayList();
+        for(int i=0; i < pixeles.size(); i++){
+            Pixbit_21090869_CastroVenegas pixelRecogido = (Pixbit_21090869_CastroVenegas) pixeles.get(i);
+            if(!pixelRecogido.igualProfundidad(Profundidad)){
                 pixelesTemporal.add(pixelRecogido);
             }
         }

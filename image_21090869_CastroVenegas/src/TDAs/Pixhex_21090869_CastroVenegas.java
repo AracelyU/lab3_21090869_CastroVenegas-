@@ -65,6 +65,19 @@ public class Pixhex_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas 
         return pixelesTemporal;
     }
     
+    // método que elimina los pixeles que tengan una profundidad
+    public ArrayList eliminarProfundidad(ArrayList pixeles, int Profundidad){
+        ArrayList pixelesTemporal = new ArrayList();
+        for(int i=0; i < pixeles.size(); i++){
+            Pixhex_21090869_CastroVenegas pixelRecogido = (Pixhex_21090869_CastroVenegas) pixeles.get(i);
+            if(!pixelRecogido.igualProfundidad(Profundidad)){
+                pixelesTemporal.add(pixelRecogido);
+            }
+        }
+        return pixelesTemporal;
+    }
+    
+    
     // mostrar información del pixhex
     public void mostrarPixhex(){
         System.out.println();

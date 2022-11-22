@@ -23,10 +23,10 @@ public class Main {
         
         // crear pixeles bit
         Pixbit_21090869_CastroVenegas p1 = new Pixbit_21090869_CastroVenegas(0,0,0,10);
-        Pixbit_21090869_CastroVenegas p2 = new Pixbit_21090869_CastroVenegas(0,1,1,20);
+        Pixbit_21090869_CastroVenegas p2 = new Pixbit_21090869_CastroVenegas(0,1,0,20);
         Pixbit_21090869_CastroVenegas p3 = new Pixbit_21090869_CastroVenegas(0,2,0,30);
         Pixbit_21090869_CastroVenegas p4 = new Pixbit_21090869_CastroVenegas(1,0,0,40);
-        Pixbit_21090869_CastroVenegas p5 = new Pixbit_21090869_CastroVenegas(1,1,1,50);
+        Pixbit_21090869_CastroVenegas p5 = new Pixbit_21090869_CastroVenegas(1,1,0,50);
         Pixbit_21090869_CastroVenegas p6 = new Pixbit_21090869_CastroVenegas(1,2,0,60);
         
         
@@ -34,43 +34,15 @@ public class Main {
         pixeles.add(p1);
         pixeles.add(p2);
         pixeles.add(p3);
-        pixeles.add(p4);
-        pixeles.add(p5);
-        pixeles.add(p6);
+        //pixeles.add(p4);
+        //pixeles.add(p5);
+        //pixeles.add(p6);
         
         // crear imagen
-        Image_21090869_CastroVenegas image = new Image_21090869_CastroVenegas(2,3, pixeles);
+        Image_21090869_CastroVenegas image = new Image_21090869_CastroVenegas(1,3, pixeles);
         
         // mostrar datos de la imagen creada
         image.mostrarImage();
-        
-        /*
-        // comprobar si es isBitmap
-        System.out.println("isBitmap: " +image.isBitmap());
-        System.out.println("isPixmap: " +image.isPixmap());
-        System.out.println("isHexmap: " +image.isHexmap());
-        */
-        
-        // hacer flip
-        image.flipH();
-        image.flipH();
-        
-        // hacer flipV
-        image.flipV();
-        image.flipV();
-        
-        // hacer crop
-        //image.crop(0,2,1,2);
-
-        image.rotate90();
-        image.rotate90();
-        image.rotate90();
-        image.rotate90();
-        
-        // probar invertColorBit
-        image.inverColorBit();
-
-        System.out.println("\n\n"+Integer.toHexString(255) + "\n\n");
         
         Pixrgb_21090869_CastroVenegas p1A = new Pixrgb_21090869_CastroVenegas(0,0,10,10,10,10);
         Pixrgb_21090869_CastroVenegas p2A = new Pixrgb_21090869_CastroVenegas(0,1,20,20,20,20);
@@ -83,13 +55,6 @@ public class Main {
         pixelesA.add(p3A);
         
         Image_21090869_CastroVenegas imageA = new Image_21090869_CastroVenegas(1,3,pixelesA);
-        
-        imageA.flipH();
-        imageA.flipH();
-        
-        imageA.mostrarImage();  
-        imageA.inverColorRGB();
-        imageA.mostrarImage();
 
         // crear pixeles hexmap
         Pixhex_21090869_CastroVenegas p1B = new Pixhex_21090869_CastroVenegas(0,0,"#FFFFFF",10);
@@ -104,26 +69,16 @@ public class Main {
         
         Image_21090869_CastroVenegas imageB = new Image_21090869_CastroVenegas(1,3, pixelesB);
         
-        // pixeles nuevos
-        Pixrgb_21090869_CastroVenegas pNuevoA = new Pixrgb_21090869_CastroVenegas(0,5,20,20,20,20);
-        Pixhex_21090869_CastroVenegas pNuevoB = new Pixhex_21090869_CastroVenegas(0,0,"#00FFFF",20);
-        Pixbit_21090869_CastroVenegas pNuevo = new Pixbit_21090869_CastroVenegas(0,1,1,50);
-        
-        // hacer changePixel
-        image.changePixel(pNuevo);
-        image.mostrarImage();
+        // probar depthLayers
+        ArrayList imagenes =  image.detpLayers();
         
         /*
-        // creando la imagen 
-        Image_21090869_CastroVenegas imageB = new Image_21090869_CastroVenegas(1,3, pixelesB);
+        for(int i=0; i < imagenes.size(); i++){
+            Image_21090869_CastroVenegas IMAGE = (Image_21090869_CastroVenegas) imagenes.get(i);
+            IMAGE.mostrarImage();
+        }
+*/
         
-        System.out.println("\n\n"+ imageA.histogram() + "\n\n");
-        // cambiar pixmap a hexmap
-        imageA.imgRGBToHex();
-        imageA.mostrarImage();
-        
-        System.out.println("\n\n"+ imageA.histogram() + "\n\n");
-        */
     }
 
 }
