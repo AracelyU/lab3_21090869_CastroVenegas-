@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package TDAs;
+package Main;
 
+import TDAs.Image_21090869_CastroVenegas;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.ArrayList;

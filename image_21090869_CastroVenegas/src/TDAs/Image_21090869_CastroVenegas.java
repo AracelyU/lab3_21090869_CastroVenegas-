@@ -527,60 +527,48 @@ public class Image_21090869_CastroVenegas{
     
     // metodo depthLayers
     public ArrayList detpLayers(){
-            ArrayList<Image_21090869_CastroVenegas> listaImagenes = new ArrayList();
+            ArrayList<Image_21090869_CastroVenegas> listaImagenes = new ArrayList<>();
             ArrayList profundidades = getProfundidades(getPixeles());
-            ArrayList pixeles = getPixeles();
+            System.out.println("\n" + profundidades.size());
+            
             for(int i=0; i < profundidades.size(); i++){
                 ArrayList pixelesNuevos = new ArrayList();
-                for(int j=0; j < pixeles.size(); j++){
-                    //System.out.println(j);
-                    //System.out.println(isBitmap());
+                for(int j=0; j < getPixeles().size(); j++){
+                    
                     if(isBitmap()){
-                        Pixbit_21090869_CastroVenegas pixelBit = (Pixbit_21090869_CastroVenegas) pixeles.get(j);
-                        if(pixelBit.igualProfundidad((Integer) profundidades.get(i))){
-                            System.out.println("Profundidad: " +(Integer) profundidades.get(i));
-                            System.out.println("Profundidad otro: " +pixelBit.igualProfundidad((Integer) profundidades.get(i)));
-                            pixelesNuevos.add(pixelBit);
-                            System.out.println("PixelesNuevos: " + pixelesNuevos);
+                        Pixbit_21090869_CastroVenegas pixel = (Pixbit_21090869_CastroVenegas) getPixeles().get(j);
+                        if(pixel.igualProfundidad( (Integer) profundidades.get(i))){
+                            pixelesNuevos.add(pixel);
                         } else{
-                            pixelBit.setProfundidad(( Integer) profundidades.get(i));
-                            pixelBit.setBit(1);
-                            pixelBit.mostrarPixbit();
-                            pixelesNuevos.add(pixelBit);
-                        }
+                            Pixbit_21090869_CastroVenegas pixelR = pixel.pixelBlancoBit((Integer) profundidades.get(i));
+                            pixelesNuevos.add(pixelR);
+                        }             
                     }
-                        
+                    
                     if(isHexmap()){
-                        Pixhex_21090869_CastroVenegas pixelHex = (Pixhex_21090869_CastroVenegas) pixeles.get(j);
-                        if(pixelHex.getProfundidad() == (Integer) profundidades.get(i)){
-                            pixelesNuevos.add(pixelHex);
+                        Pixhex_21090869_CastroVenegas pixel = (Pixhex_21090869_CastroVenegas) getPixeles().get(j);
+                        if(pixel.igualProfundidad( (Integer) profundidades.get(i))){
+                            pixelesNuevos.add(pixel);
                         } else{
-                            pixelHex.setProfundidad((Integer) profundidades.get(i));
-                            pixelHex.setHex("#FFFFFF");
-                            pixelesNuevos.add(pixelHex);
-                        }
+                            Pixhex_21090869_CastroVenegas pixelR = pixel.pixelBlancoHex((Integer) profundidades.get(i));
+                            pixelesNuevos.add(pixelR);
+                        }   
                     }
-                        
+                    
                     if(isPixmap()){
-                        Pixrgb_21090869_CastroVenegas pixelRGB = (Pixrgb_21090869_CastroVenegas) pixeles.get(j);
-                        if(pixelRGB.getProfundidad() == (Integer) profundidades.get(i)){
-                            pixelesNuevos.add(pixelRGB);
+                        Pixrgb_21090869_CastroVenegas pixel = (Pixrgb_21090869_CastroVenegas) getPixeles().get(j);
+                        if(pixel.igualProfundidad( (Integer) profundidades.get(i))){
+                            pixelesNuevos.add(pixel);
                         } else{
-                            pixelRGB.setProfundidad((Integer) profundidades.get(i));
-                            pixelRGB.setColorR(255);
-                            pixelRGB.setColorG(255);
-                            pixelRGB.setColorB(255);
-                            pixelesNuevos.add(pixelRGB);
-                        }
+                            Pixrgb_21090869_CastroVenegas pixelR = pixel.pixelBlancoRGB((Integer) profundidades.get(i));
+                            pixelesNuevos.add(pixelR);
+                        }  
                     }
                 }
-                
-                System.out.println(pixelesNuevos);
                 Image_21090869_CastroVenegas imagen = new Image_21090869_CastroVenegas(getAncho(), getLargo(), pixelesNuevos);
                 listaImagenes.add(imagen);
             }
             return listaImagenes;
     }
-    
- 
+
 }

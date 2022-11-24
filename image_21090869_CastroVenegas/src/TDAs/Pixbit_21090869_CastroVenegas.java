@@ -84,6 +84,11 @@ public class Pixbit_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas{
         return pixelesTemporal;
     }
     
+    public Pixbit_21090869_CastroVenegas pixelBlancoBit(int profundidad){
+        Pixbit_21090869_CastroVenegas pixel = new Pixbit_21090869_CastroVenegas(getCoordX(), getCoordY(), 1, profundidad);
+        return pixel;
+    }
+    
 
     
     // mostrar información del pixbit

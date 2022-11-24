@@ -114,6 +114,11 @@ public class Pixrgb_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas{
         return pixelesTemporal;
     }
     
+    public Pixrgb_21090869_CastroVenegas pixelBlancoRGB(int profundidad){
+        Pixrgb_21090869_CastroVenegas pixel = new Pixrgb_21090869_CastroVenegas(getCoordX(), getCoordY(), 255, 255, 255, profundidad);
+        return pixel;
+    }
+    
     // mostrar información del pixrgb
     public void mostrarPixrgb(){
         System.out.println();

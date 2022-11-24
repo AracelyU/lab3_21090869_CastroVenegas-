@@ -57,7 +57,7 @@ public class Main {
         Image_21090869_CastroVenegas imageA = new Image_21090869_CastroVenegas(1,3,pixelesA);
 
         // crear pixeles hexmap
-        Pixhex_21090869_CastroVenegas p1B = new Pixhex_21090869_CastroVenegas(0,0,"#FFFFFF",10);
+        Pixhex_21090869_CastroVenegas p1B = new Pixhex_21090869_CastroVenegas(0,0,"#000000",10);
         Pixhex_21090869_CastroVenegas p2B = new Pixhex_21090869_CastroVenegas(0,1,"#00FFFF",20);
         Pixhex_21090869_CastroVenegas p3B = new Pixhex_21090869_CastroVenegas(0,2,"#000000",30);
         
@@ -70,14 +70,14 @@ public class Main {
         Image_21090869_CastroVenegas imageB = new Image_21090869_CastroVenegas(1,3, pixelesB);
         
         // probar depthLayers
-        ArrayList imagenes =  image.detpLayers();
+        ArrayList imagenes =  imageB.detpLayers();
         
-        /*
+        System.out.println();
         for(int i=0; i < imagenes.size(); i++){
             Image_21090869_CastroVenegas IMAGE = (Image_21090869_CastroVenegas) imagenes.get(i);
             IMAGE.mostrarImage();
         }
-*/
+
         
     }
 

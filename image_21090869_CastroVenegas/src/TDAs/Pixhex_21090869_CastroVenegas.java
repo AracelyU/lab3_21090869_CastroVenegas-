@@ -77,6 +77,11 @@ public class Pixhex_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas 
         return pixelesTemporal;
     }
     
+    public Pixhex_21090869_CastroVenegas pixelBlancoHex(int profundidad){
+        Pixhex_21090869_CastroVenegas pixel = new Pixhex_21090869_CastroVenegas(getCoordX(), getCoordY(), "#FFFFFF", profundidad);
+        return pixel;
+    }
+    
     
     // mostrar información del pixhex
     public void mostrarPixhex(){
