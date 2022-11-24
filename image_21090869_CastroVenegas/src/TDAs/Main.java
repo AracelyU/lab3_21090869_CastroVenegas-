@@ -5,7 +5,7 @@ package TDAs;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Other/File.java to edit this template
  */
 import java.util.Scanner;
-import TDAs.Pixbit_21090869_CastroVenegas;
+import Main.*;
 import java.util.ArrayList;
 
 
@@ -20,7 +20,15 @@ public class Main {
      */
     public static void main(String args[]) {
         
+        Menu menu = new Menu();
         
+        while(!menu.getSalirMenu()){
+            menu.MenuPrincipal();
+            menu.ScannerOpcion();
+        
+        }
+        
+        /*
         // crear pixeles bit
         Pixbit_21090869_CastroVenegas p1 = new Pixbit_21090869_CastroVenegas(0,0,0,10);
         Pixbit_21090869_CastroVenegas p2 = new Pixbit_21090869_CastroVenegas(0,1,0,20);
@@ -78,7 +86,11 @@ public class Main {
             IMAGE.mostrarImage();
         }
 
+        */
+        
         
     }
+    
+    
 
 }
