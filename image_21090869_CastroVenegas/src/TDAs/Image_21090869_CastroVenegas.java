@@ -386,6 +386,48 @@ public class Image_21090869_CastroVenegas{
         return histograma;
     }
     
+    // método para obtener el color más repetido de un histograma
+    private int mayorBit(ArrayList histograma){
+        int cantidad = -1;
+        int valorH = -1;
+        for(int i=0; i < histograma.size(); i++){
+            ArrayList dato = (ArrayList) histograma.get(i);
+            int cantidadH = (Integer) dato.get(1);
+            if (cantidadH > cantidad){
+                valorH = (Integer) dato.get(0);
+                cantidad = cantidadH;
+            }
+        }
+        return valorH;
+    }
+    
+    // método compress(){}
+    public void compress(){
+        ArrayList histograma = histogram();
+        ArrayList pixelesNuevos = new ArrayList();
+        ArrayList pixeles = getPixeles();
+    
+        if(isBitmap()){
+            int bitRepetido = mayorBit(histograma);
+            for(int i=0; i< pixeles.size(); i++){
+                Pixbit_21090869_CastroVenegas pixel = (Pixbit_21090869_CastroVenegas) pixeles.get(i);
+                if(pixel.getBit() == bitRepetido){
+                    Pixbit_comprimido_21090869_CastroVenegas pixelC;
+                    pixelC = new Pixbit_comprimido_21090869_CastroVenegas(pixel.getCoordX(), pixel.getCoordY(), bitRepetido, pixel.getProfundidad());
+                    pixelesNuevos.add(pixelC);
+                } else{
+                    pixelesNuevos.add(pixel);                    
+                }
+            }
+            setPixeles(pixelesNuevos);
+            
+        
+        }
+    
+    }
+    
+    
+    
     // método rotate90
     public void rotate90(){
         int h = 0;
