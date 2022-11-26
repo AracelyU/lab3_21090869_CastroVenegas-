@@ -130,6 +130,49 @@ public class Image_21090869_CastroVenegas{
         return true;
     }     
     
+    // comprobar si es Bitmap comprimido
+    public boolean isBitmapComprimido(){
+        Pixbit_comprimido_21090869_CastroVenegas pixelBitC = new Pixbit_comprimido_21090869_CastroVenegas(0,0,0,0); // crear un objeto Pixbit comprimido para comparar
+        for(int i=0; i < pixeles.size(); i++){ // mientras queden pixeles en la imagen
+            Object pixelRecogido = pixeles.get(i); // para cada pixel
+            if (pixelRecogido.getClass() == pixelBitC.getClass()){ // si no es pixel de clase Pixrgb retorna falso
+                return true;
+            }      
+        }
+        return false;
+    }
+  
+    // comprobar si es Hexmap comprimido
+    public boolean isHexmapComprimido(){
+        Pixhex_comprimido_21090869_CastroVenegas pixelHexC = new Pixhex_comprimido_21090869_CastroVenegas(0,0,"#FFFFFF",0); // crear un objeto Pixhex comprimido para comparar
+        for(int i=0; i < pixeles.size(); i++){ // mientras queden pixeles en la imagen
+            Object pixelRecogido = pixeles.get(i); // para cada pixel
+            if (pixelRecogido.getClass() == pixelHexC.getClass()){ // si no es pixel de clase Pixhex retorna falso
+                return true;
+            }      
+        }
+        return false;
+    }   
+    
+    // comprobar si es Pixmap comprimido
+    public boolean isPixmapComprimido(){
+        ArrayList listaRGB = new ArrayList();
+        Pixrgb_comprimido_21090869_CastroVenegas pixelRGBC = new Pixrgb_comprimido_21090869_CastroVenegas(0,0,listaRGB,0); // crear un objeto Pixhex comprimido para comparar
+        for(int i=0; i < pixeles.size(); i++){ // mientras queden pixeles en la imagen
+            Object pixelRecogido = pixeles.get(i); // para cada pixel
+            if (pixelRecogido.getClass() == pixelRGBC.getClass()){ // si no es pixel de clase Pixhex retorna falso
+                return true;
+            }      
+        }
+        return false;
+    }  
+    
+    
+    // método compress
+    public boolean isCompress(){
+        return (isBitmapComprimido() || isHexmapComprimido() || isPixmapComprimido());
+    }
+     
     // metodo que retorna el objeto que tiene las coordenadas definidas
     private Object PixelCoordXY(ArrayList pixeles, int CoordX, int CoordY){
         for(int i = 0; i < pixeles.size(); i++){ 
