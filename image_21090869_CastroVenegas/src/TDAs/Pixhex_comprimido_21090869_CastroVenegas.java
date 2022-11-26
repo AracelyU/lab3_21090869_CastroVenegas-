@@ -11,11 +11,11 @@ package TDAs;
 public class Pixhex_comprimido_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas {
     
     private String hexGuardado;
-    private int hexComprimido;
+    private String hexComprimido;
     
     public Pixhex_comprimido_21090869_CastroVenegas( int coordX, int coordY, String hexGuardado, int profundidad){
         super(coordX, coordY, profundidad);
-        this.hexComprimido = -1;
+        this.hexComprimido = "-------";
         setHexGuardado(hexGuardado);
         
     

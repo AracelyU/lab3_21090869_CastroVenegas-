@@ -20,6 +20,7 @@ public class Main {
      */
     public static void main(String args[]) {
         
+        /*
         Menu menu = new Menu();
         
         while(!menu.getSalirMenu()){
@@ -27,8 +28,9 @@ public class Main {
             menu.ScannerOpcion();
         
         }
+        */
         
-        /*
+        
         // crear pixeles bit
         Pixbit_21090869_CastroVenegas p1 = new Pixbit_21090869_CastroVenegas(0,0,0,10);
         Pixbit_21090869_CastroVenegas p2 = new Pixbit_21090869_CastroVenegas(0,1,0,20);
@@ -49,8 +51,22 @@ public class Main {
         // crear imagen
         Image_21090869_CastroVenegas image = new Image_21090869_CastroVenegas(1,3, pixeles);
         
+        /*
         // mostrar datos de la imagen creada
         image.mostrarImage();
+        
+        System.out.println("Imagen comprimida: ");
+        // comprimir imagen
+        ArrayList h = image.histogram();
+        
+        System.out.println(image.mayorBit(h));
+        
+        image.compress();
+        System.out.println(image.isHexmapComprimido());
+        
+        image.mostrarImage();
+        
+        
         
         Pixrgb_21090869_CastroVenegas p1A = new Pixrgb_21090869_CastroVenegas(0,0,10,10,10,10);
         Pixrgb_21090869_CastroVenegas p2A = new Pixrgb_21090869_CastroVenegas(0,1,20,20,20,20);
@@ -63,6 +79,12 @@ public class Main {
         pixelesA.add(p3A);
         
         Image_21090869_CastroVenegas imageA = new Image_21090869_CastroVenegas(1,3,pixelesA);
+        
+        imageA.mostrarImage();
+        imageA.compress();
+        imageA.mostrarImage();
+        
+        */
 
         // crear pixeles hexmap
         Pixhex_21090869_CastroVenegas p1B = new Pixhex_21090869_CastroVenegas(0,0,"#000000",10);
@@ -77,16 +99,11 @@ public class Main {
         
         Image_21090869_CastroVenegas imageB = new Image_21090869_CastroVenegas(1,3, pixelesB);
         
-        // probar depthLayers
-        ArrayList imagenes =  imageB.detpLayers();
-        
-        System.out.println();
-        for(int i=0; i < imagenes.size(); i++){
-            Image_21090869_CastroVenegas IMAGE = (Image_21090869_CastroVenegas) imagenes.get(i);
-            IMAGE.mostrarImage();
-        }
+        imageB.mostrarImage();
+        imageB.compress();
+        imageB.mostrarImage();
 
-        */
+        
         
         
     }

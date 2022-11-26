@@ -74,8 +74,8 @@ public class Pixrgb_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas{
     }
    
     // método que compara si un hex es igual
-    public boolean igualColorRGB(Pixrgb_21090869_CastroVenegas pixel, int colorR, int colorG, int colorB){
-        return ((pixel.getColorR() == colorR) && (pixel.getColorG() == colorG) && (pixel.getColorB() == colorB));
+    public boolean igualColorRGB(int colorR, int colorG, int colorB){
+        return ((getColorR() == colorR) && (getColorG() == colorG) && (getColorB() == colorB));
     }
     
     // metódo que suma la cantidad de veces que se repite un color RGB en una lista de objetos
@@ -83,7 +83,7 @@ public class Pixrgb_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas{
         int suma = 0;
         for(int i =0; i < pixeles.size(); i++){
             Pixrgb_21090869_CastroVenegas pixel = (Pixrgb_21090869_CastroVenegas) pixeles.get(i);
-            if(igualColorRGB(pixel, colorR, colorG, colorB)){
+            if(pixel.igualColorRGB(colorR, colorG, colorB)){
                 suma++;
             }
         }
@@ -91,11 +91,11 @@ public class Pixrgb_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas{
     }   
     
     // método que eliminar pixeles que sean iguales a un color
-    public ArrayList eliminarColorRGB(ArrayList pixeles, int colorR, int ColorG, int ColorB){
+    public ArrayList eliminarColorRGB(ArrayList pixeles, int colorR, int colorG, int colorB){
         ArrayList pixelesTemporal = new ArrayList();
         for(int i=0; i < pixeles.size(); i++){
             Pixrgb_21090869_CastroVenegas pixelRecogido = (Pixrgb_21090869_CastroVenegas) pixeles.get(i);
-            if(!igualColorRGB(pixelRecogido, colorR, colorG, colorB)){
+            if(!pixelRecogido.igualColorRGB(colorR, colorG, colorB)){
                 pixelesTemporal.add(pixelRecogido);
             }
         }

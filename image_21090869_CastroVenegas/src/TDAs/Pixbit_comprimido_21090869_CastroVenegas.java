@@ -27,7 +27,7 @@ public class Pixbit_comprimido_21090869_CastroVenegas extends Pixel_21090869_Cas
     }
     
     // mostrar información del pixbit
-    public void mostrarPixbit(){
+    public void mostrarPixbitC(){
         System.out.println();
         System.out.print("CoordX: "+ this.coordX + " ");
         System.out.print("CoordY: "+ this.coordY + " ");

@@ -90,8 +90,53 @@ public class Image_21090869_CastroVenegas{
                 pixelRGB.mostrarPixrgb();
             }
         }
+
         
-        // listos los cambios de coordenadas, ahora se procede a ordenarlos
+        // bitmap comprimido
+        if(isBitmapComprimido()){
+            Pixbit_21090869_CastroVenegas pB = new Pixbit_21090869_CastroVenegas(0,0,0,0);
+            for(int i=0; i < pixeles.size(); i++){
+                Object pixelRecogido = pixeles.get(i);
+                if(pixelRecogido.getClass() == pB.getClass()){
+                    Pixbit_21090869_CastroVenegas pixelBit = (Pixbit_21090869_CastroVenegas) pixeles.get(i);
+                    pixelBit.mostrarPixbit();
+                } else{
+                    Pixbit_comprimido_21090869_CastroVenegas pixelBitC = (Pixbit_comprimido_21090869_CastroVenegas) pixeles.get(i);
+                    pixelBitC.mostrarPixbitC();
+                }
+            }
+        }
+
+        // hexmap comprimido
+        if(isHexmapComprimido()){
+            Pixhex_21090869_CastroVenegas pH = new Pixhex_21090869_CastroVenegas(0,0,"#FFFFFF",0);
+            for(int i=0; i < pixeles.size(); i++){
+                Object pixelRecogido = pixeles.get(i);
+                if(pixelRecogido.getClass() == pH.getClass()){
+                    Pixhex_21090869_CastroVenegas pixelHex = (Pixhex_21090869_CastroVenegas) pixeles.get(i);
+                    pixelHex.mostrarPixhex();
+                } else{
+                    Pixhex_comprimido_21090869_CastroVenegas pixelHexC = (Pixhex_comprimido_21090869_CastroVenegas) pixeles.get(i);
+                    pixelHexC.mostrarPixhexC();
+                }
+            }
+        }
+        
+        // pixmap comprimido
+        if(isPixmapComprimido()){
+            Pixrgb_21090869_CastroVenegas pRGB = new Pixrgb_21090869_CastroVenegas(0,0,0,0,0,0);
+            for(int i=0; i < pixeles.size(); i++){
+                Object pixelRecogido = pixeles.get(i);
+                if(pixelRecogido.getClass() == pRGB.getClass()){
+                    Pixrgb_21090869_CastroVenegas pixelRGB = (Pixrgb_21090869_CastroVenegas) pixeles.get(i);
+                    pixelRGB.mostrarPixrgb();
+                } else{
+                    Pixrgb_comprimido_21090869_CastroVenegas pixelRGBC = (Pixrgb_comprimido_21090869_CastroVenegas) pixeles.get(i);
+                    pixelRGBC.mostrarPixrgbC();
+                }
+            }
+        }
+        
     }
     
     // comprobar si es Bitmap
@@ -157,6 +202,9 @@ public class Image_21090869_CastroVenegas{
     // comprobar si es Pixmap comprimido
     public boolean isPixmapComprimido(){
         ArrayList listaRGB = new ArrayList();
+        listaRGB.add(0);
+        listaRGB.add(0);
+        listaRGB.add(0);
         Pixrgb_comprimido_21090869_CastroVenegas pixelRGBC = new Pixrgb_comprimido_21090869_CastroVenegas(0,0,listaRGB,0); // crear un objeto Pixhex comprimido para comparar
         for(int i=0; i < pixeles.size(); i++){ // mientras queden pixeles en la imagen
             Object pixelRecogido = pixeles.get(i); // para cada pixel
@@ -430,7 +478,7 @@ public class Image_21090869_CastroVenegas{
     }
     
     // método para obtener el color más repetido de un histograma
-    private int mayorBit(ArrayList histograma){
+    public int mayorBit(ArrayList histograma){
         int cantidad = -1;
         int valorH = -1;
         for(int i=0; i < histograma.size(); i++){
@@ -438,6 +486,36 @@ public class Image_21090869_CastroVenegas{
             int cantidadH = (Integer) dato.get(1);
             if (cantidadH > cantidad){
                 valorH = (Integer) dato.get(0);
+                cantidad = cantidadH;
+            }
+        }
+        return valorH;
+    }
+    
+    // método para obtener el color más repetido de un histograma
+    public String mayorHex(ArrayList histograma){
+        int cantidad = -1;
+        String valorH = "";
+        for(int i=0; i < histograma.size(); i++){
+            ArrayList dato = (ArrayList) histograma.get(i);
+            int cantidadH = (Integer) dato.get(1);
+            if (cantidadH > cantidad){
+                valorH = (String) dato.get(0);
+                cantidad = cantidadH;
+            }
+        }
+        return valorH;
+    }
+    
+    // método para obtener el color más repetido de un histograma
+    public ArrayList mayorRGB(ArrayList histograma){
+        int cantidad = -1;
+        ArrayList valorH = new ArrayList();
+        for(int i=0; i < histograma.size(); i++){
+            ArrayList dato = (ArrayList) histograma.get(i);
+            int cantidadH = (Integer) dato.get(1);
+            if (cantidadH > cantidad){
+                valorH = (ArrayList) dato.get(0);
                 cantidad = cantidadH;
             }
         }
@@ -462,10 +540,38 @@ public class Image_21090869_CastroVenegas{
                     pixelesNuevos.add(pixel);                    
                 }
             }
-            setPixeles(pixelesNuevos);
-            
-        
         }
+        
+        if(isHexmap()){
+            String hexRepetido = mayorHex(histograma);
+            for(int i=0; i< pixeles.size(); i++){
+                Pixhex_21090869_CastroVenegas pixel = (Pixhex_21090869_CastroVenegas) pixeles.get(i);
+                if(pixel.getHex() == hexRepetido){
+                    Pixhex_comprimido_21090869_CastroVenegas pixelC;
+                    pixelC = new Pixhex_comprimido_21090869_CastroVenegas(pixel.getCoordX(), pixel.getCoordY(), hexRepetido, pixel.getProfundidad());
+                    pixelesNuevos.add(pixelC);
+                } else{
+                    pixelesNuevos.add(pixel);                    
+                }
+            }
+        } 
+        
+        if(isPixmap()){
+            ArrayList rgbRepetido = mayorRGB(histograma);
+            for(int i=0; i< pixeles.size(); i++){
+                Pixrgb_21090869_CastroVenegas pixel = (Pixrgb_21090869_CastroVenegas) pixeles.get(i);
+                if(pixel.igualColorRGB((int) rgbRepetido.get(0), (int) rgbRepetido.get(1), (int) rgbRepetido.get(2))){
+                    Pixrgb_comprimido_21090869_CastroVenegas pixelC;
+                    pixelC = new Pixrgb_comprimido_21090869_CastroVenegas(pixel.getCoordX(), pixel.getCoordY(), rgbRepetido, pixel.getProfundidad());
+                    pixelesNuevos.add(pixelC);
+                } else{
+                    pixelesNuevos.add(pixel);                    
+                }
+            }
+        } 
+        
+        
+        setPixeles(pixelesNuevos);
     
     }
     
