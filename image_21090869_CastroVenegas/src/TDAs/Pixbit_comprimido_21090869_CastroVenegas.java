@@ -26,6 +26,10 @@ public class Pixbit_comprimido_21090869_CastroVenegas extends Pixel_21090869_Cas
         }
     }
     
+    public int getBitGuardado(){
+        return bitGuardado;
+    }
+    
     // mostrar información del pixbit
     public void mostrarPixbitC(){
         System.out.println();

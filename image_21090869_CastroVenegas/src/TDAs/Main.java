@@ -34,7 +34,7 @@ public class Main {
         // crear pixeles bit
         Pixbit_21090869_CastroVenegas p1 = new Pixbit_21090869_CastroVenegas(0,0,0,10);
         Pixbit_21090869_CastroVenegas p2 = new Pixbit_21090869_CastroVenegas(0,1,0,20);
-        Pixbit_21090869_CastroVenegas p3 = new Pixbit_21090869_CastroVenegas(0,2,0,30);
+        Pixbit_21090869_CastroVenegas p3 = new Pixbit_21090869_CastroVenegas(0,2,1,30);
         Pixbit_21090869_CastroVenegas p4 = new Pixbit_21090869_CastroVenegas(1,0,0,40);
         Pixbit_21090869_CastroVenegas p5 = new Pixbit_21090869_CastroVenegas(1,1,0,50);
         Pixbit_21090869_CastroVenegas p6 = new Pixbit_21090869_CastroVenegas(1,2,0,60);
@@ -44,30 +44,13 @@ public class Main {
         pixeles.add(p1);
         pixeles.add(p2);
         pixeles.add(p3);
-        //pixeles.add(p4);
-        //pixeles.add(p5);
-        //pixeles.add(p6);
+        pixeles.add(p4);
+        pixeles.add(p5);
+        pixeles.add(p6);
         
         // crear imagen
-        Image_21090869_CastroVenegas image = new Image_21090869_CastroVenegas(1,3, pixeles);
-        
-        /*
-        // mostrar datos de la imagen creada
-        image.mostrarImage();
-        
-        System.out.println("Imagen comprimida: ");
-        // comprimir imagen
-        ArrayList h = image.histogram();
-        
-        System.out.println(image.mayorBit(h));
-        
-        image.compress();
-        System.out.println(image.isHexmapComprimido());
-        
-        image.mostrarImage();
-        
-        
-        
+        Image_21090869_CastroVenegas image = new Image_21090869_CastroVenegas(2,3, pixeles);
+
         Pixrgb_21090869_CastroVenegas p1A = new Pixrgb_21090869_CastroVenegas(0,0,10,10,10,10);
         Pixrgb_21090869_CastroVenegas p2A = new Pixrgb_21090869_CastroVenegas(0,1,20,20,20,20);
         Pixrgb_21090869_CastroVenegas p3A = new Pixrgb_21090869_CastroVenegas(0,2,30,30,30,30);
@@ -78,13 +61,7 @@ public class Main {
         pixelesA.add(p2A);
         pixelesA.add(p3A);
         
-        Image_21090869_CastroVenegas imageA = new Image_21090869_CastroVenegas(1,3,pixelesA);
-        
-        imageA.mostrarImage();
-        imageA.compress();
-        imageA.mostrarImage();
-        
-        */
+        Image_21090869_CastroVenegas imageA = new Image_21090869_CastroVenegas(1,3,pixelesA);     
 
         // crear pixeles hexmap
         Pixhex_21090869_CastroVenegas p1B = new Pixhex_21090869_CastroVenegas(0,0,"#000000",10);
@@ -99,11 +76,24 @@ public class Main {
         
         Image_21090869_CastroVenegas imageB = new Image_21090869_CastroVenegas(1,3, pixelesB);
         
-        imageB.mostrarImage();
-        imageB.compress();
-        imageB.mostrarImage();
-
+        /*
+        imageA.mostrarImage();
+        imageA.compress();
+        imageA.mostrarImage();
         
+        imageA.flipH();
+        imageA.mostrarImage();
+        
+        System.out.println(imageA.detpLayers());
+String cadena = imageA.imageString();
+        System.out.println(cadena);
+        */
+        
+        String cadena = imageB.imageString();
+        System.out.println(cadena);
+        imageB.rotate90();
+        cadena = imageB.imageString();
+        System.out.println(cadena);
         
         
     }

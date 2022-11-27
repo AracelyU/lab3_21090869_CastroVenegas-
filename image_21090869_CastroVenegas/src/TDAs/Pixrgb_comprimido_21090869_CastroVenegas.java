@@ -48,6 +48,18 @@ public class Pixrgb_comprimido_21090869_CastroVenegas extends Pixel_21090869_Cas
         }      
     }
     
+    public int getColorRGuardado(){
+        return colorRGuardado;
+    }
+
+    public int getColorGGuardado(){
+        return colorGGuardado;
+    }
+    
+    public int getColorBGuardado(){
+        return colorBGuardado;
+    }    
+    
     public void mostrarPixrgbC(){
         System.out.println();
         System.out.print("CoordX: "+ this.coordX + " ");

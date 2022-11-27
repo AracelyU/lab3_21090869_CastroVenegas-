@@ -28,6 +28,10 @@ public class Pixhex_comprimido_21090869_CastroVenegas extends Pixel_21090869_Cas
         }
     }  
     
+    public String getHexGuardado(){
+        return hexGuardado;
+    }
+    
     // mostrar información del pixhex
     public void mostrarPixhexC(){
         System.out.println();
