@@ -20,7 +20,7 @@ public class Main {
      */
     public static void main(String args[]) {
         
-        /*
+        
         Menu menu = new Menu();
         
         while(!menu.getSalirMenu()){
@@ -28,8 +28,8 @@ public class Main {
             menu.ScannerOpcion();
         
         }
-        */
         
+        /*
         
         // crear pixeles bit
         Pixbit_21090869_CastroVenegas p1 = new Pixbit_21090869_CastroVenegas(0,0,0,10);
@@ -76,7 +76,7 @@ public class Main {
         
         Image_21090869_CastroVenegas imageB = new Image_21090869_CastroVenegas(1,3, pixelesB);
         
-        /*
+        
         imageA.mostrarImage();
         imageA.compress();
         imageA.mostrarImage();
@@ -85,15 +85,11 @@ public class Main {
         imageA.mostrarImage();
         
         System.out.println(imageA.detpLayers());
-String cadena = imageA.imageString();
+        String cadena = imageA.imageString();
         System.out.println(cadena);
         */
         
-        String cadena = imageB.imageString();
-        System.out.println(cadena);
-        imageB.rotate90();
-        cadena = imageB.imageString();
-        System.out.println(cadena);
+    
         
         
     }

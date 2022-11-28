@@ -20,6 +20,11 @@ public class Menu{
         this.salirMenu = false; 
     }
     
+    public void ejecutarMenu(){
+        MenuPrincipal();
+        ScannerOpcion();
+    }
+    
     private ArrayList getImagenes(){
         return listaImagenes;
     }
@@ -33,7 +38,7 @@ public class Menu{
         return salirMenu;
     }
     
-    public void MenuPrincipal(){
+    private void MenuPrincipal(){
         System.out.println("### Manipulador de imágenes ###");
         System.out.println("Escoja su opción: ");
         System.out.println("1. Crear una imagen");
@@ -50,7 +55,7 @@ public class Menu{
         
     }
     
-    public void ScannerOpcion(){
+    private void ScannerOpcion(){
         Scanner entrada = new Scanner(System.in);
         int eleccion = entrada.nextInt();
         
@@ -233,8 +238,7 @@ public class Menu{
             int coordX = entrada.nextInt();
             System.out.println("Ingresar y: ");
             int coordY = entrada.nextInt();
-            System.out.println("Ingresar hex (#RRGGBB)1"
-                    + ": ");
+            System.out.println("Ingresar hex (#RRGGBB): ");
             entrada.nextLine();
             String hex = entrada.nextLine();
             System.out.println("Ingresar profundidad: ");
