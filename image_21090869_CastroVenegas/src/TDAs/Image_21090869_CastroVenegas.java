@@ -8,63 +8,95 @@ package TDAs;
 import java.util.ArrayList;
 
 /**
- *
- * @author aracelyCastro
+ * Clase para definir el objeto imagen
+ * @author aracely castro
  */
 public class Image_21090869_CastroVenegas{
     
-    // definiendo las variables de una imagen
+    // atributos de una imagen
     private int ancho, largo;
-    private ArrayList pixeles = new ArrayList<>(); // los pixeles son direcciones de cada objeto pixel
+    private ArrayList<Object> pixeles; 
     
+    /**
+    * Descripción: Constructor de la imagen
+    * @param ancho: entero positivo. 
+    * @param largo: entero positivo
+    * @param pixeles: lista con objetos
+    * @author aracely castro
+    *
+    */
     // definiendo el constructor de una imagen
-    public Image_21090869_CastroVenegas(int vAncho, int vLargo, ArrayList vPixeles){
-        setAncho(vAncho);
-        setLargo(vLargo);
-        setPixeles(vPixeles);
+    public Image_21090869_CastroVenegas(int ancho, int largo, ArrayList pixeles){
+        this.pixeles = new ArrayList<>();
+        setAncho(ancho);
+        setLargo(largo);
+        setPixeles(pixeles);
        
     }
     
-    // definiendo getters
-    
-    // retornar ancho
+    /**
+    * Descripción: Método para obtener el valor ancho de la imagen
+    * @return devuelve un valor entero positivo
+    * @author aracely castro
+    */ 
     public int getAncho(){
         return ancho;
     }
     
-    // retornar largo
+    /**
+    * Descripción: Método para obtener el valor largo de la imagen
+    * @return devuelve un valor entero positivo
+    * @author aracely castro
+    */ 
     public int getLargo(){
         return largo;
     }
     
-    // retornar pixeles
+    /**
+    * Descripción: Método para obtener la lista de pixeles de la imagen
+    * @return devuelve una lista
+    * @author aracely castro
+    */ 
     public ArrayList getPixeles(){
         return pixeles;
     }
     
-    // definir setters
-    
-    // cambiar ancho
-    public void setAncho(int ancho){
+    /**
+    * Descripción: Método para cambiar el valor ancho de la imagen
+    * @param ancho: entero positivo
+    * @author aracely castro
+    */      
+    private void setAncho(int ancho){
         if (ancho >= 0){
             this.ancho = ancho;
         }
     }
     
-    // cambiar largo
-    public void setLargo(int largo){
+    /**
+    * Descripción: Método para cambiar el valor largo de la imagen
+    * @param largo: entero positivo
+    * @author aracely castro
+    */ 
+    private void setLargo(int largo){
         if (largo >= 0){
             this.largo = largo;
         }
     }
     
-    // cambiar pixeles
-    public void setPixeles(ArrayList pixeles){
+    /**
+    * Descripción: Método para cambiar los pixeles de la imagen
+    * @param pixeles: lista de objetos
+    * @author aracely castro
+    */ 
+    private void setPixeles(ArrayList pixeles){
         this.pixeles = pixeles;
     }
    
     
-    // mostrar información de la imagen
+    /**
+    * Descripción: Método para imprimir en ancho, largo y pixeles de la imagen
+    * @author aracely castro
+    */ 
     public void mostrarImage(){
         System.out.print("Ancho: "+ this.ancho + " ");
         System.out.print("Largo: "+ this.largo + " ");
@@ -91,8 +123,6 @@ public class Image_21090869_CastroVenegas{
             }
         }
 
-        
-        // bitmap comprimido
         if(isBitmapComprimido()){
             Pixbit_21090869_CastroVenegas pB = new Pixbit_21090869_CastroVenegas(0,0,0,0);
             for(int i=0; i < pixeles.size(); i++){
@@ -106,7 +136,6 @@ public class Image_21090869_CastroVenegas{
                 }
             }
         }
-
         
         if(isHexmapComprimido()){
             Pixhex_21090869_CastroVenegas pH = new Pixhex_21090869_CastroVenegas(0,0,"#FFFFFF",0);
@@ -122,7 +151,6 @@ public class Image_21090869_CastroVenegas{
             }
         }
         
-        
         if(isPixmapComprimido()){
             Pixrgb_21090869_CastroVenegas pRGB = new Pixrgb_21090869_CastroVenegas(0,0,0,0,0,0);
             for(int i=0; i < pixeles.size(); i++){
@@ -135,11 +163,14 @@ public class Image_21090869_CastroVenegas{
                     pixelRGBC.mostrarPixrgbC();
                 }
             }
-        }
-        
+        }  
     }
-    
-    // comprobar si es Bitmap
+     
+    /**
+    * Descripción: Método para determinar si una imagen es bitmap
+    * @return devuelve boleano
+    * @author aracely castro
+    */ 
     public boolean isBitmap(){
         Pixbit_21090869_CastroVenegas pixelBit = new Pixbit_21090869_CastroVenegas(0,0,0,0); // crear un objeto Pixbit para comparar
         for(int i=0; i < pixeles.size(); i++){ // mientras queden pixeles en la imagen
@@ -151,7 +182,11 @@ public class Image_21090869_CastroVenegas{
         return true;
     }
     
-    // comprobar si es Pixmap
+    /**
+    * Descripción: Método para determinar si una imagen es pixmap
+    * @return devuelve boleano
+    * @author aracely castro
+    */ 
     public boolean isPixmap(){
         Pixrgb_21090869_CastroVenegas pixelRGB = new Pixrgb_21090869_CastroVenegas(0,0,0,0,0,0); // crear un objeto Pixrgb para comparar
         for(int i=0; i < pixeles.size(); i++){ // mientras queden pixeles en la imagen
@@ -163,7 +198,11 @@ public class Image_21090869_CastroVenegas{
         return true;
     }
 
-    // comprobar si es Hexmap
+    /**
+    * Descripción: Método para determinar si una imagen es hexmap
+    * @return devuelve boleano
+    * @author aracely castro
+    */ 
     public boolean isHexmap(){
         Pixhex_21090869_CastroVenegas pixelHex = new Pixhex_21090869_CastroVenegas(0,0,"#FFFFFF",0); // crear un objeto Pixhex para comparar
         for(int i=0; i < pixeles.size(); i++){ // mientras queden pixeles en la imagen
@@ -175,7 +214,11 @@ public class Image_21090869_CastroVenegas{
         return true;
     }     
     
-    // comprobar si es Bitmap comprimido
+    /**
+    * Descripción: Método para determinar si una imagen es bitmap comprimido
+    * @return devuelve boleano
+    * @author aracely castro
+    */ 
     public boolean isBitmapComprimido(){
         Pixbit_comprimido_21090869_CastroVenegas pixelBitC = new Pixbit_comprimido_21090869_CastroVenegas(0,0,0,0); // crear un objeto Pixbit comprimido para comparar
         for(int i=0; i < pixeles.size(); i++){ // mientras queden pixeles en la imagen
@@ -187,7 +230,11 @@ public class Image_21090869_CastroVenegas{
         return false;
     }
   
-    // comprobar si es Hexmap comprimido
+    /**
+    * Descripción: Método para determinar si una imagen es hexmap comprimido
+    * @return devuelve boleano
+    * @author aracely castro
+    */ 
     public boolean isHexmapComprimido(){
         Pixhex_comprimido_21090869_CastroVenegas pixelHexC = new Pixhex_comprimido_21090869_CastroVenegas(0,0,"#FFFFFF",0); // crear un objeto Pixhex comprimido para comparar
         for(int i=0; i < pixeles.size(); i++){ // mientras queden pixeles en la imagen
@@ -199,7 +246,11 @@ public class Image_21090869_CastroVenegas{
         return false;
     }   
     
-    // comprobar si es Pixmap comprimido
+    /**
+    * Descripción: Método para determinar si una imagen es pixmap comprimido
+    * @return devuelve boleano
+    * @author aracely castro
+    */ 
     public boolean isPixmapComprimido(){
         ArrayList listaRGB = new ArrayList();
         listaRGB.add(0);
@@ -216,31 +267,42 @@ public class Image_21090869_CastroVenegas{
     }  
     
     
-    // método compress
+    /**
+    * Descripción: Método para determinar si una imagen fue comprimida
+    * @return devuelve boleano
+    * @author aracely castro
+    */ 
     public boolean isCompressed(){
         return (isBitmapComprimido() || isHexmapComprimido() || isPixmapComprimido());
     }
      
-    // metodo que retorna el objeto que tiene las coordenadas definidas
-    private Object PixelCoordXY(ArrayList pixeles, int CoordX, int CoordY){
+    /**
+    * Descripción: Método que devuelve el pixel con igual coordenadas x e y
+    * @param pixeles: lista de objetos
+    * @param coordX: entero positivo
+    * @param coordY: entero positivo
+    * @return devuelve un objeto
+    * @author aracely castro
+    */ 
+    private Object PixelCoordXY(ArrayList pixeles, int coordX, int coordY){
         for(int i = 0; i < pixeles.size(); i++){ 
             if (isBitmap()){
                 Pixbit_21090869_CastroVenegas pixelRecogido =  (Pixbit_21090869_CastroVenegas) pixeles.get(i);
-                if (pixelRecogido.igualCoordXY(CoordX, CoordY)){
+                if (pixelRecogido.igualCoordXY(coordX, coordY)){
                     return pixelRecogido;
                 }
             }
 
             if (isHexmap()){
                 Pixhex_21090869_CastroVenegas pixelRecogido =  (Pixhex_21090869_CastroVenegas) pixeles.get(i);
-                if (pixelRecogido.igualCoordXY(CoordX, CoordY)){
+                if (pixelRecogido.igualCoordXY(coordX, coordY)){
                     return pixelRecogido;
                 }
             }
             
             if (isPixmap()){
                 Pixrgb_21090869_CastroVenegas pixelRecogido =  (Pixrgb_21090869_CastroVenegas) pixeles.get(i);
-                if (pixelRecogido.igualCoordXY(CoordX, CoordY)){
+                if (pixelRecogido.igualCoordXY(coordX, coordY)){
                     return pixelRecogido;
                 }
             }
@@ -248,21 +310,25 @@ public class Image_21090869_CastroVenegas{
         return null;
     }
     
-    // metodo para ordenar los pixeles de la imagen según coordenadas
+    /**
+    * Descripción: Método que devuelve los pixeles ordenados por sus coordenadas x e y
+    * @author aracely castro
+    */ 
     private void ordenarPixeles(){
-        ArrayList pixelesTemporal = new ArrayList();
-                
+        ArrayList pixelesTemporal = new ArrayList();       
         for(int i = 0; i < this.ancho; i++){
             for(int j = 0; j < this.largo; j++){
                 pixelesTemporal.add(PixelCoordXY(this.pixeles, i, j));               
             }
         }
         setPixeles(pixelesTemporal);
-
     }
     
     
-    // método flipH
+    /**
+    * Descripción: Método que invierte la imagen horizontamente
+    * @author aracely castro
+    */ 
     public void flipH(){
         if(isCompressed()){
             decompress();
@@ -291,7 +357,10 @@ public class Image_21090869_CastroVenegas{
         ordenarPixeles();
     }
     
-    // método flipV
+    /**
+    * Descripción: Método que invierte la imagen verticalmente
+    * @author aracely castro
+    */ 
     public void flipV(){
         if(isCompressed()){
             decompress();
@@ -320,7 +389,13 @@ public class Image_21090869_CastroVenegas{
         ordenarPixeles();
     }
     
-    // metodo para cambiar las coordenadas de una lista
+    /**
+    * Descripción: Método que cambiar las coordenadas de los pixeles desde (0,0) a (ancho-1, largo-1)
+    * @param pixeles: lista de objetos
+    * @param ancho: entero positivo
+    * @param largo: entero positivo
+    * @author aracely castro
+    */ 
     private void cambiarCoordXY(ArrayList pixeles, int ancho, int largo){
         int h = 0;
         for(int i=0; i < ancho; i++){
@@ -351,7 +426,14 @@ public class Image_21090869_CastroVenegas{
         setPixeles(pixeles);
     }
     
-    // metodo crop
+    /**
+    * Descripción: Método que aplica recorte a la imagen
+    * @param X1: entero positivo
+    * @param Y1: entero positivo
+    * @param X2: entero positivo
+    * @param Y2: entero positivo
+    * @author aracely castro
+    */ 
     public void crop(int X1, int Y1, int X2, int Y2){
         if(isCompressed()){
             decompress();
@@ -396,14 +478,16 @@ public class Image_21090869_CastroVenegas{
         setLargo(mayorY-menorY+1);        
         
         // termina de filtrar los pixeles, se reordenan
-        cambiarCoordXY(pixelesTemporal, this.ancho, this.largo);
+        cambiarCoordXY(pixelesTemporal, getAncho(), getLargo());
     }
     
-    // método imgRGBToHex
-   //public String colorRGBToHex(int colorR, int colorG, int colorB){
-        
+    /**
+    * Descripción: Método que entrega el equivalente en número a valor hexadecimal
+    * @param numero: entero positivo
+    * @return devuelve un string
+    * @author aracely castro
+    */    
     private String NumToString(int numero){
-        
         if(numero < 10){
             return Integer.toString(numero);
         } else if (numero == 10){
@@ -420,9 +504,12 @@ public class Image_21090869_CastroVenegas{
             return "F";
         }
         return null;
-    
     }
     
+    /**
+    * Descripción: Método que cambia la imagen pixmap a hexmap
+    * @author aracely castro
+    */ 
     public void imgRGBToHex(){
         if(isCompressed()){
             decompress();
@@ -433,17 +520,17 @@ public class Image_21090869_CastroVenegas{
             String nuevoHex = (String) "#" + NumToString(p.getColorR()/16) + NumToString(p.getColorR()%16) + 
                                              NumToString(p.getColorG()/16) + NumToString(p.getColorG()%16) + 
                                              NumToString(p.getColorB()/16) + NumToString(p.getColorB()%16);
-            
             Pixhex_21090869_CastroVenegas pH = new Pixhex_21090869_CastroVenegas(p.getCoordX(), p.getCoordY(), nuevoHex, p.getProfundidad());
             pixelesNuevos.add(pH);
         }
-        
         setPixeles(pixelesNuevos);
-    
     }   
     
-    
-    // metodo histograma
+    /**
+    * Descripción: Método que obtiene el histograma de la imagen
+    * @return devuelve una lista de sublistas [Color | Cantidad]
+    * @author aracely castro
+    */ 
     public ArrayList histogram(){
         if(isCompressed()){
             decompress();
@@ -492,7 +579,10 @@ public class Image_21090869_CastroVenegas{
         return histograma;
     }
     
-   // método rotate90
+    /**
+    * Descripción: Método que rota la imagen 90° a la derecha
+    * @author aracely castro
+    */ 
     public void rotate90(){
         if(isCompressed()){
             decompress();
@@ -503,29 +593,24 @@ public class Image_21090869_CastroVenegas{
                 if (isBitmap()){
                     Pixbit_21090869_CastroVenegas pixelRecogido =  (Pixbit_21090869_CastroVenegas) pixeles.get(h);
                     pixelRecogido.setCoordY(i);
-                    pixelRecogido.setCoordX(j);
-                    
+                    pixelRecogido.setCoordX(j); 
                 }
                 
                 if (isHexmap()){
                     Pixhex_21090869_CastroVenegas pixelRecogido =  (Pixhex_21090869_CastroVenegas) pixeles.get(h);
                     pixelRecogido.setCoordY(i); 
-                    pixelRecogido.setCoordX(j);
-                    
+                    pixelRecogido.setCoordX(j);  
                 }
                 
                 if (isPixmap()){
                     Pixrgb_21090869_CastroVenegas pixelRecogido =  (Pixrgb_21090869_CastroVenegas) pixeles.get(h);
                     pixelRecogido.setCoordY(i);  
-                    pixelRecogido.setCoordX(j);
-                   
+                    pixelRecogido.setCoordX(j); 
                 }
                 
                 h++;    
-            
             }
         }
-        
         // cambiados las coordenadas se procede a modificar el largo y el ancho antes de ordenar
         int aux = getAncho();
         setAncho(getLargo());
@@ -534,7 +619,12 @@ public class Image_21090869_CastroVenegas{
     }
     
     
-    // método para obtener el color más repetido de un histograma
+    /**
+    * Descripción: Método obtiene el bit más repetido
+    * @param histograma: lista con colores y su cantidad
+    * @return devuelve un entero 0 | 1
+    * @author aracely castro
+    */ 
     public int mayorBit(ArrayList histograma){
         int cantidad = -1;
         int valorH = -1;
@@ -549,7 +639,12 @@ public class Image_21090869_CastroVenegas{
         return valorH;
     }
     
-    // método para obtener el color más repetido de un histograma
+    /**
+    * Descripción: Método que obtiene el color hex más repetido
+    * @param histograma: lista con colores y su cantidad
+    * @return devuelve un string
+    * @author aracely castro
+    */ 
     public String mayorHex(ArrayList histograma){
         int cantidad = -1;
         String valorH = "";
@@ -564,7 +659,12 @@ public class Image_21090869_CastroVenegas{
         return valorH;
     }
     
-    // método para obtener el color más repetido de un histograma
+    /**
+    * Descripción: Método que obtiene el color rgb más repetido
+    * @param histograma: lista con colores y su cantidad
+    * @return devuelve una lista con tres valores enteros positivos
+    * @author aracely castro
+    */ 
     public ArrayList mayorRGB(ArrayList histograma){
         int cantidad = -1;
         ArrayList valorH = new ArrayList();
@@ -580,8 +680,10 @@ public class Image_21090869_CastroVenegas{
     }
     
 
-    
-    // método compress(){}
+    /**
+    * Descripción: Método que comprime la imagen
+    * @author aracely castro
+    */ 
     public void compress(){
         ArrayList histograma = histogram();
         ArrayList pixelesNuevos = new ArrayList();
@@ -628,14 +730,14 @@ public class Image_21090869_CastroVenegas{
                 }
             }
         } 
-        
-        
         setPixeles(pixelesNuevos);
-    
     }
     
-    
-    // metodo changePixel
+    /**
+    * Descripción: Método que cambia un pixel de la imagen
+    * @param pixel: objeto
+    * @author aracely castro
+    */ 
     public void changePixel(Object pixel){
         if(isCompressed()){
             decompress();
@@ -653,7 +755,6 @@ public class Image_21090869_CastroVenegas{
                         pixelesNuevos.add(pixelRecogido);
                     }  
                 }
-                
                 // modificar pixeles
                 setPixeles(pixelesNuevos);
             }
@@ -695,7 +796,10 @@ public class Image_21090869_CastroVenegas{
         }
     }
     
-    // método invertColorBit, OBS: verificar que la imagen es Bitmap antes de permitirse usar este método
+    /**
+    * Descripción: Método que invierte los bits de una imagen bitmap
+    * @author aracely castro
+    */ 
     public void invertColorBit(){
         if(isCompressed()){
             decompress();
@@ -706,7 +810,10 @@ public class Image_21090869_CastroVenegas{
         }
     }
     
-    // método invertColorBit, OBS: verificar que la imagen es Pixmap antes de permitirse usar este método
+    /**
+    * Descripción: Método que invierte los colores rgb de una imagen pixmap
+    * @author aracely castro
+    */ 
     public void invertColorRGB(){
         if(isCompressed()){
             decompress();
@@ -717,8 +824,11 @@ public class Image_21090869_CastroVenegas{
         }
     }
     
-    
-    // método image->string
+    /**
+    * Descripción: Método que obtiene el string de la imagen
+    * @return devuelve un string
+    * @author aracely castro
+    */ 
     public String imageString(){
         if(isCompressed()){
             decompress();
@@ -753,9 +863,12 @@ public class Image_21090869_CastroVenegas{
         return cadena;
     }
     
-    
-    
-    // metodo para recuperar las profundidades de los pixeles de la imagen
+    /**
+    * Descripción: Método que obtiene todas las profundidades de la imagen
+    * @param pixeles: lista de objetos
+    * @return devuelve una lista de valores enteros positivos
+    * @author aracely castro
+    */ 
     private ArrayList getProfundidades(ArrayList pixeles){
         ArrayList profundidades = new ArrayList<>();
         while(!pixeles.isEmpty()){
@@ -771,8 +884,7 @@ public class Image_21090869_CastroVenegas{
                 Pixhex_21090869_CastroVenegas pixelRecogido = (Pixhex_21090869_CastroVenegas) pixeles.get(0);
                 profundidades.add(pixelRecogido.getProfundidad());
                 ArrayList pixelesNuevos = pixelRecogido.eliminarProfundidad(pixeles, pixelRecogido.getProfundidad());
-                pixeles = pixelesNuevos;  
-            
+                pixeles = pixelesNuevos;    
             }
             
             if(isPixmap()){
@@ -785,7 +897,11 @@ public class Image_21090869_CastroVenegas{
         return profundidades;
     }
     
-    // metodo depthLayers
+    /**
+    * Descripción: Método que obtiene una lista de imagenes separadas por profundidad
+    * @return devuelve una lista de imagenes
+    * @author aracely castro
+    */ 
     public ArrayList detpLayers(){
         if(isCompressed()){
             decompress();
@@ -834,7 +950,10 @@ public class Image_21090869_CastroVenegas{
         return listaImagenes;
     }
     
-    // método decompress
+    /**
+    * Descripción: Método que descomprime la imagen
+    * @author aracely castro
+    */ 
     public void decompress(){
         ArrayList pixelesNuevos = new ArrayList();
         ArrayList pixeles = getPixeles();
@@ -888,7 +1007,6 @@ public class Image_21090869_CastroVenegas{
                 }
             }
         }
-        
         setPixeles(pixelesNuevos);
     }
 

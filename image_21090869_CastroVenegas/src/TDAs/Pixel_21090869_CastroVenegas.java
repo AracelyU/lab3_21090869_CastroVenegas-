@@ -4,78 +4,110 @@ package TDAs;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Other/File.java to edit this template
  */
-import java.util.ArrayList;
-import java.util.Scanner;
+
 /**
- *
- * @author arace
+ * Clase para definir el objeto Pixel
+ * @author aracely castro
  */
 public abstract class Pixel_21090869_CastroVenegas{
 
-    /**
-     * @param args the command line arguments
-     */
-    
-    // Definiendo variables comunes de un pixel
+    // atributos de un pixel
     protected int coordX, coordY, profundidad; 
     
-    // constructor de pixeles
-    public Pixel_21090869_CastroVenegas(int CoordX, int CoordY, int Profundidad){
-        this.setCoordX(CoordX);
-        this.setCoordY(CoordY);
-        this.setProfundidad(Profundidad);
+    /**
+    * Descripción: Constructor de pixel
+    * @param coordX: entero positivo. 
+    * @param coordY: entero positivo
+    * @param profundidad: entero positivo
+    * @author aracely castro
+    */
+    public Pixel_21090869_CastroVenegas(int coordX, int coordY, int profundidad){
+        this.setCoordX(coordX);
+        this.setCoordY(coordY);
+        this.setProfundidad(profundidad);
     }
       
    
-    // definiendo getters
-    
-    // retonar coordX del pixel
+    /**
+    * Descripción: Método para obtener el valor coordX de un pixel
+    * @return devuelve un entero positivo
+    * @author aracely castro
+    */
     public int getCoordX(){
         return coordX;
     }
     
-    // retornar coordY del pixel
+    /**
+    * Descripción: Método para obtener el valor coordY de un pixel
+    * @return devuelve un entero positivo
+    * @author aracely castro
+    */
     public int getCoordY(){
         return coordY;
     }
     
-    // retornar profundidad del pixel
+    /**
+    * Descripción: Método para obtener el valor profundidad de un pixel
+    * @return devuelve un entero positivo
+    * @author aracely castro
+    */
     public int getProfundidad(){
         return profundidad;
     }
     
-    // definiendo setters
-    
-    // cambiar coordX
-    public void setCoordX(int CoordX){
-        if (CoordX >= 0){
-            this.coordX = CoordX;
+    /**
+    * Descripción: Método para cambiar el valor coordX de un pixel
+    * @param coordX: entero positivo
+    * @author aracely castro
+    */
+    public void setCoordX(int coordX){
+        if (coordX >= 0){
+            this.coordX = coordX;
         }
     }    
     
-    // cambiar coordY
-    public void setCoordY(int CoordY){
-        if (CoordY >= 0){
-            this.coordY = CoordY;
+    /**
+    * Descripción: Método para cambiar el valor coordY de un pixel
+    * @param coordY: entero positivo
+    * @author aracely castro
+    */
+    public void setCoordY(int coordY){
+        if (coordY >= 0){
+            this.coordY = coordY;
         }
     }
     
-    // cambiar profundidad
-    public void setProfundidad(int Profundidad){
-        if (Profundidad >= 0){
-            this.profundidad = Profundidad;
+    /**
+    * Descripción: Método para cambiar el valor profundidad de un pixel
+    * @param profundidad: entero positivo
+    * @author aracely castro
+    */
+    public void setProfundidad(int profundidad){
+        if (profundidad >= 0){
+            this.profundidad = profundidad;
         }
     }
     
     
-    // metodo que verifica si coordenadas son iguales 
-    public boolean igualCoordXY(int CoordX, int CoordY){
-        return (getCoordX()==CoordX && getCoordY()==CoordY);
+    /**
+    * Descripción: Método para que verifica si tiene igual coordenada x e y
+    * @param coordX: entero positivo
+    * @param coordY: entero positivo
+    * @return devuelve un boleano
+    * @author aracely castro
+    */
+    public boolean igualCoordXY(int coordX, int coordY){
+        return (getCoordX()==coordX && getCoordY()==coordY);
     }
     
-    // metodo que verifica si profundidad son iguales
-    public boolean igualProfundidad(int Profundidad){
-        return (getProfundidad() == Profundidad);
+    /**
+    * Descripción: Método para que verifica si tiene igual profundidad
+    * @param profundidad: entero positivo
+    * @return devuelve un boleano
+    * @author aracely castro
+    */
+    public boolean igualProfundidad(int profundidad){
+        return (getProfundidad() == profundidad);
     }
     
 }

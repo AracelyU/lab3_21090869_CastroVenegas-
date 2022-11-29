@@ -5,80 +5,130 @@
 package TDAs;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
- *
- * @author arace
+ * Clase para definir el objeto Pixrgb
+ * @author aracely castro
  */
 public class Pixrgb_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas{
    
-    // variables del pixrgb
+    // atributos del pixrgb
     private int colorR;
     private int colorG;
     private int colorB;
     
-    // constructor de un pixrgb
-    public Pixrgb_21090869_CastroVenegas(int vCoordX, int vCoordY, int vColorR, int vColorG, int vColorB, int vProfundidad){
-        super(vCoordX, vCoordY, vProfundidad);
-        setColorR(vColorR);
-        setColorG(vColorG);
-        setColorB(vColorB);
+    /**
+    * Descripción: Constructor de pixrgb_comprimido
+    * @param coordX: entero positivo. 
+    * @param coordY: entero positivo
+    * @param colorR: entero entre 0 y 255
+    * @param colorG: entero entre 0 y 255
+    * @param colorB: entero entre 0 y 255
+    * @param profundidad: entero positivo
+    * @author aracely castro
+    *
+    */
+    public Pixrgb_21090869_CastroVenegas(int coordX, int coordY, int colorR, int colorG, int colorB, int profundidad){
+        super(coordX, coordY, profundidad);
+        setColorR(colorR);
+        setColorG(colorG);
+        setColorB(colorB);
     }
     
-    // definir getters
-    
-    // retornar colorR
+    /**
+    * Descripción: Método para obtener el valor color rojo de un pixrgb
+    * @return devuelve un entero entre 0 y 255
+    * @author aracely castro
+    */
     public int getColorR(){
         return this.colorR;
     }
     
-    // retornar colorG
+    /**
+    * Descripción: Método para obtener el valor color verde de un pixrgb
+    * @return devuelve un entero entre 0 y 255
+    * @author aracely castro
+    */
     public int getColorG(){
         return this.colorG;
     }
         
-    // retornar colorB
+    /**
+    * Descripción: Método para obtener el valor color azul de un pixrgb
+    * @return devuelve un entero entre 0 y 255
+    * @author aracely castro
+    */
     public int getColorB(){
         return this.colorB;
     }
     
-    // definir setters
-    
-    // cambiar colorR
-    public void setColorR(int ColorR){
-        if (ColorR >= 0 && ColorR <= 255){
-            this.colorR = ColorR;
+    /**
+    * Descripción: Método para cambiar el valor color rojo de un pixrgb
+    * @param colorR: entero entre 0 y 255
+    * @author aracely castro
+    */
+    private void setColorR(int colorR){
+        if (colorR >= 0 && colorR <= 255){
+            this.colorR = colorR;
         }
     }
     
-    // cambiar colorG
-    public void setColorG(int ColorG){
-        if (ColorG >= 0 && ColorG <= 255){
-            this.colorG = ColorG;
+    /**
+    * Descripción: Método para cambiar el valor color verde de un pixrgb
+    * @param colorG: entero entre 0 y 255
+    * @author aracely castro
+    */
+    private void setColorG(int colorG){
+        if (colorG >= 0 && colorG <= 255){
+            this.colorG = colorG;
         }
     }
     
-    // cambiar colorB
-    public void setColorB(int ColorB){
-        if (ColorB >= 0 && ColorB <= 255){
-            this.colorB = ColorB;
+    /**
+    * Descripción: Método para cambiar el valor color azul de un pixrgb
+    * @param colorB: entero entre 0 y 255
+    * @author aracely castro
+    */
+    private void setColorB(int colorB){
+        if (colorB >= 0 && colorB <= 255){
+            this.colorB = colorB;
         }
     }
     
-    // método que invierte los colores recibidos
+    /**
+    * Descripción: Método para invierte el color rgb recibido
+    * @param colorR: entero entre 0 y 255
+    * @param colorG: entero entre 0 y 255
+    * @param colorB: entero entre 0 y 255
+    * @author aracely castro
+    */
     public void invertRGB(int colorR, int colorG, int colorB){
         setColorR(255- colorR);
         setColorG(255- colorG);
         setColorB(255- colorB);
     }
    
-    // método que compara si un hex es igual
+    /**
+    * Descripción: Método para compara si se tiene el mismo color rgb ingresado
+    * @param colorR: entero entre 0 y 255
+    * @param colorG: entero entre 0 y 255
+    * @param colorB: entero entre 0 y 255
+    * @return devuelve un boleano
+    * @author aracely castro
+    */
     public boolean igualColorRGB(int colorR, int colorG, int colorB){
         return ((getColorR() == colorR) && (getColorG() == colorG) && (getColorB() == colorB));
     }
     
-    // metódo que suma la cantidad de veces que se repite un color RGB en una lista de objetos
+    /**
+    * Descripción: Método para suma los pixrgb con mismo color rgb
+    * @param colorR: entero entre 0 y 255
+    * @param colorG: entero entre 0 y 255
+    * @param colorB: entero entre 0 y 255
+    * @param pixeles: lista de objetos
+    * @return devuelve un entero
+    * @author aracely castro
+    */
     public int sumaColorRGB(ArrayList pixeles, int colorR, int colorG, int colorB){
         int suma = 0;
         for(int i =0; i < pixeles.size(); i++){
@@ -90,7 +140,15 @@ public class Pixrgb_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas{
         return suma;
     }   
     
-    // método que eliminar pixeles que sean iguales a un color
+    /**
+    * Descripción: Método para elimina los pixrgb con mismo color rgb ingresado
+    * @param colorR: entero entre 0 y 255
+    * @param colorG: entero entre 0 y 255
+    * @param colorB: entero entre 0 y 255
+    * @param pixeles: lista de objetos
+    * @return devuelve una lista de objetos
+    * @author aracely castro
+    */
     public ArrayList eliminarColorRGB(ArrayList pixeles, int colorR, int colorG, int colorB){
         ArrayList pixelesTemporal = new ArrayList();
         for(int i=0; i < pixeles.size(); i++){
@@ -102,24 +160,38 @@ public class Pixrgb_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas{
         return pixelesTemporal;
     }
     
-    // método que elimina los pixeles que tengan una profundidad
-    public ArrayList eliminarProfundidad(ArrayList pixeles, int Profundidad){
+    /**
+    * Descripción: Método para elimina los pixrgb con misma profundidad a la ingresada
+    * @param profundidad: entero positivo
+    * @param pixeles: lista de objetos
+    * @return devuelve una lista de objetos
+    * @author aracely castro
+    */
+    public ArrayList eliminarProfundidad(ArrayList pixeles, int profundidad){
         ArrayList pixelesTemporal = new ArrayList();
         for(int i=0; i < pixeles.size(); i++){
             Pixrgb_21090869_CastroVenegas pixelRecogido = (Pixrgb_21090869_CastroVenegas) pixeles.get(i);
-            if(!pixelRecogido.igualProfundidad(Profundidad)){
+            if(!pixelRecogido.igualProfundidad(profundidad)){
                 pixelesTemporal.add(pixelRecogido);
             }
         }
         return pixelesTemporal;
     }
     
+    /**
+    * Descripción: Método que crea un pixrgb blanco con profundidad ingresada
+    * @param profundidad: entero positivo
+    * @return devuelve un pixrgb
+    * @author aracely castro
+    */
     public Pixrgb_21090869_CastroVenegas pixelBlancoRGB(int profundidad){
         Pixrgb_21090869_CastroVenegas pixel = new Pixrgb_21090869_CastroVenegas(getCoordX(), getCoordY(), 255, 255, 255, profundidad);
         return pixel;
     }
-    
-    // mostrar información del pixrgb
+    /**
+    * Descripción: Método para imprimir el pixrgb
+    * @author aracely castro
+    */   
     public void mostrarPixrgb(){
         ArrayList pixel = new ArrayList();
         pixel.add(getCoordX());

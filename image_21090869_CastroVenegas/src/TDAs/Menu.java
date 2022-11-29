@@ -2,14 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Main;
-import TDAs.*;
+package TDAs;
 import java.util.Scanner;
 import java.util.ArrayList;
         
 /**
- *
- * @author arace
+ * Clase que realiza la simulación de tratamiento de imagenes por consola
+ * @author aracely castro
  */
 public class Menu{
     
@@ -33,7 +32,13 @@ public class Menu{
         return salirMenu;
     }
     
-    public void MenuPrincipal(){
+    
+    public void EjecutarMenu(){
+        MenuPrincipal();
+        ScannerOpcion();
+    }
+    
+    private void MenuPrincipal(){
         System.out.println("### Manipulador de imágenes ###");
         System.out.println("Escoja su opción: ");
         System.out.println("1. Crear una imagen");
@@ -45,12 +50,11 @@ public class Menu{
             System.out.println("5. Salir");
         } else{
             System.out.println("4. Salir");
-        }
-        
+        }  
         
     }
     
-    public void ScannerOpcion(){
+    private void ScannerOpcion(){
         Scanner entrada = new Scanner(System.in);
         int eleccion = entrada.nextInt();
         
@@ -121,7 +125,6 @@ public class Menu{
                         }
                     }
                     setImagenes(imagenesN);
-                    
                     break;
                     
                 } else{
@@ -233,8 +236,7 @@ public class Menu{
             int coordX = entrada.nextInt();
             System.out.println("Ingresar y: ");
             int coordY = entrada.nextInt();
-            System.out.println("Ingresar hex (#RRGGBB)1"
-                    + ": ");
+            System.out.println("Ingresar hex (#RRGGBB): ");
             entrada.nextLine();
             String hex = entrada.nextLine();
             System.out.println("Ingresar profundidad: ");
@@ -454,21 +456,21 @@ public class Menu{
         Image_21090869_CastroVenegas imagenN;
         switch(opcion){
             case 1:
-               System.out.println("Has seleccionado isBitmap");
-               System.out.println("La respuesta es: " + image.isBitmap());
-               break;
+                System.out.println("Has seleccionado isBitmap");
+                System.out.println("La respuesta es: " + image.isBitmap());
+                break;
             case 2:
-               System.out.println("Has seleccionado isPixmap");
-               System.out.println("La respuesta es: " + image.isPixmap());
-               break;
+                System.out.println("Has seleccionado isPixmap");
+                System.out.println("La respuesta es: " + image.isPixmap());
+                break;
             case 3:
-               System.out.println("Has seleccionado isHexmap");
-               System.out.println("La respuesta es: " + image.isHexmap());
-               break;
+                System.out.println("Has seleccionado isHexmap");
+                System.out.println("La respuesta es: " + image.isHexmap());
+                break;
             case 4:
-               System.out.println("Has seleccionado isCompressed");
-               System.out.println("La respuesta es: " + image.isCompressed());
-               break;
+                System.out.println("Has seleccionado isCompressed");
+                System.out.println("La respuesta es: " + image.isCompressed());
+                break;
                
             case 5: 
                 System.out.println("Has seleccionado flipH");
@@ -674,8 +676,8 @@ public class Menu{
                 
            
             default:
-               System.out.println("Esa opción no existe");
-               break;
+                System.out.println("Esa opción no existe");
+                break;
        }
    }
    
@@ -689,21 +691,21 @@ public class Menu{
         while(opcion != 1 && opcion != 2 && opcion != 3){
             System.out.println("Ingrese opción: ");
             opcion = entrada.nextInt();
-            }
+        }
         switch(opcion){
             case 1: // guardar imagen y volver al menu
                 System.out.println("\nLa imagen se ha guardado correctamente");
                 listaImagenes.add(image);
                 break;
             case 2:
-                    System.out.println("\nLa imagen se ha sobreescribido correctamente");
-                    imagenN =  new Image_21090869_CastroVenegas(image.getAncho(), image.getLargo(), image.getPixeles());
-                    sobreescribirImagen(opcionImage, getImagenes(), imagenN);
-                    sobreescribirImagen(opcionImage, getImagenes(), image);
-                    break;
+                System.out.println("\nLa imagen se ha sobreescribido correctamente");
+                imagenN =  new Image_21090869_CastroVenegas(image.getAncho(), image.getLargo(), image.getPixeles());
+                sobreescribirImagen(opcionImage, getImagenes(), imagenN);
+                sobreescribirImagen(opcionImage, getImagenes(), image);
+                break;
             case 3:
-                    System.out.println("\nLa imagen no se ha guardado");
-                    break;
+                System.out.println("\nLa imagen no se ha guardado");
+                break;
         }
    }
     

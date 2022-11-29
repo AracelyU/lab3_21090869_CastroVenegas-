@@ -6,12 +6,13 @@ package TDAs;
 import java.util.ArrayList;
 
 /**
+ * Clase para definir el objeto Pixrgb_comprimido
+ * @author aracely castro
  *
- * @author arace
  */
 public class Pixrgb_comprimido_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas {
-    
-    
+
+    // atributos de pixrgb_comprimido
     private int colorRGuardado;
     private int colorGGuardado;
     private int colorBGuardado;
@@ -19,7 +20,14 @@ public class Pixrgb_comprimido_21090869_CastroVenegas extends Pixel_21090869_Cas
     private int colorGComprimido;
     private int colorBComprimido;
     
-    
+    /**
+    * Descripción: Constructor de pixrgb_comprimido
+    * @param coordX: entero positivo. 
+    * @param coordY: entero positivo
+    * @param colorRGB: lista con tres valores positivos
+    * @param profundidad: entero positivo
+    * @author aracely castro
+    */
     public Pixrgb_comprimido_21090869_CastroVenegas( int coordX, int coordY, ArrayList colorRGB, int profundidad){
         super(coordX, coordY, profundidad);
         this.colorRComprimido = -1;
@@ -30,36 +38,70 @@ public class Pixrgb_comprimido_21090869_CastroVenegas extends Pixel_21090869_Cas
         setColorBG((int) colorRGB.get(2));
     }
 
-    public void setColorRG(int colorRGuardado){
+    /**
+    * Descripción: Método para cambiar el valor color rojo guardado de un pixrgb
+    * @param colorRGuardado: un número entero positivo entre 0 y 255 
+    * @author aracely castro
+    */
+    private void setColorRG(int colorRGuardado){
         if(colorRGuardado >= 0 && colorRGuardado <= 255){
             this.colorRGuardado = colorRGuardado;
         }
     }
-        
-    public void setColorGG(int colorGGuardado){
+    
+    /**
+    * Descripción: Método para cambiar el valor color verde guardado de un pixrgb_comprimido
+    * @param colorGGuardado: un número entero positivo entre 0 y 255 
+    * @author aracely castro
+    */       
+    private void setColorGG(int colorGGuardado){
         if(colorGGuardado >= 0 && colorGGuardado <= 255){
             this.colorGGuardado = colorGGuardado;
         }
     }
-        
-    public void setColorBG(int colorBGuardado){
+    
+    /**
+    * Descripción: Método para cambiar el valor color azul guardado de un pixrgb_comprimido
+    * @param colorBGuardado: un número entero positivo entre 0 y 255 
+    * @author aracely castro
+    */        
+    private void setColorBG(int colorBGuardado){
         if(colorGGuardado >= 0 && colorBGuardado <= 255){
             this.colorBGuardado = colorBGuardado;
         }      
     }
     
+    /**
+    * Descripción: Método para obtener el valor color rojo guardado de un pixrgb_comprimido
+    * @return devuelve un valor color rojo guardado en un pixrgb_comprimido
+    * @author aracely castro
+    */ 
     public int getColorRGuardado(){
         return colorRGuardado;
     }
-
+    
+    /**
+    * Descripción: Método para obtener el valor color verde guardado de un pixrgb_comprimido
+    * @return devuelve un valor color verde guardado en un pixrgb_comprimido
+    * @author aracely castro
+    */ 
     public int getColorGGuardado(){
         return colorGGuardado;
     }
     
+    /**
+    * Descripción: Método para obtener el valor color azul guardado de un pixrgb_comprimido
+    * @return devuelve un valor color azul guardado en un pixrgb_comprimido
+    * @author aracely castro
+    */    
     public int getColorBGuardado(){
         return colorBGuardado;
     }    
     
+    /**
+    * Descripción: Método para imprimir el pixrgb_comprimido
+    * @author aracely castro
+    */    
     public void mostrarPixrgbC(){
         ArrayList pixel = new ArrayList();
         pixel.add(getCoordX());
