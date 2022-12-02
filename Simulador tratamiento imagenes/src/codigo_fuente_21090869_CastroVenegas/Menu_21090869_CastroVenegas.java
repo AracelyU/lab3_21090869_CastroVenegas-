@@ -33,6 +33,7 @@ public class Menu_21090869_CastroVenegas {
         return salirMenu;
     }
     
+    
     /**
      * Descripción: Método para ejecutar los método principales para ejecutar el programa
      * @author aracely castro
@@ -62,6 +63,7 @@ public class Menu_21090869_CastroVenegas {
     private void ScannerOpcion(){
         Scanner entrada = new Scanner(System.in);
         try {
+            
             System.out.print("Ingrese su opcion: ");
             int eleccion = entrada.nextInt();
             switch(eleccion){
@@ -70,11 +72,18 @@ public class Menu_21090869_CastroVenegas {
                     ScannerOpcion1();
                     break;
                 case 2:
+                    if((image.getAncho() == 0) && (image.getLargo() == 0) && (image.getPixeles() == null)){
+                        System.out.println("Para modificar una imagen debe de tener una imagen creada");
+                        break;
+                    }
                     mensajesOpcion2();
                     ScannerOpcion2();
-                    
                     break;
                 case 3:
+                    if((image.getAncho() == 0) && (image.getLargo() == 0) && (image.getPixeles() == null)){
+                        System.out.println("No hay imagen para visualizar");
+                        break;
+                    }
                     mostrarImage();
                     break;
                 case 4:
@@ -166,8 +175,8 @@ public class Menu_21090869_CastroVenegas {
         System.out.println("13. invertColorBit");
         System.out.println("14. invertColorRGB");
         System.out.println("15. imageString");
-        System.out.println("12. depthLayers");
-        System.out.println("13. decompress");
+        System.out.println("16. depthLayers");
+        System.out.println("17. decompress");
     }
     
     /**
@@ -179,6 +188,12 @@ public class Menu_21090869_CastroVenegas {
         try {
             System.out.print("Ingrese su opcion: ");
             int eleccion = entrada.nextInt();
+            
+            if((image.getAncho() == 0) && (image.getLargo() == 0) && (image.getPixeles() == null)){
+                System.out.println("Para modificar una imagen debe de tener una imagen creada");
+               
+            }
+            
             switch(eleccion){
                 case 1:
                     System.out.println("Has seleccionado isBitmap");
@@ -202,137 +217,138 @@ public class Menu_21090869_CastroVenegas {
                     System.out.println("Se ha aplicado flipH a la imagen.\n");
                     break;
                 
-            case 6:
-                System.out.println("Has seleccionado flipV");
-                image.flipV();
-                System.out.println("Se ha aplicado flipV a la imagen.\n");
-                break;
+                case 6:
+                    System.out.println("Has seleccionado flipV");
+                    image.flipV();
+                    System.out.println("Se ha aplicado flipV a la imagen.\n");
+                    break;
                 
                 case 7:
-                System.out.println("Has seleccionado crop");
-                System.out.println("Ingrese X1: ");
-                int x1 = entrada.nextInt();
-                System.out.println("Ingrese Y1: ");
-                int y1 = entrada.nextInt();
-                System.out.println("Ingrese X2: ");
-                int x2 = entrada.nextInt();
-                System.out.println("Ingrese Y2: ");
-                int y2 = entrada.nextInt();
-                image.crop(x1, y1, x2, y2);
-                System.out.println("Se ha aplicado crop a la imagen.\n");
-                break;
-                
-            case 8:
-                System.out.println("Has seleccionado imgRGBToHex");
-                if(!image.isPixmap()){
-                    System.out.println("No puedes aplicar este metodo a una imagen que no sea Pixmap");
+                    System.out.println("Has seleccionado crop");
+                    System.out.println("Ingrese X1: ");
+                    int x1 = entrada.nextInt();
+                    System.out.println("Ingrese Y1: ");
+                    int y1 = entrada.nextInt();
+                    System.out.println("Ingrese X2: ");
+                    int x2 = entrada.nextInt();
+                    System.out.println("Ingrese Y2: ");
+                    int y2 = entrada.nextInt();
+                    image.crop(x1, y1, x2, y2);
+                    System.out.println("Se ha aplicado crop a la imagen.\n");
                     break;
-                }
                 
-                image.imgRGBToHex();
-                System.out.println("Se ha aplicado imgRGBToHex a la imagen.\n");
-                break;
+                case 8:
+                    System.out.println("Has seleccionado imgRGBToHex");
+                    if(!image.isPixmap()){
+                        System.out.println("No puedes aplicar este metodo a una imagen que no sea Pixmap");
+                        break;
+                    }
                 
-            case 9:
-                System.out.println("Has seleccionado histogram");
-                System.out.println("Se ha aplicado histogram a la imagen.\n");
-                System.out.println("Histograma de la imagen: " + image.mostrarHistogram(image.histogram()));
-                break;
+                    image.imgRGBToHex();
+                    System.out.println("Se ha aplicado imgRGBToHex a la imagen.\n");
+                    break;
+                
+                case 9:
+                    System.out.println("Has seleccionado histogram");
+                    System.out.println("Se ha aplicado histogram a la imagen.\n");
+                    System.out.println("Histograma de la imagen: " + image.mostrarHistogram(image.histogram()));
+                    break;
                 
                 case 10:
-                System.out.println("Has seleccionado rotate90");
-                image.rotate90();
-                System.out.println("Se ha aplicado rotate90 a la imagen.\n");
-                break;
+                    System.out.println("Has seleccionado rotate90");
+                    image.rotate90();
+                    System.out.println("Se ha aplicado rotate90 a la imagen.\n");
+                    break;
             
-            case 11:
-                System.out.println("Has seleccionado compressed");
-                image.compress();
-                System.out.println("Imagen comprimida");
-                image.mostrarImage();
-                System.out.println("Se ha aplicado compress la imagen.\n");
-                break;
-                
-            case 12:
-                System.out.println("Has seleccionado changePixel");
-                System.out.println("Crear pixel a reemplazar");
-                
-                if(image.isCompressed()){
-                    image.decompress();
-                }
-                
-                if(image.isBitmap()){ 
-                    Pixbit_21090869_CastroVenegas pixel = image.crearPixbit("nuevo");
-                    image.changePixel(pixel);
-                }
-                
-                if(image.isPixmap()){
-                    Pixrgb_21090869_CastroVenegas pixel = image.crearPixrgb("nuevo");
-                    image.changePixel(pixel);
-                }
-                
-                if(image.isHexmap()){
-                    Pixhex_21090869_CastroVenegas pixel = image.crearPixhex("nuevo");
-                    image.changePixel(pixel);
-                }
-
-                System.out.println("Se ha aplicado changePixel la imagen.\n");
-                break;
-                
-            case 13:
-                System.out.println("Has seleccionado invertColorBit");
-                if(!image.isBitmap()){
-                    System.out.println("No puedes aplicar este metodo a una imagen que no sea Bitmap");
+                case 11:
+                    System.out.println("Has seleccionado compressed");
+                    image.compress();
+                    System.out.println("Imagen comprimida");
+                    image.mostrarImage();
+                    System.out.println("Se ha aplicado compress la imagen.\n");
                     break;
-                }
                 
-                image.invertColorBit();
-                System.out.println("Se ha aplicado invertColorBit a la imagen.\n");
-                break;
+                case 12:
+                    System.out.println("Has seleccionado changePixel");
+                    System.out.println("Crear pixel a reemplazar");
                 
-            case 14:
-                System.out.println("Has seleccionado invertColorRGB");
-                if(!image.isPixmap()){
-                    System.out.println("No puedes aplicar este metodo a una imagen que no sea Pixmap");
+                    if(image.isCompressed()){
+                        image.decompress();
+                    }
+                
+                    if(image.isBitmap()){ 
+                        Pixbit_21090869_CastroVenegas pixel = image.crearPixbit("nuevo");
+                        image.changePixel(pixel);
+                    }
+                
+                    if(image.isPixmap()){
+                        Pixrgb_21090869_CastroVenegas pixel = image.crearPixrgb("nuevo");
+                        image.changePixel(pixel);
+                    }
+                
+                    if(image.isHexmap()){
+                        Pixhex_21090869_CastroVenegas pixel = image.crearPixhex("nuevo");
+                        image.changePixel(pixel);
+                    }
+
+                    System.out.println("Se ha aplicado changePixel la imagen.\n");
                     break;
-                }
-
-                image.invertColorRGB();
-                System.out.println("Se ha aplicado invertColorRGB a la imagen.\n");
-                break;
-
-            case 15:
-                System.out.println("Has seleccionado imageString");   
-                System.out.println("-----------------------------");
-                System.out.println("Imagen resultante: ");
-                System.out.println(image.imageString());
-                System.out.println("-----------------------------");
-                System.out.println("Se ha aplicado invertColorRGB a la imagen.\n");
-                break;
                 
-            case 16:
-                System.out.println("Has seleccionado depthLayers");   
-                ArrayList<Image_21090869_CastroVenegas> imagenes  = image.detpLayers();
-                System.out.println("Se ha aplicado depthLayers la imagen.\n");
-                System.out.println("-----------------------------");
-                System.out.println("Imagenes resultantes");
-                for(int i=0; i< imagenes.size(); i++){
-                    Image_21090869_CastroVenegas imagen = (Image_21090869_CastroVenegas) imagenes.get(i);
-                    imagen.mostrarImage();
-                    System.out.println();
-                }
-                System.out.println("-----------------------------");
-                break;                
+                case 13:
+                    System.out.println("Has seleccionado invertColorBit");
+                    if(!image.isBitmap()){
+                        System.out.println("No puedes aplicar este metodo a una imagen que no sea Bitmap");
+                        break;
+                    }
+                
+                    image.invertColorBit();
+                    System.out.println("Se ha aplicado invertColorBit a la imagen.\n");
+                    break;
+                
+                case 14:
+                    System.out.println("Has seleccionado invertColorRGB");
+                    if(!image.isPixmap()){
+                        System.out.println("No puedes aplicar este metodo a una imagen que no sea Pixmap");
+                        break;
+                    }
+
+                    image.invertColorRGB();
+                    System.out.println("Se ha aplicado invertColorRGB a la imagen.\n");
+                    break;
+
+                case 15:
+                    System.out.println("Has seleccionado imageString");   
+                    System.out.println("-----------------------------");
+                    System.out.println("Imagen resultante: ");
+                    System.out.println(image.imageString());
+                    System.out.println("-----------------------------");
+                    System.out.println("Se ha aplicado invertColorRGB a la imagen.\n");
+                    break;
+                
+                case 16:
+                    System.out.println("Has seleccionado depthLayers");   
+                    ArrayList<Image_21090869_CastroVenegas> imagenes  = image.detpLayers();
+                    System.out.println("Se ha aplicado depthLayers la imagen.\n");
+                    System.out.println("-----------------------------");
+                    System.out.println("Imagenes resultantes");
+                    for(int i=0; i< imagenes.size(); i++){
+                        System.out.println("Imagen " + (i+1));
+                        Image_21090869_CastroVenegas imagen = (Image_21090869_CastroVenegas) imagenes.get(i);
+                        System.out.println(imagen.imageString());
+                        System.out.println();
+                    }
+                    System.out.println("-----------------------------");
+                    break;                
                         
-            case 17:
-                System.out.println("Has seleccionado decompress");
-                if (!image.isCompressed()){
-                    System.out.println("Solo se puede descomprimir una imagen comprimida");
+                case 17:
+                    System.out.println("Has seleccionado decompress");
+                    if (!image.isCompressed()){
+                        System.out.println("Solo se puede descomprimir una imagen comprimida");
+                        break;
+                    }
+                    image.decompress();
+                    System.out.println("Se ha aplicado decompress la imagen.\n");
                     break;
-                }
-                image.decompress();
-                System.out.println("Se ha aplicado decompress la imagen.\n");
-                break;
                 
                 
                 default:
@@ -353,6 +369,7 @@ public class Menu_21090869_CastroVenegas {
      * @author aracely castro
      */
     private void mostrarImage(){
+        System.out.println("Ancho: " + image.getAncho() + " Largo: " + image.getLargo());
         if (image.isBitmap()){
             System.out.println("Bitmap creado");
             
