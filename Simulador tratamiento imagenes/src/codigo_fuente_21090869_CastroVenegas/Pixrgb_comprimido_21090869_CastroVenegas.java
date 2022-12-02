@@ -15,9 +15,6 @@ public class Pixrgb_comprimido_21090869_CastroVenegas extends Pixel_21090869_Cas
     private int colorRGuardado;
     private int colorGGuardado;
     private int colorBGuardado;
-    private int colorRComprimido;
-    private int colorGComprimido;
-    private int colorBComprimido;
     
     /**
     * Descripción: Constructor de pixrgb_comprimido
@@ -29,9 +26,6 @@ public class Pixrgb_comprimido_21090869_CastroVenegas extends Pixel_21090869_Cas
     */
     public Pixrgb_comprimido_21090869_CastroVenegas( int coordX, int coordY, ArrayList<Integer> colorRGB, int profundidad){
         super(coordX, coordY, profundidad);
-        this.colorRComprimido = -1;
-        this.colorGComprimido = -1;
-        this.colorBComprimido = -1;
         setColorRG((int) colorRGB.get(0));
         setColorGG((int) colorRGB.get(1));
         setColorBG((int) colorRGB.get(2));

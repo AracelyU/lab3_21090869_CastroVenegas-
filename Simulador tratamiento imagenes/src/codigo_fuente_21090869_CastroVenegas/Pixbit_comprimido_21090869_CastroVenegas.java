@@ -11,8 +11,7 @@ package codigo_fuente_21090869_CastroVenegas;
 public class Pixbit_comprimido_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas implements InterfazPixbit_comprimido_21090869_CastroVenegas{
     // atributos de pixbit_comprimido
     private int bitGuardado;
-    private int bitComprimido;
-    
+
     /**
     * Descripción: Constructor de pixbit_comprimido
     * @param coordX: entero positivo. 
@@ -23,7 +22,6 @@ public class Pixbit_comprimido_21090869_CastroVenegas extends Pixel_21090869_Cas
     */
     public Pixbit_comprimido_21090869_CastroVenegas( int coordX, int coordY, int bitGuardado, int profundidad){
         super(coordX, coordY, profundidad);
-        this.bitComprimido = -1;
         setBitGuardado(bitGuardado);
     }
     

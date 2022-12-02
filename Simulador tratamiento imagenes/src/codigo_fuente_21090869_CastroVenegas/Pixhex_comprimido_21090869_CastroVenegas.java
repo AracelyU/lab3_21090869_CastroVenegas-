@@ -11,7 +11,6 @@ package codigo_fuente_21090869_CastroVenegas;
 public class Pixhex_comprimido_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas implements Interfaz_Pixhex_comprimido_21090869_CastroVenegas {
     // atributos de un pixhex_comprimido
     private String hexGuardado;
-    private String hexComprimido;
     
     /**
     * Descripción: Constructor de pixhex_comprimido
@@ -23,7 +22,6 @@ public class Pixhex_comprimido_21090869_CastroVenegas extends Pixel_21090869_Cas
     */
     public Pixhex_comprimido_21090869_CastroVenegas( int coordX, int coordY, String hexGuardado, int profundidad){
         super(coordX, coordY, profundidad);
-        this.hexComprimido = "-------";
         setHexGuardado(hexGuardado);
     }
 
