@@ -7,8 +7,17 @@ package codigo_fuente_21090869_CastroVenegas;
 import java.util.ArrayList;
 
 /**
- *
- * @author arace
+ * Implementa el objeto pixrgb_comprimido. Es una clase hija de Pixel_21090869_CastroVenegas 
+ * 
+ * Representación: Se considera un objeto pixrgb_comprimido con tres atributos, todos enteros
+ * para indicar los valores del color en RGB antes de ser comprimido. 
+ * 
+ * Relaciones
+ * 
+ * Tiene relación de composición con Image_21090869_CastroVenegas, siento esta
+ * la clase miembro
+ * 
+ * @author aracely castro
  */
 public class Pixrgb_comprimido_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas {
     // atributos de pixrgb_comprimido
@@ -16,6 +25,7 @@ public class Pixrgb_comprimido_21090869_CastroVenegas extends Pixel_21090869_Cas
     private int colorGGuardado;
     private int colorBGuardado;
     
+    //################################ CONSTRUCTOR ######################################
     /**
     * Descripción: Constructor de pixrgb_comprimido
     * @param coordX: entero positivo. 
@@ -31,6 +41,7 @@ public class Pixrgb_comprimido_21090869_CastroVenegas extends Pixel_21090869_Cas
         setColorBG((int) colorRGB.get(2));
     }
 
+    //################################ MODIFICADORES ######################################
     /**
     * Descripción: Método para cambiar el valor color rojo guardado de un pixrgb
     * @param colorRGuardado: un número entero positivo entre 0 y 255 
@@ -64,6 +75,7 @@ public class Pixrgb_comprimido_21090869_CastroVenegas extends Pixel_21090869_Cas
         }      
     }
     
+    //################################ SELECTORES ######################################
     /**
     * Descripción: Método para obtener el valor color rojo guardado de un pixrgb_comprimido
     * @return devuelve un valor color rojo guardado en un pixrgb_comprimido
@@ -87,16 +99,8 @@ public class Pixrgb_comprimido_21090869_CastroVenegas extends Pixel_21090869_Cas
     * @return devuelve un valor color azul guardado en un pixrgb_comprimido
     * @author aracely castro
     */    
+
     public int getColorBGuardado(){
         return colorBGuardado;
     }    
-    
-    /**
-    * Descripción: Método para imprimir el pixrgb_comprimido
-    * @author aracely castro
-    * @return devuelve un String
-    */    
-   public String mostrarPixrgbC(){
-        return "["+String.valueOf(coordX)+","+String.valueOf(coordY)+",-1,-1,-1,"+String.valueOf(profundidad) +"] ";
-    }
 }

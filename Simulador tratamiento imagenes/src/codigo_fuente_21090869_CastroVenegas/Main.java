@@ -5,8 +5,16 @@ package codigo_fuente_21090869_CastroVenegas;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 /**
- *
- * @author arace
+ * Contiene el programa que se ejecuta por main
+ * 
+ * Representación: Solo tiene el método para ejecutar el programa
+ * 
+ * Relaciones
+ * 
+ * Tiene relación de composición con Menu_21090869_CastroVenegas, siendo
+ * esta la clase contenedora
+ * 
+ * @author aracely castro
  */
 public class Main {
 
@@ -18,11 +26,8 @@ public class Main {
         
         Menu_21090869_CastroVenegas menu = new Menu_21090869_CastroVenegas();
         while(!menu.getSalirMenu()){
-            menu.EjecutarMenu();
+            menu.ejecutarMenu();
         
-        }   
-        
-        
-    }
-    
+        }     
+    } 
 }

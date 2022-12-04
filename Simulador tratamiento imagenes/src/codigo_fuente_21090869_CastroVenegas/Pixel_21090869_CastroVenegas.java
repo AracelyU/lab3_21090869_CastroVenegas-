@@ -5,14 +5,24 @@
 package codigo_fuente_21090869_CastroVenegas;
 
 /**
- *
- * @author arace
+ * Implementa el objeto pixel. Es una clase padre de Pixbit_21090869_CastroVenegas, Pixhex_21090869_CastroVenegas,
+ * Pixrgb_21090869_CastroVenegas, Pixbit_comprimido_21090869_CastroVenegas, Pixhex_comprimido_21090869_CastroVenegas y
+ * Pixrgb_comprimido_21090869_CastroVenegas 
+ * 
+ * Representación: Se considera un objeto pixel con tres atributo, tres entero
+ * para indicar su valor de coordX, coordY y profundidad de un pixel. 
+ * 
+ * Relaciones
+ * 
+ * 
+ * @author aracely castro
  */
-public abstract class Pixel_21090869_CastroVenegas implements InterfazPixel_21090869_CastroVenegas {
+public abstract class Pixel_21090869_CastroVenegas{
     
     // atributos de un pixel
     protected int coordX, coordY, profundidad; 
     
+    //################################ CONSTRUCTOR ######################################
     /**
     * Descripción: Constructor de pixel
     * @param coordX: entero positivo. 
@@ -26,13 +36,12 @@ public abstract class Pixel_21090869_CastroVenegas implements InterfazPixel_2109
         this.setProfundidad(profundidad);
     }
       
-   
+   //################################ SELECTORES ######################################
     /**
     * Descripción: Método para obtener el valor coordX de un pixel
     * @return devuelve un entero positivo
     * @author aracely castro
     */
-    @Override
     public int getCoordX(){
         return coordX;
     }
@@ -42,7 +51,6 @@ public abstract class Pixel_21090869_CastroVenegas implements InterfazPixel_2109
     * @return devuelve un entero positivo
     * @author aracely castro
     */
-    @Override
     public int getCoordY(){
         return coordY;
     }
@@ -52,17 +60,16 @@ public abstract class Pixel_21090869_CastroVenegas implements InterfazPixel_2109
     * @return devuelve un entero positivo
     * @author aracely castro
     */
-    @Override
     public int getProfundidad(){
         return profundidad;
     }
     
+    //################################ MODIFICADORES ######################################
     /**
     * Descripción: Método para cambiar el valor coordX de un pixel
     * @param coordX: entero positivo
     * @author aracely castro
     */
-    @Override
     public void setCoordX(int coordX){
         if (coordX >= 0){
             this.coordX = coordX;
@@ -74,7 +81,6 @@ public abstract class Pixel_21090869_CastroVenegas implements InterfazPixel_2109
     * @param coordY: entero positivo
     * @author aracely castro
     */
-    @Override
     public void setCoordY(int coordY){
         if (coordY >= 0){
             this.coordY = coordY;
@@ -86,14 +92,13 @@ public abstract class Pixel_21090869_CastroVenegas implements InterfazPixel_2109
     * @param profundidad: entero positivo
     * @author aracely castro
     */
-    @Override
     public void setProfundidad(int profundidad){
         if (profundidad >= 0){
             this.profundidad = profundidad;
         }
     }
     
-    
+    //################################ PERTENENCIA ######################################
     /**
     * Descripción: Método para que verifica si tiene igual coordenada x e y
     * @param coordX: entero positivo
@@ -101,7 +106,6 @@ public abstract class Pixel_21090869_CastroVenegas implements InterfazPixel_2109
     * @return devuelve un boleano
     * @author aracely castro
     */
-    @Override
     public boolean igualCoordXY(int coordX, int coordY){
         return (getCoordX()==coordX && getCoordY()==coordY);
     }
@@ -112,7 +116,6 @@ public abstract class Pixel_21090869_CastroVenegas implements InterfazPixel_2109
     * @return devuelve un boleano
     * @author aracely castro
     */
-    @Override
     public boolean igualProfundidad(int profundidad){
         return (getProfundidad() == profundidad);
     }

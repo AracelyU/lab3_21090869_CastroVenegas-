@@ -8,15 +8,30 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- *
- * @author arace
+ * Clase que contiene los métodos solicitados
+ * 
+ * Representación: Se considera un objeto imagen con tres atributos, ancho y largo
+ * enteros y una lista de objetos, estos pueden ser pixbit, pixhex, pixrgb o sus versiones 
+ * comprimidas, sin alternar entre ellas.
+ * 
+ * Relaciones
+ * Tiene relación de composición con Image_21090869_CastroVenegas, siendo
+ * esta la clase miembro
+ * 
+ * Tiene relación de composición con Pixbit_21090869_CastroVenegas, Pixhex_21090869_CastroVenegas, 
+ * Pixrgb_21090869_CastroVenegas, Pixbit_comprimido_21090869_CastroVenegas, Pixhex_comprimido_21090869_CastroVenegas y
+ * Pixrgb_comprimido_21090869_CastroVenegas, siendo esta la clase contenedora
+ * 
+ * @author aracely castro
  */
-public class Image_21090869_CastroVenegas {
+public class Image_21090869_CastroVenegas implements Interfaz_Image_21090869_CastroVenegas {
     
     // atributos de una imagen
     private int ancho, largo;
     private ArrayList<Object> pixeles; 
     
+    
+    //################################ CONSTRUCTOR ######################################
     /**
     * Descripción: Constructor de la imagen
     * @param ancho: entero positivo. 
@@ -34,81 +49,131 @@ public class Image_21090869_CastroVenegas {
        
     }
     
+    //################################ PERTENENCIA ######################################
+    
     /**
-     *  Descripción: Crea una imagen bitmap
-     *  @author aracely castro
-     */
-    public void crearBitmap(){
-        Scanner entrada = new Scanner(System.in);
-        System.out.println("Ingrese un ancho: ");
-        int ancho = entrada.nextInt();
-        System.out.println("Ingrese un largo: ");
-        int largo = entrada.nextInt();
-        ArrayList<Object> pixeles = new ArrayList<>();
-        for(int i=0; i< (ancho*largo); i++){
-            // crear pixbit
-            Pixbit_21090869_CastroVenegas pixel = crearPixbit(String.valueOf(i));
-            pixeles.add(pixel);    
+    * Descripción: Método para determinar si una imagen es bitmap
+    * @return devuelve boleano
+    * @author aracely castro
+    */ 
+    @Override
+    public boolean isBitmap(){
+        Pixbit_21090869_CastroVenegas pixelBit = new Pixbit_21090869_CastroVenegas(0,0,0,0); // crear un objeto Pixbit para comparar
+        for(int i=0; i < pixeles.size(); i++){ // mientras queden pixeles en la imagen
+            Object pixelRecogido = pixeles.get(i); // para cada pixel
+            if (pixelRecogido.getClass() != pixelBit.getClass()){ // si no es pixel de clase Pixbit retorna falso
+                return false;
+            }      
         }
-        
-        // crear la imagen:
-        setAncho(ancho);
-        setLargo(largo);
-        setPixeles(pixeles);
+        return true;
     }
     
     /**
-     *  Descripción: Crea una imagen pixmap
-     *  @author aracely castro
-     */
-    public void crearPixmap(){
-        Scanner entrada = new Scanner(System.in);
-        System.out.println("Ingrese un ancho: ");
-        int ancho = entrada.nextInt();
-        System.out.println("Ingrese un largo: ");
-        int largo = entrada.nextInt();
-        ArrayList<Object> pixeles = new ArrayList<>();
-        for(int i=0; i< (ancho*largo); i++){
+    * Descripción: Método para determinar si una imagen es pixmap
+    * @return devuelve boleano
+    * @author aracely castro
+    */ 
+    @Override
+    public boolean isPixmap(){
+        Pixrgb_21090869_CastroVenegas pixelRGB = new Pixrgb_21090869_CastroVenegas(0,0,0,0,0,0); // crear un objeto Pixrgb para comparar
+        for(int i=0; i < pixeles.size(); i++){ // mientras queden pixeles en la imagen
+            Object pixelRecogido = pixeles.get(i); // para cada pixel
+            if (pixelRecogido.getClass() != pixelRGB.getClass()){ // si no es pixel de clase Pixrgb retorna falso
+                return false;
+            }      
+        }
+        return true;
+    }
 
-            
-            // crear pixrgb
-            Pixrgb_21090869_CastroVenegas pixel = crearPixrgb(String.valueOf(i));
-            pixeles.add(pixel); 
-        }
-        
-        // crear la imagen:
-        setAncho(ancho);
-        setLargo(largo);
-        setPixeles(pixeles);
-    }
- 
     /**
-     *  Descripción: Crea una imagen hexmap
-     *  @author aracely castro
-     */
-    public void crearHexmap(){
-        Scanner entrada = new Scanner(System.in);
-        System.out.println("Ingrese un ancho: ");
-        int ancho = entrada.nextInt();
-        System.out.println("Ingrese un largo: ");
-        int largo = entrada.nextInt();
-        ArrayList<Object> pixeles = new ArrayList<>();
-        for(int i=0; i< (ancho*largo); i++){
-            // crear pixhex
-            Pixhex_21090869_CastroVenegas pixel = crearPixhex(String.valueOf(i));
-            pixeles.add(pixel); 
+    * Descripción: Método para determinar si una imagen es hexmap
+    * @return devuelve boleano
+    * @author aracely castro
+    */ 
+    @Override
+    public boolean isHexmap(){
+        Pixhex_21090869_CastroVenegas pixelHex = new Pixhex_21090869_CastroVenegas(0,0,"#FFFFFF",0); // crear un objeto Pixhex para comparar
+        for(int i=0; i < pixeles.size(); i++){ // mientras queden pixeles en la imagen
+            Object pixelRecogido = pixeles.get(i); // para cada pixel
+            if (pixelRecogido.getClass() != pixelHex.getClass()){ // si no es pixel de clase Pixhex retorna falso
+                return false;
+            }      
         }
-        // crear la imagen:
-        setAncho(ancho);
-        setLargo(largo);
-        setPixeles(pixeles);
-    }    
+        return true;
+    }     
     
     /**
+    * Descripción: Método para determinar si una imagen es bitmap comprimido
+    * @return devuelve boleano
+    * @author aracely castro
+    */ 
+    private boolean isBitmapComprimido(){
+        Pixbit_comprimido_21090869_CastroVenegas pixelBitC = new Pixbit_comprimido_21090869_CastroVenegas(0,0,0,0); // crear un objeto Pixbit comprimido para comparar
+        for(int i=0; i < pixeles.size(); i++){ // mientras queden pixeles en la imagen
+            Object pixelRecogido = pixeles.get(i); // para cada pixel
+            if (pixelRecogido.getClass() == pixelBitC.getClass()){ // si no es pixel de clase Pixrgb retorna falso
+                return true;
+            }      
+        }
+        return false;
+    }
+  
+    /**
+    * Descripción: Método para determinar si una imagen es hexmap comprimido
+    * @return devuelve boleano
+    * @author aracely castro
+    */ 
+    private boolean isHexmapComprimido(){
+        Pixhex_comprimido_21090869_CastroVenegas pixelHexC = new Pixhex_comprimido_21090869_CastroVenegas(0,0,"#FFFFFF",0); // crear un objeto Pixhex comprimido para comparar
+        for(int i=0; i < pixeles.size(); i++){ // mientras queden pixeles en la imagen
+            Object pixelRecogido = pixeles.get(i); // para cada pixel
+            if (pixelRecogido.getClass() == pixelHexC.getClass()){ // si no es pixel de clase Pixhex retorna falso
+                return true;
+            }      
+        }
+        return false;
+    }   
+    
+    /**
+    * Descripción: Método para determinar si una imagen es pixmap comprimido
+    * @return devuelve boleano
+    * @author aracely castro
+    */ 
+    private boolean isPixmapComprimido(){
+        ArrayList<Integer> listaRGB = new ArrayList<>();
+        listaRGB.add(0);
+        listaRGB.add(0);
+        listaRGB.add(0);
+        Pixrgb_comprimido_21090869_CastroVenegas pixelRGBC = new Pixrgb_comprimido_21090869_CastroVenegas(0,0,listaRGB,0); // crear un objeto Pixhex comprimido para comparar
+        for(int i=0; i < pixeles.size(); i++){ // mientras queden pixeles en la imagen
+            Object pixelRecogido = pixeles.get(i); // para cada pixel
+            if (pixelRecogido.getClass() == pixelRGBC.getClass()){ // si no es pixel de clase Pixhex retorna falso
+                return true;
+            }      
+        }
+        return false;
+    }  
+    
+    
+    /**
+    * Descripción: Método para determinar si una imagen fue comprimida
+    * @return devuelve boleano
+    * @author aracely castro
+    */ 
+    @Override
+    public boolean isCompressed(){
+        return (isBitmapComprimido() || isHexmapComprimido() || isPixmapComprimido());
+    }
+    
+     
+    //################################ SELECTORES ######################################
+    
+     /**
     * Descripción: Método para obtener el valor ancho de la imagen
     * @return devuelve un valor entero positivo
     * @author aracely castro
     */ 
+    @Override
     public int getAncho(){
         return ancho;
     }
@@ -118,6 +183,7 @@ public class Image_21090869_CastroVenegas {
     * @return devuelve un valor entero positivo
     * @author aracely castro
     */ 
+    @Override
     public int getLargo(){
         return largo;
     }
@@ -127,10 +193,13 @@ public class Image_21090869_CastroVenegas {
     * @return devuelve una lista
     * @author aracely castro
     */ 
+    @Override
     public ArrayList getPixeles(){
         return pixeles;
     }
     
+    
+    //################################ MODIFICADORES Y OTROS MÉTODOS ######################################
     /**
     * Descripción: Método para cambiar el valor ancho de la imagen
     * @param ancho: entero positivo
@@ -163,114 +232,223 @@ public class Image_21090869_CastroVenegas {
     }
 
     /**
-    * Descripción: Método para determinar si una imagen es bitmap
-    * @return devuelve boleano
-    * @author aracely castro
-    */ 
-    public boolean isBitmap(){
-        Pixbit_21090869_CastroVenegas pixelBit = new Pixbit_21090869_CastroVenegas(0,0,0,0); // crear un objeto Pixbit para comparar
-        for(int i=0; i < pixeles.size(); i++){ // mientras queden pixeles en la imagen
-            Object pixelRecogido = pixeles.get(i); // para cada pixel
-            if (pixelRecogido.getClass() != pixelBit.getClass()){ // si no es pixel de clase Pixbit retorna falso
-                return false;
-            }      
-        }
-        return true;
+     *  Descripción: Carga una imagen 2 x 3 Bitmap de prueba
+     *  @author aracely castro
+     */
+    @Override
+    public void cargarBitmap(){
+        Pixbit_21090869_CastroVenegas p1 = new Pixbit_21090869_CastroVenegas(0,0,1,10);
+        Pixbit_21090869_CastroVenegas p2 = new Pixbit_21090869_CastroVenegas(0,1,1,10);
+        Pixbit_21090869_CastroVenegas p3 = new Pixbit_21090869_CastroVenegas(0,2,0,20);
+        Pixbit_21090869_CastroVenegas p4 = new Pixbit_21090869_CastroVenegas(1,0,0,10);
+        Pixbit_21090869_CastroVenegas p5 = new Pixbit_21090869_CastroVenegas(1,1,1,10);
+        Pixbit_21090869_CastroVenegas p6 = new Pixbit_21090869_CastroVenegas(1,2,0,40);
+        
+        ArrayList<Object> pixeles = new ArrayList<>();
+        pixeles.add(p1);
+        pixeles.add(p2);
+        pixeles.add(p3);
+        pixeles.add(p4);
+        pixeles.add(p5);
+        pixeles.add(p6);
+        
+        setAncho(2);
+        setLargo(3);
+        setPixeles(pixeles);
+        
+        System.out.println("\nBitmap cargado\n");
+        System.out.print("Ancho:" + getAncho() + " Largo: " + getLargo() +"\n");
+        String cadena = imageString();
+        System.out.println(cadena);
     }
     
     /**
-    * Descripción: Método para determinar si una imagen es pixmap
-    * @return devuelve boleano
-    * @author aracely castro
-    */ 
-    public boolean isPixmap(){
-        Pixrgb_21090869_CastroVenegas pixelRGB = new Pixrgb_21090869_CastroVenegas(0,0,0,0,0,0); // crear un objeto Pixrgb para comparar
-        for(int i=0; i < pixeles.size(); i++){ // mientras queden pixeles en la imagen
-            Object pixelRecogido = pixeles.get(i); // para cada pixel
-            if (pixelRecogido.getClass() != pixelRGB.getClass()){ // si no es pixel de clase Pixrgb retorna falso
-                return false;
-            }      
-        }
-        return true;
+     *  Descripción: Carga una imagen 6 x 2 Pixmap de prueba
+     *  @author aracely castro
+     */
+    @Override
+    public void cargarPixmap(){
+        Pixrgb_21090869_CastroVenegas p1 = new Pixrgb_21090869_CastroVenegas(0,0,10,10,10,10);
+        Pixrgb_21090869_CastroVenegas p2 = new Pixrgb_21090869_CastroVenegas(1,0,255,0,30,10);
+        Pixrgb_21090869_CastroVenegas p3 = new Pixrgb_21090869_CastroVenegas(2,0,0,0,100,20);
+        Pixrgb_21090869_CastroVenegas p4 = new Pixrgb_21090869_CastroVenegas(3,0,0,10,45,10);
+        Pixrgb_21090869_CastroVenegas p5 = new Pixrgb_21090869_CastroVenegas(4,0,1,0,255,10);
+        Pixrgb_21090869_CastroVenegas p6 = new Pixrgb_21090869_CastroVenegas(5,0,0,100,10,40);
+        Pixrgb_21090869_CastroVenegas p7 = new Pixrgb_21090869_CastroVenegas(0,1,10,10,10,10);
+        Pixrgb_21090869_CastroVenegas p8 = new Pixrgb_21090869_CastroVenegas(1,1,123,0,30,10);
+        Pixrgb_21090869_CastroVenegas p9 = new Pixrgb_21090869_CastroVenegas(2,1,0,99,100,20);
+        Pixrgb_21090869_CastroVenegas p10 = new Pixrgb_21090869_CastroVenegas(3,1,0,10,45,20);
+        Pixrgb_21090869_CastroVenegas p11 = new Pixrgb_21090869_CastroVenegas(4,1,1,0,54,10);
+        Pixrgb_21090869_CastroVenegas p12 = new Pixrgb_21090869_CastroVenegas(5,1,52,44,10,20);
+        
+        ArrayList<Object> pixeles = new ArrayList<>();
+        pixeles.add(p1);
+        pixeles.add(p2);
+        pixeles.add(p3);
+        pixeles.add(p4);
+        pixeles.add(p5);
+        pixeles.add(p6);
+        pixeles.add(p7);
+        pixeles.add(p8);
+        pixeles.add(p9);
+        pixeles.add(p10);
+        pixeles.add(p11);
+        pixeles.add(p12);
+        
+        setAncho(6);
+        setLargo(2);
+        setPixeles(pixeles);
+        
+        System.out.println("\nPixmap cargado\n");
+        System.out.print("Ancho:" + getAncho() + " Largo: " + getLargo()+"\n");
+        String cadena = imageString();
+        System.out.println(cadena);
     }
+    
+        /**
+     *  Descripción: Carga una imagen 4x4 Hexmap de prueba
+     *  @author aracely castro
+     */
+    @Override
+    public void cargarHexmap(){
+        Pixhex_21090869_CastroVenegas p1 = new Pixhex_21090869_CastroVenegas(0,0,"#FFAA00",10);
+        Pixhex_21090869_CastroVenegas p2 = new Pixhex_21090869_CastroVenegas(0,1,"#EE1234",10);
+        Pixhex_21090869_CastroVenegas p3 = new Pixhex_21090869_CastroVenegas(0,2,"#EE1234",30);
+        Pixhex_21090869_CastroVenegas p4 = new Pixhex_21090869_CastroVenegas(0,3,"#AAAAAA",30);
+        Pixhex_21090869_CastroVenegas p5 = new Pixhex_21090869_CastroVenegas(1,0,"#000000",30);
+        Pixhex_21090869_CastroVenegas p6 = new Pixhex_21090869_CastroVenegas(1,1,"#000000",40);
+        Pixhex_21090869_CastroVenegas p7 = new Pixhex_21090869_CastroVenegas(1,2,"#FFAA00",10);
+        Pixhex_21090869_CastroVenegas p8 = new Pixhex_21090869_CastroVenegas(1,3,"#EE1234",30);
+        Pixhex_21090869_CastroVenegas p9 = new Pixhex_21090869_CastroVenegas(2,0,"#EE1234",30);
+        Pixhex_21090869_CastroVenegas p10 = new Pixhex_21090869_CastroVenegas(2,1,"#AAAAAA",30);
+        Pixhex_21090869_CastroVenegas p11 = new Pixhex_21090869_CastroVenegas(2,2,"#000000",30);
+        Pixhex_21090869_CastroVenegas p12 = new Pixhex_21090869_CastroVenegas(2,3,"#000000",40);
+        Pixhex_21090869_CastroVenegas p13 = new Pixhex_21090869_CastroVenegas(3,0,"#FFAA00",10);
+        Pixhex_21090869_CastroVenegas p14 = new Pixhex_21090869_CastroVenegas(3,1,"#000000",10);
+        Pixhex_21090869_CastroVenegas p15 = new Pixhex_21090869_CastroVenegas(3,2,"#EE1234",30);
+        Pixhex_21090869_CastroVenegas p16 = new Pixhex_21090869_CastroVenegas(3,3,"#AAAAAA",34);
 
-    /**
-    * Descripción: Método para determinar si una imagen es hexmap
-    * @return devuelve boleano
-    * @author aracely castro
-    */ 
-    public boolean isHexmap(){
-        Pixhex_21090869_CastroVenegas pixelHex = new Pixhex_21090869_CastroVenegas(0,0,"#FFFFFF",0); // crear un objeto Pixhex para comparar
-        for(int i=0; i < pixeles.size(); i++){ // mientras queden pixeles en la imagen
-            Object pixelRecogido = pixeles.get(i); // para cada pixel
-            if (pixelRecogido.getClass() != pixelHex.getClass()){ // si no es pixel de clase Pixhex retorna falso
-                return false;
-            }      
-        }
-        return true;
-    }     
-    
-    /**
-    * Descripción: Método para determinar si una imagen es bitmap comprimido
-    * @return devuelve boleano
-    * @author aracely castro
-    */ 
-    public boolean isBitmapComprimido(){
-        Pixbit_comprimido_21090869_CastroVenegas pixelBitC = new Pixbit_comprimido_21090869_CastroVenegas(0,0,0,0); // crear un objeto Pixbit comprimido para comparar
-        for(int i=0; i < pixeles.size(); i++){ // mientras queden pixeles en la imagen
-            Object pixelRecogido = pixeles.get(i); // para cada pixel
-            if (pixelRecogido.getClass() == pixelBitC.getClass()){ // si no es pixel de clase Pixrgb retorna falso
-                return true;
-            }      
-        }
-        return false;
+        ArrayList<Object> pixeles = new ArrayList<>();
+        pixeles.add(p1);
+        pixeles.add(p2);
+        pixeles.add(p3);
+        pixeles.add(p4);
+        pixeles.add(p5);
+        pixeles.add(p6);
+        pixeles.add(p7);
+        pixeles.add(p8);
+        pixeles.add(p9);
+        pixeles.add(p10);
+        pixeles.add(p11);
+        pixeles.add(p12);
+        pixeles.add(p13);
+        pixeles.add(p14);
+        pixeles.add(p15);
+        pixeles.add(p16);
+        
+        setAncho(4);
+        setLargo(4);
+        setPixeles(pixeles);
+        
+        System.out.println("\nHexmap cargado\n");       
+        System.out.print("Ancho:" + getAncho() + " Largo: " + getLargo()+"\n");
+        String cadena = imageString();
+        System.out.println(cadena);
     }
-  
+    
     /**
-    * Descripción: Método para determinar si una imagen es hexmap comprimido
-    * @return devuelve boleano
-    * @author aracely castro
-    */ 
-    public boolean isHexmapComprimido(){
-        Pixhex_comprimido_21090869_CastroVenegas pixelHexC = new Pixhex_comprimido_21090869_CastroVenegas(0,0,"#FFFFFF",0); // crear un objeto Pixhex comprimido para comparar
-        for(int i=0; i < pixeles.size(); i++){ // mientras queden pixeles en la imagen
-            Object pixelRecogido = pixeles.get(i); // para cada pixel
-            if (pixelRecogido.getClass() == pixelHexC.getClass()){ // si no es pixel de clase Pixhex retorna falso
-                return true;
-            }      
+     *  Descripción: Crea una imagen bitmap
+     *  @author aracely castro
+     */
+    @Override
+    public void crearBitmap(){
+        Scanner entrada = new Scanner(System.in);
+        System.out.print("Ingrese un ancho: ");
+        int ancho = entrada.nextInt();
+        System.out.print("Ingrese un largo: ");
+        int largo = entrada.nextInt();
+        int h = 0;
+        ArrayList<Object> pixeles = new ArrayList<>();
+        for(int i=0; i< (ancho*largo); i++){
+            // crear pixbit
+            h++;
+            Pixbit_21090869_CastroVenegas pixel = crearPixbit(String.valueOf(h));
+            pixeles.add(pixel);    
         }
-        return false;
-    }   
-    
-    /**
-    * Descripción: Método para determinar si una imagen es pixmap comprimido
-    * @return devuelve boleano
-    * @author aracely castro
-    */ 
-    public boolean isPixmapComprimido(){
-        ArrayList<Integer> listaRGB = new ArrayList<>();
-        listaRGB.add(0);
-        listaRGB.add(0);
-        listaRGB.add(0);
-        Pixrgb_comprimido_21090869_CastroVenegas pixelRGBC = new Pixrgb_comprimido_21090869_CastroVenegas(0,0,listaRGB,0); // crear un objeto Pixhex comprimido para comparar
-        for(int i=0; i < pixeles.size(); i++){ // mientras queden pixeles en la imagen
-            Object pixelRecogido = pixeles.get(i); // para cada pixel
-            if (pixelRecogido.getClass() == pixelRGBC.getClass()){ // si no es pixel de clase Pixhex retorna falso
-                return true;
-            }      
-        }
-        return false;
-    }  
-    
-    
-    /**
-    * Descripción: Método para determinar si una imagen fue comprimida
-    * @return devuelve boleano
-    * @author aracely castro
-    */ 
-    public boolean isCompressed(){
-        return (isBitmapComprimido() || isHexmapComprimido() || isPixmapComprimido());
+        
+        // crear la imagen:
+        setAncho(ancho);
+        setLargo(largo);
+        setPixeles(pixeles);
+        
+        System.out.print("Ancho:" + getAncho() + " Largo: " + getLargo());
+        System.out.println("\n\nBitmap creado\n");
+        String cadena = imageString();
+        System.out.println(cadena + "\n");
+        
     }
+    
+    /**
+     *  Descripción: Crea una imagen pixmap
+     *  @author aracely castro
+     */
+    @Override
+    public void crearPixmap(){
+        Scanner entrada = new Scanner(System.in);
+        System.out.print("Ingrese un ancho: ");
+        int ancho = entrada.nextInt();
+        System.out.print("Ingrese un largo: ");
+        int largo = entrada.nextInt();
+        int h = 0;
+        ArrayList<Object> pixeles = new ArrayList<>();
+        for(int i=0; i< (ancho*largo); i++){
+            // crear pixrgb
+            h++;
+            Pixrgb_21090869_CastroVenegas pixel = crearPixrgb(String.valueOf(h));
+            pixeles.add(pixel); 
+        }
+        
+        // crear la imagen:
+        setAncho(ancho);
+        setLargo(largo);
+        setPixeles(pixeles);
+        
+        System.out.print("Ancho:" + getAncho() + " Largo: " + getLargo());
+        System.out.println("\n\nPixmap creado\n");
+        String cadena = imageString();
+        System.out.println(cadena + "\n");
+    }
+ 
+    /**
+     *  Descripción: Crea una imagen hexmap
+     *  @author aracely castro
+     */
+    @Override
+    public void crearHexmap(){
+        Scanner entrada = new Scanner(System.in);
+        System.out.print("Ingrese un ancho: ");
+        int ancho = entrada.nextInt();
+        System.out.print("Ingrese un largo: ");
+        int largo = entrada.nextInt();
+        int h = 0;
+        ArrayList<Object> pixeles = new ArrayList<>();
+        for(int i=0; i< (ancho*largo); i++){
+            // crear pixhex
+            h++;
+            Pixhex_21090869_CastroVenegas pixel = crearPixhex(String.valueOf(h));
+            pixeles.add(pixel); 
+        }
+        // crear la imagen:
+        setAncho(ancho);
+        setLargo(largo);
+        setPixeles(pixeles);
+        
+        System.out.print("Ancho:" + getAncho() + " Largo: " + getLargo());
+        System.out.println("\n\nHexmap creado\n");
+        String cadena = imageString();
+        System.out.println(cadena+ "\n");
+    }    
+    
     
     /**
     * Descripción: Método que devuelve el pixel con igual coordenadas x e y
@@ -280,7 +458,7 @@ public class Image_21090869_CastroVenegas {
     * @return devuelve un objeto
     * @author aracely castro
     */ 
-    private Object PixelCoordXY(ArrayList pixeles, int coordX, int coordY){
+    private Object pixelCoordXY(ArrayList pixeles, int coordX, int coordY){
         for(int i = 0; i < pixeles.size(); i++){ 
             if (isBitmap()){
                 Pixbit_21090869_CastroVenegas pixelRecogido =  (Pixbit_21090869_CastroVenegas) pixeles.get(i);
@@ -314,7 +492,7 @@ public class Image_21090869_CastroVenegas {
         ArrayList<Object> pixelesTemporal = new ArrayList<>();       
         for(int i = 0; i < this.ancho; i++){
             for(int j = 0; j < this.largo; j++){
-                pixelesTemporal.add(PixelCoordXY(this.pixeles, i, j));               
+                pixelesTemporal.add(pixelCoordXY(this.pixeles, i, j));               
             }
         }
         setPixeles(pixelesTemporal);
@@ -325,12 +503,11 @@ public class Image_21090869_CastroVenegas {
     * Descripción: Método que invierte la imagen horizontamente
     * @author aracely castro
     */ 
+    @Override
     public void flipH(){
-        
         if(isCompressed()){
             decompress();
         }
-        
         int h = 0;
         for(int i=0; i < this.ancho; i++){
             for(int j= this.largo-1; j >= 0; j--){       
@@ -359,11 +536,11 @@ public class Image_21090869_CastroVenegas {
     * Descripción: Método que invierte la imagen verticalmente
     * @author aracely castro
     */ 
+    @Override
     public void flipV(){
         if(isCompressed()){
             decompress();
         }
-        
         int h = 0;
         for(int i=this.ancho-1; i >= 0; i--){
             for(int j= 0; j < this.largo; j++){       
@@ -381,7 +558,6 @@ public class Image_21090869_CastroVenegas {
                     Pixrgb_21090869_CastroVenegas pixelRecogido =  (Pixrgb_21090869_CastroVenegas) pixeles.get(h);
                     pixelRecogido.setCoordX(i);  
                 }
-                
                 h++;
             }
         }
@@ -433,6 +609,7 @@ public class Image_21090869_CastroVenegas {
     * @param Y2: entero positivo
     * @author aracely castro
     */ 
+    @Override
     public void crop(int X1, int Y1, int X2, int Y2){
         
         if(isCompressed()){
@@ -487,7 +664,7 @@ public class Image_21090869_CastroVenegas {
     * @return devuelve un string
     * @author aracely castro
     */    
-    private String NumToString(int numero){
+    private String numToString(int numero){
         if(numero < 10){
             return Integer.toString(numero);
         } else if (numero == 10){
@@ -510,6 +687,7 @@ public class Image_21090869_CastroVenegas {
     * Descripción: Método que cambia la imagen pixmap a hexmap
     * @author aracely castro
     */ 
+    @Override
     public void imgRGBToHex(){
        
         if(isCompressed()){
@@ -518,9 +696,9 @@ public class Image_21090869_CastroVenegas {
         ArrayList<Object> pixelesNuevos = new ArrayList<>();
         for(int i=0; i < pixeles.size(); i++){
             Pixrgb_21090869_CastroVenegas p = (Pixrgb_21090869_CastroVenegas) pixeles.get(i);
-            String nuevoHex = (String) "#" + NumToString(p.getColorR()/16) + NumToString(p.getColorR()%16) + 
-                                             NumToString(p.getColorG()/16) + NumToString(p.getColorG()%16) + 
-                                             NumToString(p.getColorB()/16) + NumToString(p.getColorB()%16);
+            String nuevoHex = (String) "#" + numToString(p.getColorR()/16) + numToString(p.getColorR()%16) + 
+                                             numToString(p.getColorG()/16) + numToString(p.getColorG()%16) + 
+                                             numToString(p.getColorB()/16) + numToString(p.getColorB()%16);
             Pixhex_21090869_CastroVenegas pH = new Pixhex_21090869_CastroVenegas(p.getCoordX(), p.getCoordY(), nuevoHex, p.getProfundidad());
             pixelesNuevos.add(pH);
         }
@@ -534,7 +712,7 @@ public class Image_21090869_CastroVenegas {
     * @return devuelve un string
     * @author aracely castro
     */    
-    private int StringToNum(String letra){
+    private int stringToNum(String letra){
         if((!"A".equals(letra)) && (!"B".equals(letra)) && (!"C".equals(letra)) && (!"D".equals(letra)) && (!"E".equals(letra)) && (!"F".equals(letra))){
             return Integer.parseInt(letra);
         }
@@ -557,6 +735,7 @@ public class Image_21090869_CastroVenegas {
     * @return devuelve una lista de sublistas [Color | Cantidad]
     * @author aracely castro
     */ 
+    @Override
     public ArrayList histogram(){ //el histograma es una lista de enteros donde el último numero es la cantidad    
         if(isCompressed()){
             decompress();
@@ -574,12 +753,12 @@ public class Image_21090869_CastroVenegas {
             if(isBitmap()){
                 Pixbit_21090869_CastroVenegas pixelInicial = (Pixbit_21090869_CastroVenegas) pixelesTemporal.get(0); 
                 int colorBit = pixelInicial.getBit();
-                int suma = pixelInicial.sumaColorBit(pixelesTemporal, colorBit); 
+                int suma = pixelInicial.sumaColor(pixelesTemporal, colorBit); 
                 // añadir datos a subHistograma, añadiendo primero el color y luego la cantidad
                 subHistograma.add(colorBit);
                 subHistograma.add(suma);
                 histograma.add(subHistograma);
-                ArrayList pixelesNuevos = pixelInicial.eliminarColorBit(pixelesTemporal, colorBit);
+                ArrayList pixelesNuevos = pixelInicial.eliminarColor(pixelesTemporal, colorBit);
                 pixelesTemporal.clear();
                 for(int j=0; j < pixelesNuevos.size(); j++){
                     pixelesTemporal.add(pixelesNuevos.get(j));
@@ -592,10 +771,10 @@ public class Image_21090869_CastroVenegas {
                 String colorHexR = colorHex.substring(1, 3);
                 String colorHexG = colorHex.substring(3,5);
                 String colorHexB = colorHex.substring(5, 7);
-                int colorR = StringToNum(colorHexR.substring(0, 1)) * 16 + StringToNum(colorHexR.substring(1, 2));
-                int colorG = StringToNum(colorHexG.substring(0, 1)) * 16 + StringToNum(colorHexG.substring(1, 2));
-                int colorB = StringToNum(colorHexB.substring(0, 1)) * 16 + StringToNum(colorHexB.substring(1, 2));
-                int suma = pixelInicial.sumaColorHex(pixelesTemporal, colorHex);
+                int colorR = stringToNum(colorHexR.substring(0, 1)) * 16 + stringToNum(colorHexR.substring(1, 2));
+                int colorG = stringToNum(colorHexG.substring(0, 1)) * 16 + stringToNum(colorHexG.substring(1, 2));
+                int colorB = stringToNum(colorHexB.substring(0, 1)) * 16 + stringToNum(colorHexB.substring(1, 2));
+                int suma = pixelInicial.sumaColor(pixelesTemporal, colorHex);
                 // añadir datos a subHistograma
                 subHistograma.add(colorR);
                 subHistograma.add(colorG);
@@ -603,7 +782,7 @@ public class Image_21090869_CastroVenegas {
                 subHistograma.add(suma);
                 histograma.add(subHistograma);
                
-                ArrayList pixelesNuevos = pixelInicial.eliminarColorHex(pixelesTemporal, colorHex);
+                ArrayList pixelesNuevos = pixelInicial.eliminarColor(pixelesTemporal, colorHex);
                 pixelesTemporal.clear();
                 for(int j=0; j < pixelesNuevos.size(); j++){
                     pixelesTemporal.add(pixelesNuevos.get(j));
@@ -614,14 +793,14 @@ public class Image_21090869_CastroVenegas {
                 int colorR = pixelInicial.getColorR();
                 int colorG = pixelInicial.getColorG();
                 int colorB = pixelInicial.getColorB();
-                int suma = pixelInicial.sumaColorRGB(pixelesTemporal, colorR, colorG, colorB);   
+                int suma = pixelInicial.sumaColor(pixelesTemporal, colorR, colorG, colorB);   
                 // añadir datos a subHistograma
                 subHistograma.add(colorR);
                 subHistograma.add(colorG);
                 subHistograma.add(colorB);
                 subHistograma.add(suma);
                 histograma.add(subHistograma);
-                ArrayList pixelesNuevos = pixelInicial.eliminarColorRGB(pixelesTemporal, colorR, colorG, colorB);
+                ArrayList pixelesNuevos = pixelInicial.eliminarColor(pixelesTemporal, colorR, colorG, colorB);
                 pixelesTemporal.clear();
                 for(int j=0; j < pixelesNuevos.size(); j++){
                     pixelesTemporal.add(pixelesNuevos.get(j));
@@ -637,6 +816,7 @@ public class Image_21090869_CastroVenegas {
      * @return devuelve un String
      * @author aracely castro
      */
+    @Override
     public String mostrarHistogram(ArrayList<ArrayList> histograma){
         String cadena = "";
         if(isBitmap()){
@@ -648,9 +828,9 @@ public class Image_21090869_CastroVenegas {
         if(isHexmap()){
             for(int i=0; i < histograma.size(); i++){
                 ArrayList dato = histograma.get(i);
-                String valorHex = (String) "#" + NumToString( (Integer) dato.get(0)/16) + NumToString( (Integer) dato.get(0)%16) + 
-                                                 NumToString( (Integer) dato.get(1)/16) + NumToString( (Integer) dato.get(1)%16) + 
-                                                 NumToString( (Integer) dato.get(2)/16) + NumToString( (Integer) dato.get(2)%16);
+                String valorHex = (String) "#" + numToString( (Integer) dato.get(0)/16) + numToString( (Integer) dato.get(0)%16) + 
+                                                 numToString( (Integer) dato.get(1)/16) + numToString( (Integer) dato.get(1)%16) + 
+                                                 numToString( (Integer) dato.get(2)/16) + numToString( (Integer) dato.get(2)%16);
                 cadena += "[" + valorHex + "," + String.valueOf((Integer) dato.get(3)) + "] ";  
             }
         }
@@ -668,8 +848,8 @@ public class Image_21090869_CastroVenegas {
     * Descripción: Método que rota la imagen 90° a la derecha
     * @author aracely castro
     */ 
+    @Override
     public void rotate90(){
-        
         if(isCompressed()){
             decompress();
         }
@@ -710,7 +890,7 @@ public class Image_21090869_CastroVenegas {
     * @return devuelve un entero 0 | 1
     * @author aracely castro
     */ 
-    public int mayorBit(ArrayList<ArrayList> histograma){
+    private int mayorBit(ArrayList<ArrayList> histograma){
         int cantidad = -1;
         int Bit = -1;
         for(int i=0; i < histograma.size(); i++){
@@ -730,16 +910,16 @@ public class Image_21090869_CastroVenegas {
     * @return devuelve un string
     * @author aracely castro
     */ 
-    public String mayorHex(ArrayList<ArrayList> histograma){
+    private String mayorHex(ArrayList<ArrayList> histograma){
         int cantidad = -1;
         String valorHex = "";
         for(int i=0; i < histograma.size(); i++){
             ArrayList dato = histograma.get(i);
             int cantidadHex = (Integer) dato.get(3);
             if (cantidadHex > cantidad){
-                valorHex = (String) "#" + NumToString( (Integer) dato.get(0)/16) + NumToString( (Integer) dato.get(0)%16) + 
-                                          NumToString( (Integer) dato.get(1)/16) + NumToString( (Integer) dato.get(1)%16) + 
-                                          NumToString( (Integer) dato.get(2)/16) + NumToString( (Integer) dato.get(2)%16);
+                valorHex = (String) "#" + numToString( (Integer) dato.get(0)/16) + numToString( (Integer) dato.get(0)%16) + 
+                                          numToString( (Integer) dato.get(1)/16) + numToString( (Integer) dato.get(1)%16) + 
+                                          numToString( (Integer) dato.get(2)/16) + numToString( (Integer) dato.get(2)%16);
                 cantidad = cantidadHex;
             }
         }
@@ -753,7 +933,7 @@ public class Image_21090869_CastroVenegas {
     * @return devuelve una lista con tres valores enteros positivos
     * @author aracely castro
     */ 
-    public ArrayList mayorRGB(ArrayList<ArrayList> histograma){
+    private ArrayList mayorRGB(ArrayList<ArrayList> histograma){
         int cantidad = -1;
         ArrayList<Integer> valorRGB = new ArrayList<>();
         for(int i=0; i < histograma.size(); i++){
@@ -775,6 +955,7 @@ public class Image_21090869_CastroVenegas {
     * Descripción: Método que comprime la imagen
     * @author aracely castro
     */ 
+    @Override
     public void compress(){
         ArrayList histograma = histogram();
         ArrayList<Object> pixelesNuevos = new ArrayList<>();
@@ -811,7 +992,7 @@ public class Image_21090869_CastroVenegas {
             ArrayList<Integer> rgbRepetido = mayorRGB(histograma);
             for(int i=0; i< pixeles.size(); i++){
                 Pixrgb_21090869_CastroVenegas pixel = (Pixrgb_21090869_CastroVenegas) pixeles.get(i);
-                if(pixel.igualColorRGB((int) rgbRepetido.get(0), (int) rgbRepetido.get(1), (int) rgbRepetido.get(2))){
+                if(pixel.igualColor((int) rgbRepetido.get(0), (int) rgbRepetido.get(1), (int) rgbRepetido.get(2))){
                     Pixrgb_comprimido_21090869_CastroVenegas pixelC;
                     pixelC = new Pixrgb_comprimido_21090869_CastroVenegas(pixel.getCoordX(), pixel.getCoordY(), rgbRepetido, pixel.getProfundidad());
                     pixelesNuevos.add(pixelC);
@@ -828,20 +1009,20 @@ public class Image_21090869_CastroVenegas {
      * @param tipo: mensaje String para crear el pixbit
      * @return devuelve un pixbit
      */
+    @Override
     public Pixbit_21090869_CastroVenegas crearPixbit(String tipo){
         Scanner entrada = new Scanner(System.in);
         System.out.println("Pixbit " + tipo);
-        System.out.println("Ingresar x: ");
+        System.out.print("Ingresar x: ");
         int coordX = entrada.nextInt();
-        System.out.println("Ingresar y: ");
+        System.out.print("Ingresar y: ");
         int coordY = entrada.nextInt();
-        System.out.println("Ingresar bit: ");
+        System.out.print("Ingresar bit: ");
         int bit = entrada.nextInt();
-        System.out.println("Ingresar profundidad: ");
+        System.out.print("Ingresar profundidad: ");
         int profundidad = entrada.nextInt();
         Pixbit_21090869_CastroVenegas pixel = new Pixbit_21090869_CastroVenegas(coordX, coordY, bit, profundidad);
-        return pixel;
-        
+        return pixel;     
     }
     
     /**
@@ -849,20 +1030,21 @@ public class Image_21090869_CastroVenegas {
      * @param tipo: mensaje String para crear el pixrgb
      * @return devuelve un pixrgb
      */
+    @Override
     public Pixrgb_21090869_CastroVenegas crearPixrgb(String tipo){
         Scanner entrada = new Scanner(System.in);
         System.out.println("Pixrgb " + tipo);
-        System.out.println("Ingresar x: ");
+        System.out.print("Ingresar x: ");
         int coordX = entrada.nextInt();
-        System.out.println("Ingresar y: ");
+        System.out.print("Ingresar y: ");
         int coordY = entrada.nextInt();
-        System.out.println("Ingresar colorR: ");
+        System.out.print("Ingresar colorR: ");
         int colorR = entrada.nextInt();
-        System.out.println("Ingresar colorG: ");
+        System.out.print("Ingresar colorG: ");
         int colorG = entrada.nextInt();
-        System.out.println("Ingresar colorB: ");
+        System.out.print("Ingresar colorB: ");
         int colorB = entrada.nextInt();
-        System.out.println("Ingresar profundidad: ");
+        System.out.print("Ingresar profundidad: ");
         int profundidad = entrada.nextInt();    
         Pixrgb_21090869_CastroVenegas pixel = new Pixrgb_21090869_CastroVenegas(coordX, coordY, colorR, colorG, colorB, profundidad);
         return pixel;
@@ -873,29 +1055,30 @@ public class Image_21090869_CastroVenegas {
      * @param tipo: mensaje String para crear el pixhex
      * @return devuelve un pixhex
      */
+    @Override
     public Pixhex_21090869_CastroVenegas crearPixhex(String tipo){
         Scanner entrada = new Scanner(System.in);
         System.out.println("Pixhex " + tipo);
-        System.out.println("Ingresar x: ");
+        System.out.print("Ingresar x: ");
         int coordX = entrada.nextInt();
-        System.out.println("Ingresar y: ");
+        System.out.print("Ingresar y: ");
         int coordY = entrada.nextInt();
-        System.out.println("Ingresar hex (#RRGGBB): ");
+        System.out.print("Ingresar hex (#RRGGBB): ");
         entrada.nextLine();
         String hex = entrada.nextLine();
-        System.out.println("Ingresar profundidad: ");
+        System.out.print("Ingresar profundidad: ");
         int profundidad = entrada.nextInt();
         Pixhex_21090869_CastroVenegas pixel = new Pixhex_21090869_CastroVenegas(coordX, coordY, hex, profundidad);
         return pixel;
         
     }
-    
-    
+     
     /**
     * Descripción: Método que cambia un pixel de la imagen
     * @param pixel: objeto
     * @author aracely castro
     */ 
+    @Override
     public void changePixel(Object pixel){
         if(isCompressed()){
             decompress();
@@ -958,6 +1141,7 @@ public class Image_21090869_CastroVenegas {
     * Descripción: Método que invierte los bits de una imagen bitmap
     * @author aracely castro
     */ 
+    @Override
     public void invertColorBit(){
         if(isCompressed()){
             decompress();
@@ -972,6 +1156,7 @@ public class Image_21090869_CastroVenegas {
     * Descripción: Método que invierte los colores rgb de una imagen pixmap
     * @author aracely castro
     */ 
+    @Override
     public void invertColorRGB(){
         if(isCompressed()){
             decompress();
@@ -987,6 +1172,7 @@ public class Image_21090869_CastroVenegas {
     * @return devuelve un string
     * @author aracely castro
     */ 
+    @Override
     public String imageString(){
         if(isCompressed()){
             decompress();
@@ -1022,6 +1208,62 @@ public class Image_21090869_CastroVenegas {
     }
     
     /**
+    * Descripción: Método que obtiene el string de la imagen
+    * @return devuelve un string
+    * @author aracely castro
+    */ 
+    @Override
+    public String imageStringComprimido(){
+        String cadena = "";
+        int h = 0;
+        
+        Pixbit_21090869_CastroVenegas pB = new Pixbit_21090869_CastroVenegas(0,0,0,0);
+        Pixhex_21090869_CastroVenegas pH = new Pixhex_21090869_CastroVenegas(0,0,"#FFFFFF",0);
+        Pixrgb_21090869_CastroVenegas pRGB = new Pixrgb_21090869_CastroVenegas(0,0,0,0,0,0);
+        
+        for(int i=0; i < this.ancho; i++){
+            for(int j = 0; j < this.largo; j++){ 
+                Object pixelRecogido = pixeles.get(h);
+                if (isBitmapComprimido()){
+                    if(pixelRecogido.getClass() != pB.getClass()){
+                        cadena += "-1" + "\t";
+                    } else{
+                        Pixbit_21090869_CastroVenegas pixelS =  (Pixbit_21090869_CastroVenegas) pixeles.get(h);
+                        String bit = String.valueOf( (Integer) pixelS.getBit());
+                        cadena += bit + "\t";
+                    }   
+                }
+
+                if (isHexmapComprimido()){
+                    if(pixelRecogido.getClass() != pH.getClass()){
+                        cadena += "-------" + "\t";
+                    } else{
+                        Pixhex_21090869_CastroVenegas pixelH =  (Pixhex_21090869_CastroVenegas) pixeles.get(h);
+                        cadena += pixelH.getHex() + "\t";
+                    }
+                }
+                
+                if (isPixmapComprimido()){
+                    if(pixelRecogido.getClass() != pRGB.getClass()){
+                        cadena += "[-1,-1,-1]" + "\t";
+
+                    } else{
+                        Pixrgb_21090869_CastroVenegas pixelRGB =  (Pixrgb_21090869_CastroVenegas) pixeles.get(h);
+                        String colorR = String.valueOf( (int) pixelRGB.getColorR() );
+                        String colorG = String.valueOf( (int) pixelRGB.getColorG() );
+                        String colorB = String.valueOf( (int) pixelRGB.getColorB() );
+                        cadena += "[" + colorR + "," + colorG + "," + colorB + "]" + "\t";
+                    }
+                }
+                h++;
+            }
+            cadena += "\n"; 
+        } 
+        return cadena;
+    }
+    
+    
+    /**
     * Descripción: Método que obtiene todas las profundidades de la imagen
     * @param pixeles: lista de objetos
     * @return devuelve una lista de valores enteros positivos
@@ -1054,86 +1296,13 @@ public class Image_21090869_CastroVenegas {
         }
         return profundidades;
     }
-    
-    /**
-    * Descripción: Método para imprimir en ancho, largo y pixeles de la imagen
-    * @author aracely castro
-    */ 
-    public void mostrarImage(){
-        
-        System.out.print("Ancho: "+ this.ancho + " ");
-        System.out.print("Largo: "+ this.largo + " ");
-        System.out.print("Pixeles: ");
-        
-        if (isBitmap()){
-            for(int i=0; i < pixeles.size(); i++){
-                Pixbit_21090869_CastroVenegas pixelBit = (Pixbit_21090869_CastroVenegas) pixeles.get(i);
-                System.out.println(pixelBit.mostrarPixbit());
-            }
-        }
-        
-        if (isHexmap()){
-            for(int i=0; i < pixeles.size(); i++){
-                Pixhex_21090869_CastroVenegas pixelHex = (Pixhex_21090869_CastroVenegas) pixeles.get(i);
-                System.out.println(pixelHex.mostrarPixhex());
-            }
-        }
-        
-        if (isPixmap()){
-            for(int i=0; i < pixeles.size(); i++){
-                Pixrgb_21090869_CastroVenegas pixelRGB = (Pixrgb_21090869_CastroVenegas) pixeles.get(i);
-                System.out.println(pixelRGB.mostrarPixrgb());
-            }
-        }
 
-        if(isBitmapComprimido()){
-            Pixbit_21090869_CastroVenegas pB = new Pixbit_21090869_CastroVenegas(0,0,0,0);
-            for(int i=0; i < pixeles.size(); i++){
-                Object pixelRecogido = pixeles.get(i);
-                if(pixelRecogido.getClass() == pB.getClass()){
-                    Pixbit_21090869_CastroVenegas pixelBit = (Pixbit_21090869_CastroVenegas) pixeles.get(i);
-                    System.out.println(pixelBit.mostrarPixbit());
-                } else{
-                    Pixbit_comprimido_21090869_CastroVenegas pixelBitC = (Pixbit_comprimido_21090869_CastroVenegas) pixeles.get(i);
-                    System.out.println(pixelBitC.mostrarPixbitC());
-                }
-            }
-        }
-        
-        if(isHexmapComprimido()){
-            Pixhex_21090869_CastroVenegas pH = new Pixhex_21090869_CastroVenegas(0,0,"#FFFFFF",0);
-            for(int i=0; i < pixeles.size(); i++){
-                Object pixelRecogido = pixeles.get(i);
-                if(pixelRecogido.getClass() == pH.getClass()){
-                    Pixhex_21090869_CastroVenegas pixelHex = (Pixhex_21090869_CastroVenegas) pixeles.get(i);
-                    System.out.println(pixelHex.mostrarPixhex());
-                } else{
-                    Pixhex_comprimido_21090869_CastroVenegas pixelHexC = (Pixhex_comprimido_21090869_CastroVenegas) pixeles.get(i);
-                    System.out.println(pixelHexC.mostrarPixhexC());
-                }
-            }
-        }
-        
-        if(isPixmapComprimido()){
-            Pixrgb_21090869_CastroVenegas pRGB = new Pixrgb_21090869_CastroVenegas(0,0,0,0,0,0);
-            for(int i=0; i < pixeles.size(); i++){
-                Object pixelRecogido = pixeles.get(i);
-                if(pixelRecogido.getClass() == pRGB.getClass()){
-                    Pixrgb_21090869_CastroVenegas pixelRGB = (Pixrgb_21090869_CastroVenegas) pixeles.get(i);
-                    System.out.println(pixelRGB.mostrarPixrgb());
-                } else{
-                    Pixrgb_comprimido_21090869_CastroVenegas pixelRGBC = (Pixrgb_comprimido_21090869_CastroVenegas) pixeles.get(i);
-                    System.out.println(pixelRGBC.mostrarPixrgbC());
-                }
-            }
-        }  
-    }
-    
     /**
     * Descripción: Método que obtiene una lista de imagenes separadas por profundidad
     * @return devuelve una lista de imagenes
     * @author aracely castro
     */ 
+    @Override
     public ArrayList detpLayers(){
         if(isCompressed()){
             decompress();
@@ -1151,7 +1320,7 @@ public class Image_21090869_CastroVenegas {
                     if(pixel.igualProfundidad(profundidades.get(i))){
                         pixelesNuevos.add(pixel);
                     } else{
-                        Pixbit_21090869_CastroVenegas pixelR = pixel.pixelBlancoBit(profundidades.get(i));
+                        Pixbit_21090869_CastroVenegas pixelR = pixel.pixelBlanco(profundidades.get(i));
                         pixelesNuevos.add(pixelR);
                     }             
                 }
@@ -1161,7 +1330,7 @@ public class Image_21090869_CastroVenegas {
                     if(pixel.igualProfundidad(profundidades.get(i))){
                         pixelesNuevos.add(pixel);
                     } else{
-                        Pixhex_21090869_CastroVenegas pixelR = pixel.pixelBlancoHex(profundidades.get(i));
+                        Pixhex_21090869_CastroVenegas pixelR = pixel.pixelBlanco(profundidades.get(i));
                         pixelesNuevos.add(pixelR);
                     }   
                 }
@@ -1171,7 +1340,7 @@ public class Image_21090869_CastroVenegas {
                     if(pixel.igualProfundidad(profundidades.get(i))){
                         pixelesNuevos.add(pixel);
                     } else{
-                        Pixrgb_21090869_CastroVenegas pixelR = pixel.pixelBlancoRGB(profundidades.get(i));
+                        Pixrgb_21090869_CastroVenegas pixelR = pixel.pixelBlanco(profundidades.get(i));
                         pixelesNuevos.add(pixelR);
                     }  
                 }
@@ -1186,6 +1355,7 @@ public class Image_21090869_CastroVenegas {
     * Descripción: Método que descomprime la imagen
     * @author aracely castro
     */ 
+    @Override
     public void decompress(){
         ArrayList<Object> pixelesNuevos = new ArrayList<>();
         ArrayList<Object> pixeles = getPixeles();
@@ -1240,9 +1410,5 @@ public class Image_21090869_CastroVenegas {
             }
         }
         setPixeles(pixelesNuevos);
-    }
-
-    
-    
-    
+    }    
 }

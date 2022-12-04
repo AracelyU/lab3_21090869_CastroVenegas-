@@ -7,15 +7,25 @@ package codigo_fuente_21090869_CastroVenegas;
 import java.util.ArrayList;
 
 /**
- *
- * @author arace
+ * Implementa el objeto pixrgb. Es una clase hija de Pixel_21090869_CastroVenegas 
+ * 
+ * Representación: Se considera un objeto pixrgb con tres atributos, todos enteros
+ * para indicar los valores de su color en RGB. 
+ * 
+ * Relaciones
+ * 
+ * Tiene relación de composición con Image_21090869_CastroVenegas, siento esta
+ * la clase miembro
+ * 
+ * @author aracely castro
  */
-public class Pixrgb_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas implements Interfaz_Pixrgb_21090869_CastroVenegas {
+public class Pixrgb_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas {
     // atributos del pixrgb
     private int colorR;
     private int colorG;
     private int colorB;
     
+    //################################ CONSTRUCTOR ######################################
     /**
     * Descripción: Constructor de pixrgb_comprimido
     * @param coordX: entero positivo. 
@@ -34,12 +44,12 @@ public class Pixrgb_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas 
         setColorB(colorB);
     }
     
+     //################################ SELECTORES ######################################
     /**
     * Descripción: Método para obtener el valor color rojo de un pixrgb
     * @return devuelve un entero entre 0 y 255
     * @author aracely castro
     */
-    @Override
     public int getColorR(){
         return this.colorR;
     }
@@ -49,7 +59,6 @@ public class Pixrgb_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas 
     * @return devuelve un entero entre 0 y 255
     * @author aracely castro
     */
-    @Override
     public int getColorG(){
         return this.colorG;
     }
@@ -59,11 +68,11 @@ public class Pixrgb_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas 
     * @return devuelve un entero entre 0 y 255
     * @author aracely castro
     */
-    @Override
     public int getColorB(){
         return this.colorB;
     }
     
+    //################################ MODIFICADORES ######################################
     /**
     * Descripción: Método para cambiar el valor color rojo de un pixrgb
     * @param colorR: entero entre 0 y 255
@@ -104,13 +113,25 @@ public class Pixrgb_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas 
     * @param colorB: entero entre 0 y 255
     * @author aracely castro
     */
-    @Override
     public void invertRGB(int colorR, int colorG, int colorB){
         setColorR(255- colorR);
         setColorG(255- colorG);
         setColorB(255- colorB);
     }
    
+    /**
+    * Descripción: Método que crea un pixrgb blanco con profundidad ingresada
+    * @param profundidad: entero positivo
+    * @return devuelve un pixrgb
+    * @author aracely castro
+    */
+    public Pixrgb_21090869_CastroVenegas pixelBlanco(int profundidad){
+        Pixrgb_21090869_CastroVenegas pixel = new Pixrgb_21090869_CastroVenegas(getCoordX(), getCoordY(), 255, 255, 255, profundidad);
+        return pixel;
+    }
+    
+    
+    //################################ PERTENENCIA ######################################
     /**
     * Descripción: Método para compara si se tiene el mismo color rgb ingresado
     * @param colorR: entero entre 0 y 255
@@ -119,11 +140,12 @@ public class Pixrgb_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas 
     * @return devuelve un boleano
     * @author aracely castro
     */
-    @Override
-    public boolean igualColorRGB(int colorR, int colorG, int colorB){
+    public boolean igualColor(int colorR, int colorG, int colorB){
         return ((getColorR() == colorR) && (getColorG() == colorG) && (getColorB() == colorB));
     }
     
+    
+    //################################ OTROS MÉTODOS ######################################
     /**
     * Descripción: Método para suma los pixrgb con mismo color rgb
     * @param colorR: entero entre 0 y 255
@@ -133,12 +155,11 @@ public class Pixrgb_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas 
     * @return devuelve un entero
     * @author aracely castro
     */
-    @Override
-    public int sumaColorRGB(ArrayList<Object> pixeles, int colorR, int colorG, int colorB){
+    public int sumaColor(ArrayList<Object> pixeles, int colorR, int colorG, int colorB){
         int suma = 0;
         for(int i =0; i < pixeles.size(); i++){
             Pixrgb_21090869_CastroVenegas pixel = (Pixrgb_21090869_CastroVenegas) pixeles.get(i);
-            if(pixel.igualColorRGB(colorR, colorG, colorB)){
+            if(pixel.igualColor(colorR, colorG, colorB)){
                 suma++;
             }
         }
@@ -154,12 +175,11 @@ public class Pixrgb_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas 
     * @return devuelve una lista de objetos
     * @author aracely castro
     */
-    @Override
-    public ArrayList eliminarColorRGB(ArrayList<Object> pixeles, int colorR, int colorG, int colorB){
+    public ArrayList eliminarColor(ArrayList<Object> pixeles, int colorR, int colorG, int colorB){
         ArrayList<Object> pixelesTemporal = new ArrayList<>();
         for(int i=0; i < pixeles.size(); i++){
             Pixrgb_21090869_CastroVenegas pixelRecogido = (Pixrgb_21090869_CastroVenegas) pixeles.get(i);
-            if(!pixelRecogido.igualColorRGB(colorR, colorG, colorB)){
+            if(!pixelRecogido.igualColor(colorR, colorG, colorB)){
                 pixelesTemporal.add(pixelRecogido);
             }
         }
@@ -173,7 +193,6 @@ public class Pixrgb_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas 
     * @return devuelve una lista de objetos
     * @author aracely castro
     */
-    @Override
     public ArrayList eliminarProfundidad(ArrayList<Object> pixeles, int profundidad){
         ArrayList<Object> pixelesTemporal = new ArrayList<>();
         for(int i=0; i < pixeles.size(); i++){
@@ -184,25 +203,5 @@ public class Pixrgb_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas 
         }
         return pixelesTemporal;
     }
-    
-    /**
-    * Descripción: Método que crea un pixrgb blanco con profundidad ingresada
-    * @param profundidad: entero positivo
-    * @return devuelve un pixrgb
-    * @author aracely castro
-    */
-    @Override
-    public Pixrgb_21090869_CastroVenegas pixelBlancoRGB(int profundidad){
-        Pixrgb_21090869_CastroVenegas pixel = new Pixrgb_21090869_CastroVenegas(getCoordX(), getCoordY(), 255, 255, 255, profundidad);
-        return pixel;
-    }
-    /**
-    * Descripción: Método para imprimir el pixrgb
-    * @author aracely castro
-    * @return devuelve un String
-    */   
-    @Override
-    public String mostrarPixrgb(){
-        return "["+String.valueOf(coordX)+","+String.valueOf(coordY)+","+String.valueOf(colorR)+","+String.valueOf(colorG)+","+String.valueOf(colorB)+","+String.valueOf(profundidad) +"] ";
-    }
+
 }

@@ -5,13 +5,23 @@
 package codigo_fuente_21090869_CastroVenegas;
 
 /**
- *
- * @author arace
+ * Implementa el objeto pixbit_comprimido. Es una clase hija de Pixel_21090869_CastroVenegas 
+ * 
+ * Representación: Se considera un objeto pixbit_comprimido con un atributo, un entero
+ * para indicar el valor de bit antes de ser comprimido. 
+ * 
+ * Relaciones
+ * 
+ * Tiene relación de composición con Image_21090869_CastroVenegas, siento esta
+ * la clase miembro
+ * 
+ * @author aracely castro
  */
-public class Pixbit_comprimido_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas implements InterfazPixbit_comprimido_21090869_CastroVenegas{
+public class Pixbit_comprimido_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas{
     // atributos de pixbit_comprimido
     private int bitGuardado;
 
+    //################################ CONSTRUCTOR ######################################
     /**
     * Descripción: Constructor de pixbit_comprimido
     * @param coordX: entero positivo. 
@@ -25,6 +35,7 @@ public class Pixbit_comprimido_21090869_CastroVenegas extends Pixel_21090869_Cas
         setBitGuardado(bitGuardado);
     }
     
+    //################################ MODIFICADORES ######################################
     /**
     * Descripción: Método para cambiar el valor bitGuardado de un pixbit_comprimido
     * @param bitGuardado: entero 0 | 1
@@ -36,23 +47,14 @@ public class Pixbit_comprimido_21090869_CastroVenegas extends Pixel_21090869_Cas
         }
     }
     
+    //################################ SELECTORES ######################################
     /**
     * Descripción: Método para obtener el valor bitGuardado de un pixbit_comprimido
     * @return devuelve un entero positivo
     * @author aracely castro
     */
-    @Override
     public int getBitGuardado(){
         return bitGuardado;
     }
     
-    /**
-    * Descripción: Método para imprimir el pixbit_comprimido
-    * @author aracely castro
-    * @return devuelve un String
-    */
-    @Override
-    public String mostrarPixbitC(){
-        return "[" + String.valueOf(coordX) + "," + String.valueOf(coordY) + ",-1,"+ String.valueOf(profundidad) + "] ";
-    }
 }

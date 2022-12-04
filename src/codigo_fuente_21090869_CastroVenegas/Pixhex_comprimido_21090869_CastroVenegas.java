@@ -5,13 +5,24 @@
 package codigo_fuente_21090869_CastroVenegas;
 
 /**
- *
- * @author arace
+ * Implementa el objeto pixhex_comprimido. Es una clase hija de Pixel_21090869_CastroVenegas 
+ * 
+ * Representación: Se considera un objeto pixhex_comprimido con un atributo, un entero
+ * para indicar el string hexadecimal antes de ser comprimido. 
+ * 
+ * Relaciones
+ * 
+ * Tiene relación de composición con Image_21090869_CastroVenegas, siento esta
+ * la clase miembro
+ * 
+ * @author aracely castro
  */
-public class Pixhex_comprimido_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas implements Interfaz_Pixhex_comprimido_21090869_CastroVenegas {
+public class Pixhex_comprimido_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas{
     // atributos de un pixhex_comprimido
     private String hexGuardado;
     
+    
+    //################################ CONSTRUCTOR ######################################
     /**
     * Descripción: Constructor de pixhex_comprimido
     * @param coordX: entero positivo. 
@@ -25,6 +36,7 @@ public class Pixhex_comprimido_21090869_CastroVenegas extends Pixel_21090869_Cas
         setHexGuardado(hexGuardado);
     }
 
+    //################################ MODIFICADORES ######################################
     /**
     * Descripción: Método para cambiar el string hex guardado de un pixhex
     * @param hexGuardado: string
@@ -36,23 +48,14 @@ public class Pixhex_comprimido_21090869_CastroVenegas extends Pixel_21090869_Cas
         }
     }  
     
+    //################################ SELECTORES ######################################
     /**
     * Descripción: Método para obtener el string hex guardado de un pixhex
     * @return devuelve un string
     * @author aracely castro
     */
-    @Override
+
     public String getHexGuardado(){
         return hexGuardado;
-    }
-    
-    /**
-    * Descripción: Método para imprimir el pixhex_comprimido
-    * @author aracely castro
-    * @return devuelve un String
-    */ 
-    @Override
-    public String mostrarPixhexC(){
-        return "[" + String.valueOf(coordX) + "," + String.valueOf(coordY) + ", '-------' ,"+ String.valueOf(profundidad) + "] ";
     }
 }

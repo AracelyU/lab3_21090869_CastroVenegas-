@@ -7,14 +7,24 @@ package codigo_fuente_21090869_CastroVenegas;
 import java.util.ArrayList;
 
 /**
- *
- * @author arace
+ * Implementa el objeto pixbit. Es una clase hija de Pixel_21090869_CastroVenegas 
+ * 
+ * Representación: Se considera un objeto pixbit con un atributo, un entero
+ * para indicar su valor de bit. 
+ * 
+ * Relaciones
+ * 
+ * Tiene relación de composición con Image_21090869_CastroVenegas, siento esta
+ * la clase miembro
+ * 
+ * @author aracely castro
  */
-public class Pixbit_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas implements InterfazPixbit_21090869_CastroVenegas {
+public class Pixbit_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas {
     
     // atributos de un pixbit
     private int bit;
     
+    //################################ CONSTRUCTOR ######################################
     /**
     * Descripción: Constructor de pixbit
     * @param coordX: entero positivo. 
@@ -29,26 +39,27 @@ public class Pixbit_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas 
         
     }
     
+    //################################ SELECTORES ######################################
     /**
     * Descripción: Método para obtener el valor bit de un pixbit
     * @return devuelve un entero positivo
     * @author aracely castro
     */
-    @Override
     public int getBit(){
         return bit;
     }
     
-
+    //################################ MODIFICADORES ######################################
     /**
     * Descripción: Método para cambiar el valor bit de un pixbit
     * @param bit: entero 0 | 1
     * @author aracely castro
     */
-    @Override
     public void setBit(int bit){
         if (bit == 0 || bit == 1){
             this.bit = bit;
+        } else{
+            this.bit = 1;
         }
     }
     
@@ -57,7 +68,6 @@ public class Pixbit_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas 
     * @param bit: entero 0 | 1
     * @author aracely castro
     */
-    @Override
     public void invertBit(int bit){
         if(bit == 0){
             setBit(1);
@@ -67,17 +77,17 @@ public class Pixbit_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas 
     }
     
     /**
-    * Descripción: Método que ve si se tiene igual bit al ingresado
-    * @param bit: entero 0 | 1
-    * @param pixel: pixbit
-    * @return devuelve un boleano
+    * Descripción: Método que crea un pixbit blanco con profundidad ingresada
+    * @param profundidad: entero positivo
+    * @return devuelve un pixbit
     * @author aracely castro
     */
-    @Override
-    public boolean igualColorBit(Pixbit_21090869_CastroVenegas pixel, int bit){
-        return pixel.getBit() == bit;
+    public Pixbit_21090869_CastroVenegas pixelBlanco(int profundidad){
+        Pixbit_21090869_CastroVenegas pixel = new Pixbit_21090869_CastroVenegas(getCoordX(), getCoordY(), 1, profundidad);
+        return pixel;
     }
     
+    //################################ OTROS MÉTODOS ######################################
     /**
     * Descripción: Método que suma los pixbit con igual bit al ingresado
     * @param bit: entero 0 | 1
@@ -85,12 +95,11 @@ public class Pixbit_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas 
     * @return devuelve un entero
     * @author aracely castro
     */
-    @Override
-    public int sumaColorBit(ArrayList<Object> pixeles, int bit){
+    public int sumaColor(ArrayList<Object> pixeles, int bit){
         int suma = 0;
         for(int i =0; i < pixeles.size(); i++){
             Pixbit_21090869_CastroVenegas pixel = (Pixbit_21090869_CastroVenegas) pixeles.get(i);
-            if (igualColorBit(pixel, bit)){
+            if (pixel.getBit() == bit){
                 suma++;
             }
         }
@@ -104,12 +113,11 @@ public class Pixbit_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas 
     * @return devuelve una lista de objetos
     * @author aracely castro
     */
-    @Override
-    public ArrayList eliminarColorBit(ArrayList<Object> pixeles, int bit){
+    public ArrayList eliminarColor(ArrayList<Object> pixeles, int bit){
         ArrayList<Object> pixelesTemporal = new ArrayList<>();
         for(int i=0; i < pixeles.size(); i++){
             Pixbit_21090869_CastroVenegas pixelRecogido = (Pixbit_21090869_CastroVenegas) pixeles.get(i);
-            if(!igualColorBit(pixelRecogido, bit)){
+            if(bit != pixelRecogido.getBit()){
                 pixelesTemporal.add(pixelRecogido);
             }
         }
@@ -123,7 +131,6 @@ public class Pixbit_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas 
     * @return devuelve una lista de objetos
     * @author aracely castro
     */
-    @Override
     public ArrayList eliminarProfundidad(ArrayList<Object> pixeles, int profundidad){
         ArrayList<Object> pixelesTemporal = new ArrayList<>();
         for(int i=0; i < pixeles.size(); i++){
@@ -133,28 +140,6 @@ public class Pixbit_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas 
             }
         }
         return pixelesTemporal;
-    }
-    
-    /**
-    * Descripción: Método que crea un pixbit blanco con profundidad ingresada
-    * @param profundidad: entero positivo
-    * @return devuelve un pixbit
-    * @author aracely castro
-    */
-    @Override
-    public Pixbit_21090869_CastroVenegas pixelBlancoBit(int profundidad){
-        Pixbit_21090869_CastroVenegas pixel = new Pixbit_21090869_CastroVenegas(getCoordX(), getCoordY(), 1, profundidad);
-        return pixel;
-    }
-    
-    /**
-    * Descripción: Método para imprimir el pixbits
-    * @author aracely castro
-    * @return devuelve un string
-    */ 
-    @Override
-    public String mostrarPixbit(){
-        return "[" + String.valueOf(coordX) + "," + String.valueOf(coordY) + ","+ String.valueOf(bit) +","+ String.valueOf(profundidad) + "] ";
-    }
+    } 
     
 }

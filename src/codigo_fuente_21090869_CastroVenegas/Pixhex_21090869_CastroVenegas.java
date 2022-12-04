@@ -7,13 +7,24 @@ package codigo_fuente_21090869_CastroVenegas;
 import java.util.ArrayList;
 
 /**
- *
- * @author arace
+ * Implementa el objeto pixhex. Es una clase hija de Pixel_21090869_CastroVenegas 
+ * 
+ * Representación: Se considera un objeto pixhex con un atributo, un string
+ * para indicar su valor hexadecimal de su color. 
+ * 
+ * Relaciones
+ * 
+ * Tiene relación de composición con Image_21090869_CastroVenegas, siento esta
+ * la clase miembro
+ * 
+ * @author aracely castro
  */
-public class Pixhex_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas implements Interfaz_Pixhex_21090869_CastroVenegas {
+public class Pixhex_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas {
     // atributos de un pixhex
     private String hex;
 
+    
+    //################################ CONSTRUCTOR ######################################
     /**
     * Descripción: Constructor de pixhex_comprimido
     * @param coordX: entero positivo. 
@@ -28,16 +39,17 @@ public class Pixhex_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas 
        
     }
     
+    //################################ SELECTORES ######################################
     /**
     * Descripción: Método para obtener el string hex de un pixhex
     * @return devuelve un string
     * @author aracely castro
     */
-    @Override
     public String getHex(){
         return hex;
     }
     
+    //################################ MODIFICADORES ######################################
     /**
     * Descripción: Método para cambiar el string hex de un pixhex
     * @param hex: string
@@ -46,21 +58,23 @@ public class Pixhex_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas 
     private void setHex(String hex){
         if (hex.length() == 7){
             this.hex = hex;
+        } else{
+            this.hex = "#FFFFFF";
         }
     }
     
     /**
-    * Descripción: Método para verificar si tienen mismo string hex
-    * @param hex: string
-    * @param pixel: pixhex
-    * @return devuelve un boleano
+    * Descripción: Método que crea un pixhex blanco con profundidad ingresada
+    * @param profundidad: entero positivo
+    * @return devuelve un pixhex
     * @author aracely castro
     */
-    @Override
-    public boolean igualColorHex(Pixhex_21090869_CastroVenegas pixel, String hex){
-        return (pixel.getHex() == hex);
+    public Pixhex_21090869_CastroVenegas pixelBlanco(int profundidad){
+        Pixhex_21090869_CastroVenegas pixel = new Pixhex_21090869_CastroVenegas(getCoordX(), getCoordY(), "#FFFFFF", profundidad);
+        return pixel;
     }
     
+    //################################ OTROS MÉTODOS ######################################
     /**
     * Descripción: Método que suma los pixhex con string hex igual al ingresado
     * @param hex: string
@@ -68,12 +82,11 @@ public class Pixhex_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas 
     * @return devuelve un entero positivo
     * @author aracely castro
     */
-    @Override
-    public int sumaColorHex(ArrayList<Object> pixeles, String hex){
+    public int sumaColor(ArrayList<Object> pixeles, String hex){
         int suma = 0;
         for(int i =0; i < pixeles.size(); i++){
             Pixhex_21090869_CastroVenegas pixel = (Pixhex_21090869_CastroVenegas) pixeles.get(i);
-            if(igualColorHex(pixel, hex)){
+            if(pixel.getHex().equals(hex)){
                 suma++;
             }
         }
@@ -87,12 +100,11 @@ public class Pixhex_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas 
     * @return devuelve una lista de objetos
     * @author aracely castro
     */
-    @Override
-    public ArrayList eliminarColorHex(ArrayList<Object> pixeles, String hex){
+    public ArrayList eliminarColor(ArrayList<Object> pixeles, String hex){
         ArrayList<Object> pixelesTemporal = new ArrayList<>();
         for(int i=0; i < pixeles.size(); i++){
             Pixhex_21090869_CastroVenegas pixelRecogido = (Pixhex_21090869_CastroVenegas) pixeles.get(i);
-            if(!igualColorHex(pixelRecogido, hex)){
+            if(!pixelRecogido.getHex().equals(hex)){
                 pixelesTemporal.add(pixelRecogido);
             }
         }
@@ -106,7 +118,6 @@ public class Pixhex_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas 
     * @return devuelve una lista de objetos
     * @author aracely castro
     */
-    @Override
     public ArrayList eliminarProfundidad(ArrayList<Object> pixeles, int profundidad){
         ArrayList<Object> pixelesTemporal = new ArrayList<>();
         for(int i=0; i < pixeles.size(); i++){
@@ -117,26 +128,5 @@ public class Pixhex_21090869_CastroVenegas extends Pixel_21090869_CastroVenegas 
         }
         return pixelesTemporal;
     }
-    
-    /**
-    * Descripción: Método que crea un pixhex blanco con profundidad ingresada
-    * @param profundidad: entero positivo
-    * @return devuelve un pixhex
-    * @author aracely castro
-    */
-    @Override
-    public Pixhex_21090869_CastroVenegas pixelBlancoHex(int profundidad){
-        Pixhex_21090869_CastroVenegas pixel = new Pixhex_21090869_CastroVenegas(getCoordX(), getCoordY(), "#FFFFFF", profundidad);
-        return pixel;
-    }
-    
-    /**
-    * Descripción: Método para imprimir el pixhex
-    * @author aracely castro
-    * @return devuelve un String
-    */ 
-    @Override
-    public String mostrarPixhex(){
-        return "[" + String.valueOf(coordX) + "," + String.valueOf(coordY) + ","+ getHex() +","+ String.valueOf(profundidad) + "] ";
-    }
+
 }
