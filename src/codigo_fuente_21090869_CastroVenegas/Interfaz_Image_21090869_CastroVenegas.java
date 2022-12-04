@@ -7,8 +7,8 @@ package codigo_fuente_21090869_CastroVenegas;
 import java.util.ArrayList;
 
 /**
- *
- * @author arace
+ * Interfaz que implementa Image_21090869_CastroVenegas
+ * @author aracely castro
  */
 public interface Interfaz_Image_21090869_CastroVenegas {
 

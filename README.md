@@ -24,4 +24,7 @@ El programa se puede ejecutar de dos formas, ambas una vez extraído la carpeta 
 1. Acceder dentro de la carpeta src y hacer doble click al archivo llamado "script.bat".
 2. Acceder dentro de la carpeta src al CMD e ingresar las lineas de comando del "script.bat" en orden.
 
+javac codigo_fuente_21090869_CastroVenegas/*.java
+java codigo_fuente_21090869_CastroVenegas/Main
+
 Luego de ejecutar el programa solo hay que seguir las instrucciones por pantalla. 
