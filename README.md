@@ -1,5 +1,3 @@
-# lab3_21090869_CastroVenegas-
-
 Laboratorio 3 Paradigmas de Programación: Programación Orientada a Objetos
 
 Autor: Aracely Castro Venegas
@@ -21,9 +19,9 @@ Se necesita tener instalado Java en su versión 11. Ya que se implementó un arc
 para ejecutar el programa, no se necesitan de otros prerrequisitos adicionales
 
 Como ejecutar
-El programa se puede ejecutar de dos formas:
+El programa se puede ejecutar de dos formas, ambas una vez extraído la carpeta src del repositorio:
 
 1. Acceder dentro de la carpeta src y hacer doble click al archivo llamado "script.bat".
-2. Acceder dentro de la carpeta src al cmd e ingresar las lineas de comando del "script.bat" en orden.
+2. Acceder dentro de la carpeta src al CMD e ingresar las lineas de comando del "script.bat" en orden.
 
-Luego de ejecutar el programa solo basta con seguir las instrucciones por pantalla. 
+Luego de ejecutar el programa solo hay que seguir las instrucciones por pantalla. 
